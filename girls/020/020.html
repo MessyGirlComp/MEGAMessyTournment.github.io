@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Girl 001 | MEGA Messy Tournament</title>
+
+<style>
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f6f8;
+        color: #222;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .site-header {
+        background: #111;
+        color: white;
+        width: 100%;
+    }
+
+    .header-inner {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 18px 30px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+    .site-logo {
+        color: white;
+        text-decoration: none;
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1.1;
+        white-space: nowrap;
+    }
+
+    .site-logo span {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        opacity: 0.7;
+        margin-top: 4px;
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    .main-nav {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .main-nav > a,
+    .dropdown-button {
+        color: white;
+        text-decoration: none;
+        background: transparent;
+        border: none;
+
+        padding: 10px 13px;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        cursor: pointer;
+
+        border-radius: 7px;
+
+        transition:
+            background 0.2s ease,
+            color 0.2s ease;
+    }
+
+    .main-nav > a:hover,
+    .dropdown-button:hover {
+        background: #2a2a2a;
+    }
+
+
+    /* =========================================================
+       DROPDOWNS
+    ========================================================= */
+
+    .nav-dropdown {
+        position: relative;
+    }
+
+    .dropdown-button {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    }
+
+    .dropdown-button span {
+        font-size: 16px;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 5px);
+        left: 0;
+
+        min-width: 210px;
+
+        background: white;
+
+        border-radius: 10px;
+
+        box-shadow:
+            0 12px 35px rgba(0, 0, 0, 0.18);
+
+        padding: 7px;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-5px);
+
+        transition:
+            opacity 0.2s ease,
+            transform 0.2s ease,
+            visibility 0.2s ease;
+
+        z-index: 1000;
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+        display: block;
+
+        color: #222;
+        text-decoration: none;
+
+        padding: 10px 12px;
+
+        font-size: 14px;
+        font-weight: 500;
+
+        border-radius: 7px;
+
+        transition: background 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+        background: #f0f1f3;
+    }
+
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
+
+    main {
+        flex: 1;
+        width: 100%;
+    }
+
+    .profile-container {
+        max-width: 1250px;
+        margin: 0 auto;
+
+        padding: 55px 30px 75px;
+    }
+
+
+    /* =========================================================
+       PAGE TITLE
+    ========================================================= */
+
+    .profile-heading {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .profile-heading h1 {
+        font-size: 38px;
+        margin-bottom: 10px;
+    }
+
+    .profile-heading p {
+        color: #666;
+        font-size: 16px;
+    }
+
+
+    /* =========================================================
+       SECTION 1
+    ========================================================= */
+
+    .profile-section {
+        background: white;
+
+        border-radius: 18px;
+
+        padding: 30px;
+
+        box-shadow:
+            0 6px 25px rgba(0, 0, 0, 0.08);
+
+        margin-bottom: 45px;
+    }
+
+    .profile-grid {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 40px;
+
+        align-items: center;
+    }
+
+
+    /* =========================================================
+       IMAGE CAROUSEL
+    ========================================================= */
+
+    .carousel {
+        position: relative;
+
+        width: 100%;
+
+        overflow: hidden;
+
+        border-radius: 15px;
+
+        background: #eee;
+    }
+
+    .carousel-image-wrapper {
+        position: relative;
+
+        width: 100%;
+
+        aspect-ratio: 4 / 3;
+
+        overflow: hidden;
+    }
+
+    .carousel-image {
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+
+        opacity: 0;
+
+        transition: opacity 0.5s ease;
+    }
+
+    .carousel-image.active {
+        opacity: 1;
+    }
+
+
+    /* =========================================================
+       CAROUSEL ARROWS
+    ========================================================= */
+
+    .carousel-arrow {
+        position: absolute;
+
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        width: 45px;
+        height: 45px;
+
+        border: none;
+
+        border-radius: 50%;
+
+        background: rgba(0, 0, 0, 0.65);
+
+        color: white;
+
+        font-size: 27px;
+
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        z-index: 5;
+
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .carousel-arrow:hover {
+        background: rgba(0, 0, 0, 0.9);
+
+        transform:
+            translateY(-50%)
+            scale(1.05);
+    }
+
+    .carousel-arrow.prev {
+        left: 15px;
+    }
+
+    .carousel-arrow.next {
+        right: 15px;
+    }
+
+
+    /* =========================================================
+       CAROUSEL DOTS
+    ========================================================= */
+
+    .carousel-dots {
+        position: absolute;
+
+        bottom: 15px;
+
+        left: 0;
+        right: 0;
+
+        display: flex;
+
+        justify-content: center;
+
+        gap: 8px;
+
+        z-index: 5;
+    }
+
+    .carousel-dot {
+        width: 11px;
+        height: 11px;
+
+        border-radius: 50%;
+
+        border: 2px solid white;
+
+        background: rgba(0, 0, 0, 0.35);
+
+        cursor: pointer;
+
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .carousel-dot.active {
+        background: white;
+
+        transform: scale(1.15);
+    }
+
+
+    /* =========================================================
+       PROFILE INFORMATION
+    ========================================================= */
+
+    .profile-info {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .girl-name {
+        font-size: 34px;
+
+        font-weight: 800;
+
+        margin-bottom: 2px;
+    }
+
+    .profile-field {
+        border-bottom: 1px solid #e5e5e5;
+
+        padding-bottom: 15px;
+    }
+
+    .profile-field:last-of-type {
+        border-bottom: none;
+    }
+
+    .profile-label {
+        display: block;
+
+        font-size: 12px;
+
+        font-weight: 800;
+
+        text-transform: uppercase;
+
+        letter-spacing: 0.8px;
+
+        color: #777;
+
+        margin-bottom: 5px;
+    }
+
+    .profile-value {
+        font-size: 16px;
+
+        line-height: 1.55;
+
+        color: #333;
+    }
+
+
+    /* =========================================================
+       COMPETITION STATUS
+    ========================================================= */
+
+    .status {
+        display: inline-flex;
+
+        align-items: center;
+
+        width: fit-content;
+
+        padding: 9px 14px;
+
+        border-radius: 999px;
+
+        background: #e8f7ed;
+
+        color: #18743a;
+
+        font-size: 14px;
+
+        font-weight: 800;
+    }
+
+
+    /* =========================================================
+       VOTE BUTTON
+    ========================================================= */
+
+    .vote-button {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        width: 100%;
+
+        padding: 18px 25px;
+
+        margin-top: 5px;
+
+        background: #111;
+
+        color: white;
+
+        text-decoration: none;
+
+        border-radius: 12px;
+
+        font-size: 18px;
+
+        font-weight: 800;
+
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    .vote-button:hover {
+        background: #333;
+
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 10px 25px rgba(0, 0, 0, 0.18);
+    }
+
+
+    /* =========================================================
+       SECTION 2 — VIDEO
+    ========================================================= */
+
+    .video-section {
+        background: white;
+
+        border-radius: 18px;
+
+        padding: 30px;
+
+        box-shadow:
+            0 6px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .section-heading {
+        text-align: center;
+
+        margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+        font-size: 28px;
+
+        margin-bottom: 8px;
+    }
+
+    .section-heading p {
+        color: #666;
+
+        font-size: 14px;
+    }
+
+
+    /* =========================================================
+       CUSTOM VIDEO PLAYER
+    ========================================================= */
+
+    .custom-video-player {
+        position: relative;
+
+        width: 100%;
+
+        max-width: 1000px;
+
+        margin: 0 auto;
+
+        background: #000;
+
+        border-radius: 14px;
+
+        overflow: hidden;
+    }
+
+    .video-wrapper {
+        position: relative;
+
+        width: 100%;
+
+        aspect-ratio: 16 / 9;
+
+        background: #000;
+    }
+
+    .custom-video {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+
+        object-fit: contain;
+    }
+
+
+    /* =========================================================
+       VIDEO THUMBNAIL
+    ========================================================= */
+
+    .video-thumbnail {
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        z-index: 2;
+
+        cursor: pointer;
+
+        transition: opacity 0.25s ease;
+    }
+
+    .video-thumbnail.hidden {
+        opacity: 0;
+
+        pointer-events: none;
+    }
+
+
+    /* =========================================================
+       VIDEO PLAY OVERLAY
+    ========================================================= */
+
+    .video-play-overlay {
+        position: absolute;
+
+        inset: 0;
+
+        z-index: 3;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        cursor: pointer;
+
+        transition: opacity 0.25s ease;
+    }
+
+    .video-play-overlay.hidden {
+        opacity: 0;
+
+        pointer-events: none;
+    }
+
+    .large-play-button {
+        width: 75px;
+        height: 75px;
+
+        border-radius: 50%;
+
+        border: none;
+
+        background: rgba(0, 0, 0, 0.75);
+
+        color: white;
+
+        font-size: 34px;
+
+        padding-left: 5px;
+
+        cursor: pointer;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        transition:
+            transform 0.2s ease,
+            background 0.2s ease;
+    }
+
+    .large-play-button:hover {
+        background: rgba(0, 0, 0, 0.95);
+
+        transform: scale(1.08);
+    }
+
+
+    /* =========================================================
+       VIDEO CONTROLS
+    ========================================================= */
+
+    .video-controls {
+        position: absolute;
+
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        z-index: 5;
+
+        padding: 12px 15px;
+
+        background:
+            linear-gradient(
+                transparent,
+                rgba(0, 0, 0, 0.85)
+            );
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+    }
+
+    .control-button {
+        width: 40px;
+        height: 40px;
+
+        border: none;
+
+        background: rgba(255, 255, 255, 0.12);
+
+        color: white;
+
+        border-radius: 8px;
+
+        cursor: pointer;
+
+        font-size: 18px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        transition:
+            background 0.2s ease;
+    }
+
+    .control-button:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    .progress-container {
+        flex: 1;
+
+        height: 6px;
+
+        background: rgba(255, 255, 255, 0.3);
+
+        border-radius: 20px;
+
+        cursor: pointer;
+
+        position: relative;
+    }
+
+    .progress-bar {
+        height: 100%;
+
+        width: 0%;
+
+        background: white;
+
+        border-radius: 20px;
+    }
+
+    .time-display {
+        color: white;
+
+        font-size: 13px;
+
+        min-width: 90px;
+
+        text-align: center;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .site-footer {
+        background: #111;
+
+        color: #aaa;
+
+        text-align: center;
+
+        padding: 25px 20px;
+
+        font-size: 13px;
+
+        margin-top: auto;
+    }
+
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+
+        .header-inner {
+            flex-direction: column;
+
+            align-items: stretch;
+        }
+
+        .site-logo {
+            text-align: center;
+        }
+
+        .main-nav {
+            justify-content: center;
+
+            flex-wrap: wrap;
+        }
+
+        .profile-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 600px) {
+
+        .header-inner {
+            padding: 18px 15px;
+        }
+
+        .main-nav {
+            gap: 3px;
+        }
+
+        .main-nav > a,
+        .dropdown-button {
+            font-size: 12px;
+
+            padding: 8px 7px;
+        }
+
+        .profile-container {
+            padding: 35px 15px 50px;
+        }
+
+        .profile-heading h1 {
+            font-size: 30px;
+        }
+
+        .profile-section,
+        .video-section {
+            padding: 20px;
+        }
+
+        .girl-name {
+            font-size: 28px;
+        }
+
+        .carousel-arrow {
+            width: 38px;
+            height: 38px;
+
+            font-size: 22px;
+        }
+
+        .large-play-button {
+            width: 60px;
+            height: 60px;
+
+            font-size: 27px;
+        }
+
+        .video-controls {
+            padding: 8px;
+
+            gap: 6px;
+        }
+
+        .control-button {
+            width: 35px;
+            height: 35px;
+        }
+
+        .time-display {
+            font-size: 11px;
+
+            min-width: 75px;
+        }
+
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+
+
+<div class="header-inner">
+
+    <a href="../index.html" class="site-logo">
+        MEGA Messy Tournament
+        <span>Season 1</span>
+    </a>
+
+    <nav class="main-nav">
+
+        <a href="../index.html">
+            Home
+        </a>
+
+
+        <!-- QUALIFYING -->
+
+        <div class="nav-dropdown">
+
+            <button class="dropdown-button">
+                Qualifying Stage
+                <span>⌄</span>
+            </button>
+
+            <div class="dropdown-menu">
+
+                <a href="../qualifying/index.html">
+                    Qualifying Home
+                </a>
+
+                <a href="../qualifying/groups/index.html">
+                    Group Stages
+                </a>
+
+                <a href="../qualifying/wildcard.html">
+                    Wildcard Stage
+                </a>
+
+                <a href="../qualifying/eliminated.html">
+                    Eliminated Girls
+                </a>
+
+                <a href="../qualifying/qualified.html">
+                    Qualifying Girls
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- TOURNAMENT -->
+
+        <div class="nav-dropdown">
+
+            <button class="dropdown-button">
+                Tournament Stage
+                <span>⌄</span>
+            </button>
+
+            <div class="dropdown-menu">
+
+                <a href="../tournament/groups/index.html">
+                    Group Stages
+                </a>
+
+                <a href="../tournament/round32.html">
+                    Round of 32
+                </a>
+
+                <a href="../tournament/quarter-finals.html">
+                    Quarter Finals
+                </a>
+
+                <a href="../tournament/semi-finals.html">
+                    Semi Finals
+                </a>
+
+                <a href="../tournament/grand-finals.html">
+                    Grand Finals
+                </a>
+
+                <a href="../tournament/third-place.html">
+                    3rd Place Match
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- GIRLS -->
+
+        <div class="nav-dropdown">
+
+            <button class="dropdown-button">
+                Girls Profiles
+                <span>⌄</span>
+            </button>
+
+            <div class="dropdown-menu">
+
+                
+				
+				<a href="../all.html">
+                    All Girls
+                </a>
+				
+				<a href="001.html">
+                    Girl 001
+                </a>
+
+                <a href="002.html">
+                    Girl 002
+                </a>
+
+                <a href="003.html">
+                    Girl 003
+                </a>
+
+                <a href="004.html">
+                    Girl 004
+                </a>
+
+                <!-- Add more girls here -->
+
+            </div>
+
+        </div>
+
+
+        <a href="../news/index.html">
+            News
+        </a>
+
+    </nav>
+
+</div>
+
+
+</header>
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main>
+
+
+<div class="profile-container">
+
+
+    <!-- =====================================================
+         PROFILE HEADING
+    ====================================================== -->
+
+    <div class="profile-heading">
+
+        <h1>Girl 001</h1>
+
+        <p>
+            MEGA Messy Tournament — Season 1
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         SECTION 1 — PROFILE
+    ====================================================== -->
+
+    <section class="profile-section">
+
+        <div class="profile-grid">
+
+
+            <!-- =================================================
+                 LEFT — IMAGE CAROUSEL
+            ================================================== -->
+
+            <div class="carousel">
+
+                <div class="carousel-image-wrapper">
+
+                    <img
+                        src="001 A.png"
+                        alt="Girl 001 - Photo 1"
+                        class="carousel-image active"
+                    >
+
+                    <img
+                        src="001 B.png"
+                        alt="Girl 001 - Photo 2"
+                        class="carousel-image"
+                    >
+
+                    <img
+                        src="001 C.png"
+                        alt="Girl 001 - Photo 3"
+                        class="carousel-image"
+                    >
+
+                </div>
+
+
+                <!-- PREVIOUS -->
+
+                <button
+                    class="carousel-arrow prev"
+                    id="previousButton"
+                    aria-label="Previous image"
+                >
+                    ‹
+                </button>
+
+
+                <!-- NEXT -->
+
+                <button
+                    class="carousel-arrow next"
+                    id="nextButton"
+                    aria-label="Next image"
+                >
+                    ›
+                </button>
+
+
+                <!-- DOTS -->
+
+                <div class="carousel-dots">
+
+                    <button
+                        class="carousel-dot active"
+                        data-slide="0"
+                        aria-label="Show image 1"
+                    ></button>
+
+                    <button
+                        class="carousel-dot"
+                        data-slide="1"
+                        aria-label="Show image 2"
+                    ></button>
+
+                    <button
+                        class="carousel-dot"
+                        data-slide="2"
+                        aria-label="Show image 3"
+                    ></button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 RIGHT — PROFILE INFORMATION
+            ================================================== -->
+
+            <div class="profile-info">
+
+                <h2 class="girl-name">
+                    Girl 001
+                </h2>
+
+
+                <div class="profile-field">
+
+                    <span class="profile-label">
+                        Age
+                    </span>
+
+                    <div class="profile-value">
+                        18
+                    </div>
+
+                </div>
+
+
+                <div class="profile-field">
+
+                    <span class="profile-label">
+                        Bio
+                    </span>
+
+                    <div class="profile-value">
+                        Add the girl's biography here. This can
+                        include information about her background,
+                        personality and why she is taking part in
+                        the MEGA Messy Tournament.
+                    </div>
+
+                </div>
+
+
+                <div class="profile-field">
+
+                    <span class="profile-label">
+                        Appearance Description
+                    </span>
+
+                    <div class="profile-value">
+                        Add a general description of her appearance,
+                        hairstyle and outfit here.
+                    </div>
+
+                </div>
+
+
+                <div class="profile-field">
+
+                    <span class="profile-label">
+                        Current Competition Status
+                    </span>
+
+                    <div class="profile-value">
+
+                        <span class="status">
+                            Currently Competing
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     VOTE BUTTON
+                ================================================== -->
+
+                <a
+                    href="../tournament/groups/group-1.html"
+                    class="vote-button"
+                >
+                    🗳️ VOTE FOR HER
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SECTION 2 — VIDEO
+    ====================================================== -->
+
+    <section class="video-section">
+
+
+        <div class="section-heading">
+
+            <h2>
+                Girl 001 Video
+            </h2>
+
+            <p>
+                Watch her tournament profile video
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             CUSTOM VIDEO PLAYER
+        ================================================== -->
+
+        <div class="custom-video-player">
+
+            <div class="video-wrapper">
+
+
+                <!-- VIDEO -->
+
+                <video
+                    id="customVideo"
+                    class="custom-video"
+                    preload="metadata"
+                >
+
+                    <source
+                        src="001 Video.mp4"
+                        type="video/mp4"
+                    >
+
+                    Your browser does not support HTML5 video.
+
+                </video>
+
+
+                <!-- THUMBNAIL -->
+
+                <img
+                    src="001 Thumbnail.png"
+                    alt="Girl 001 Video Thumbnail"
+                    class="video-thumbnail"
+                    id="videoThumbnail"
+                >
+
+
+                <!-- LARGE PLAY BUTTON -->
+
+                <div
+                    class="video-play-overlay"
+                    id="videoPlayOverlay"
+                >
+
+                    <button
+                        class="large-play-button"
+                        id="largePlayButton"
+                        aria-label="Play video"
+                    >
+                        ▶
+                    </button>
+
+                </div>
+
+
+                <!-- =================================================
+                     CUSTOM CONTROLS
+                ================================================== -->
+
+                <div class="video-controls">
+
+
+                    <!-- PLAY / PAUSE -->
+
+                    <button
+                        class="control-button"
+                        id="playPauseButton"
+                        aria-label="Play or pause"
+                    >
+                        ▶
+                    </button>
+
+
+                    <!-- PROGRESS -->
+
+                    <div
+                        class="progress-container"
+                        id="progressContainer"
+                    >
+
+                        <div
+                            class="progress-bar"
+                            id="progressBar"
+                        ></div>
+
+                    </div>
+
+
+                    <!-- TIME -->
+
+                    <div
+                        class="time-display"
+                        id="timeDisplay"
+                    >
+                        0:00 / 0:00
+                    </div>
+
+
+                    <!-- MUTE -->
+
+                    <button
+                        class="control-button"
+                        id="muteButton"
+                        aria-label="Mute or unmute"
+                    >
+                        🔊
+                    </button>
+
+
+                    <!-- FULLSCREEN -->
+
+                    <button
+                        class="control-button"
+                        id="fullscreenButton"
+                        aria-label="Fullscreen"
+                    >
+                        ⛶
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+</main>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+
+
+<p>
+    © 2026 MEGA Messy Tournament. All rights reserved.
+</p>
+
+
+</footer>
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+    /* =========================================================
+       IMAGE CAROUSEL
+    ========================================================= */
+
+    const carouselImages =
+        document.querySelectorAll(".carousel-image");
+
+    const carouselDots =
+        document.querySelectorAll(".carousel-dot");
+
+    const previousButton =
+        document.getElementById("previousButton");
+
+    const nextButton =
+        document.getElementById("nextButton");
+
+
+    let currentSlide = 0;
+
+    let carouselTimer;
+
+
+    function showSlide(index) {
+
+        if (index >= carouselImages.length) {
+            index = 0;
+        }
+
+        if (index < 0) {
+            index = carouselImages.length - 1;
+        }
+
+        currentSlide = index;
+
+
+        carouselImages.forEach((image, i) => {
+
+            image.classList.toggle(
+                "active",
+                i === currentSlide
+            );
+
+        });
+
+
+        carouselDots.forEach((dot, i) => {
+
+            dot.classList.toggle(
+                "active",
+                i === currentSlide
+            );
+
+        });
+
+    }
+
+
+    function nextSlide() {
+
+        showSlide(currentSlide + 1);
+
+        resetCarouselTimer();
+
+    }
+
+
+    function previousSlide() {
+
+        showSlide(currentSlide - 1);
+
+        resetCarouselTimer();
+
+    }
+
+
+    function resetCarouselTimer() {
+
+        clearInterval(carouselTimer);
+
+        carouselTimer = setInterval(
+            () => showSlide(currentSlide + 1),
+            5000
+        );
+
+    }
+
+
+    previousButton.addEventListener(
+        "click",
+        previousSlide
+    );
+
+
+    nextButton.addEventListener(
+        "click",
+        nextSlide
+    );
+
+
+    carouselDots.forEach((dot) => {
+
+        dot.addEventListener(
+            "click",
+            () => {
+
+                showSlide(
+                    Number(dot.dataset.slide)
+                );
+
+                resetCarouselTimer();
+
+            }
+        );
+
+    });
+
+
+    /* Start automatic carousel */
+
+    resetCarouselTimer();
+
+
+
+    /* =========================================================
+       CUSTOM VIDEO PLAYER
+    ========================================================= */
+
+    const video =
+        document.getElementById("customVideo");
+
+    const thumbnail =
+        document.getElementById("videoThumbnail");
+
+    const playOverlay =
+        document.getElementById("videoPlayOverlay");
+
+    const largePlayButton =
+        document.getElementById("largePlayButton");
+
+    const playPauseButton =
+        document.getElementById("playPauseButton");
+
+    const muteButton =
+        document.getElementById("muteButton");
+
+    const fullscreenButton =
+        document.getElementById("fullscreenButton");
+
+    const progressContainer =
+        document.getElementById("progressContainer");
+
+    const progressBar =
+        document.getElementById("progressBar");
+
+    const timeDisplay =
+        document.getElementById("timeDisplay");
+
+
+
+    /* =========================================================
+       FORMAT TIME
+    ========================================================= */
+
+    function formatTime(seconds) {
+
+        if (isNaN(seconds)) {
+            return "0:00";
+        }
+
+        const minutes =
+            Math.floor(seconds / 60);
+
+        const remainingSeconds =
+            Math.floor(seconds % 60)
+                .toString()
+                .padStart(2, "0");
+
+        return `${minutes}:${remainingSeconds}`;
+
+    }
+
+
+
+    /* =========================================================
+       PLAY VIDEO
+    ========================================================= */
+
+    function playVideo() {
+
+        video.play();
+
+        thumbnail.classList.add("hidden");
+
+        playOverlay.classList.add("hidden");
+
+        playPauseButton.textContent = "❚❚";
+
+    }
+
+
+
+    /* =========================================================
+       PAUSE VIDEO
+    ========================================================= */
+
+    function pauseVideo() {
+
+        video.pause();
+
+        thumbnail.classList.add("hidden");
+
+        playOverlay.classList.remove("hidden");
+
+        playPauseButton.textContent = "▶";
+
+    }
+
+
+
+    /* =========================================================
+       PLAY / PAUSE BUTTON
+    ========================================================= */
+
+    playPauseButton.addEventListener(
+        "click",
+        () => {
+
+            if (video.paused) {
+
+                playVideo();
+
+            } else {
+
+                pauseVideo();
+
+            }
+
+        }
+    );
+
+
+    largePlayButton.addEventListener(
+        "click",
+        playVideo
+    );
+
+
+    thumbnail.addEventListener(
+        "click",
+        playVideo
+    );
+
+
+
+    /* =========================================================
+       VIDEO STATE
+    ========================================================= */
+
+    video.addEventListener(
+        "play",
+        () => {
+
+            thumbnail.classList.add("hidden");
+
+            playOverlay.classList.add("hidden");
+
+            playPauseButton.textContent = "❚❚";
+
+        }
+    );
+
+
+    video.addEventListener(
+        "pause",
+        () => {
+
+            playOverlay.classList.remove("hidden");
+
+            playPauseButton.textContent = "▶";
+
+        }
+    );
+
+
+    video.addEventListener(
+        "ended",
+        () => {
+
+            playOverlay.classList.remove("hidden");
+
+            playPauseButton.textContent = "▶";
+
+            progressBar.style.width = "0%";
+
+        }
+    );
+
+
+
+    /* =========================================================
+       VIDEO PROGRESS
+    ========================================================= */
+
+    video.addEventListener(
+        "timeupdate",
+        () => {
+
+            if (!video.duration) {
+                return;
+            }
+
+            const percentage =
+                (video.currentTime / video.duration) * 100;
+
+            progressBar.style.width =
+                percentage + "%";
+
+
+            timeDisplay.textContent =
+                `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+
+        }
+    );
+
+
+    /* =========================================================
+       CLICK PROGRESS BAR
+    ========================================================= */
+
+    progressContainer.addEventListener(
+        "click",
+        (event) => {
+
+            if (!video.duration) {
+                return;
+            }
+
+            const rectangle =
+                progressContainer.getBoundingClientRect();
+
+            const clickPosition =
+                event.clientX - rectangle.left;
+
+            const percentage =
+                clickPosition / rectangle.width;
+
+            video.currentTime =
+                percentage * video.duration;
+
+        }
+    );
+
+
+
+    /* =========================================================
+       MUTE
+    ========================================================= */
+
+    muteButton.addEventListener(
+        "click",
+        () => {
+
+            video.muted =
+                !video.muted;
+
+            muteButton.textContent =
+                video.muted
+                    ? "🔇"
+                    : "🔊";
+
+        }
+    );
+
+
+
+    /* =========================================================
+       FULLSCREEN
+    ========================================================= */
+
+    fullscreenButton.addEventListener(
+        "click",
+        () => {
+
+            const player =
+                document.querySelector(
+                    ".custom-video-player"
+                );
+
+
+            if (document.fullscreenElement) {
+
+                document.exitFullscreen();
+
+            } else if (
+                player.requestFullscreen
+            ) {
+
+                player.requestFullscreen();
+
+            }
+
+        }
+    );
+
+
+</script>
+
+</body>
+
+</html>
+
