@@ -105,11 +105,21 @@ function renderProfile(girl) {
             "[data-field]:not(.profile-label)"
         );
 
-        const hasInfo = [...valueElements].some(element =>
-            String(values[element.dataset.field] ?? "").trim()
-        );
+        if (!valueElements.length) {
+            return;
+        }
 
-        if (valueElements.length && !hasInfo) {
+        // Drop any empty piece (e.g. bio: "" while appearance has text)
+        valueElements.forEach(element => {
+
+            if (!String(values[element.dataset.field] ?? "").trim()) {
+                element.remove();
+            }
+
+        });
+
+        // Nothing left: drop the label too
+        if (!field.querySelector("[data-field]:not(.profile-label)")) {
             field.remove();
         }
 
