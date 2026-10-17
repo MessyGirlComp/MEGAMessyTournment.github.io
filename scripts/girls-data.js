@@ -516,6 +516,7 @@ const girls = {
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/TbDwL7FbCCI?si=XUZcJzV54HPkGWIh"
 },
+
 	"025": {
    id: "025",
    name: "Carloline",
@@ -528,7 +529,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Slime",
-   youtube: "https://youtu.be/Zhf_whyeZac"
+   youtube: "https://www.youtube.com/embed/Zhf_whyeZac"
 },
 
 "026": {
@@ -543,7 +544,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Food",
-   youtube: "https://youtu.be/AjktkdpamUg"
+   youtube: "https://www.youtube.com/embed/AjktkdpamUg"
 },
 
 "027": {
@@ -558,7 +559,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Slime",
-   youtube: "https://youtu.be/VrwQQ91CI0w"
+   youtube: "https://www.youtube.com/embed/VrwQQ91CI0w"
 },
 
 "028": {
@@ -573,7 +574,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Slime",
-   youtube: "https://youtu.be/rKVPR0VJIas"
+   youtube: "https://www.youtube.com/embed/rKVPR0VJIas"
 },
 
 "029": {
@@ -588,7 +589,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Water",
-   youtube: "https://youtu.be/ZKfGwuXLkcc"
+   youtube: "https://www.youtube.com/embed/ZKfGwuXLkcc"
 },
 
 "030": {
@@ -603,7 +604,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Slime",
-   youtube: "https://youtu.be/_E77kfSLzFM"
+   youtube: "https://www.youtube.com/embed/_E77kfSLzFM"
 },
 
 "031": {
@@ -618,7 +619,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Slime",
-   youtube: "https://youtu.be/zR530PImvL0"
+   youtube: "https://www.youtube.com/embed/zR530PImvL0"
 },
 
 "032": {
@@ -633,7 +634,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Food",
-   youtube: "https://youtu.be/FGT8jDJinBM"
+   youtube: "https://www.youtube.com/embed/FGT8jDJinBM"
 },
 
 "033": {
@@ -648,7 +649,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Food",
-   youtube: "https://youtu.be/fSw6IF2Vt2U"
+   youtube: "https://www.youtube.com/embed/fSw6IF2Vt2U"
 },
 
 "034": {
@@ -663,7 +664,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Food",
-   youtube: "https://youtu.be/2Tp-UB4fcDM"
+   youtube: "https://www.youtube.com/embed/2Tp-UB4fcDM"
 },
 
 "035": {
@@ -678,7 +679,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Slime",
-   youtube: "https://youtu.be/waRWtKV7ags"
+   youtube: "https://www.youtube.com/embed/waRWtKV7ags"
 },
 
 "036": {
@@ -693,7 +694,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Other",
-   youtube: "https://youtu.be/Ck-_bQ50dHA"
+   youtube: "https://www.youtube.com/embed/Ck-_bQ50dHA"
 },
 
 "037": {
@@ -708,7 +709,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Slime",
-   youtube: "https://youtu.be/hBnLT8K4wPY"
+   youtube: "https://www.youtube.com/embed/hBnLT8K4wPY"
 },
 
 "038": {
@@ -723,7 +724,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Slime",
-   youtube: "https://youtu.be/C5lLhxhAcwM"
+   youtube: "https://www.youtube.com/embed/C5lLhxhAcwM"
 },
 
 "039": {
@@ -738,7 +739,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Food",
-   youtube: "https://youtu.be/QNgzB0YbK_A"
+   youtube: "https://www.youtube.com/embed/QNgzB0YbK_A"
 },
 
 "040": {
@@ -753,7 +754,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Food",
-   youtube: "https://youtu.be/GRWjuRieS-M"
+   youtube: "https://www.youtube.com/embed/GRWjuRieS-M"
 },
 
 "041": {
@@ -768,7 +769,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Food",
-   youtube: "https://youtu.be/oAfbwBEq-EY"
+   youtube: "https://www.youtube.com/embed/oAfbwBEq-EY"
 },
 
 "042": {
@@ -783,7 +784,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Slime",
-   youtube: "https://youtu.be/2s9CYALX0kU"
+   youtube: "https://www.youtube.com/embed/2s9CYALX0kU"
 },
 
 "043": {
@@ -798,7 +799,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Gunge",
-   youtube: "https://youtu.be/VJS_PFKD2Us"
+   youtube: "https://www.youtube.com/embed/VJS_PFKD2Us"
 },
 
 "044": {
@@ -813,7 +814,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Gunge",
-   youtube: "https://youtu.be/g2APyuk9zcw"
+   youtube: "https://www.youtube.com/embed/g2APyuk9zcw"
 },
 
 "045": {
@@ -828,7 +829,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Slime",
-   youtube: "https://youtu.be/kkbbZtphzRA"
+   youtube: "https://www.youtube.com/embed/kkbbZtphzRA"
 },
 
 "046": {
@@ -843,7 +844,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Gunge",
-   youtube: "https://youtu.be/zcdPdeOGNXo"
+   youtube: "https://www.youtube.com/embed/zcdPdeOGNXo"
 },
 
 "047": {
@@ -858,7 +859,7 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Water",
-   youtube: "https://youtu.be/mfDCU8j66o4"
+   youtube: "https://www.youtube.com/embed/mfDCU8j66o4"
 },
 
 "048": {
@@ -873,8 +874,9 @@ const girls = {
    from: "Dick and Dom",
    mediaSourceType: "",
    messType: "Gunge",
-   youtube: "https://youtu.be/rsSp2aWyLyo"
+   youtube: "https://www.youtube.com/embed/rsSp2aWyLyo"
 },
+
 	
 "049": {
     id: "049",
