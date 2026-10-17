@@ -169,10 +169,17 @@ function renderProfile(girl) {
         frame.src = girl.youtube;
         frame.title = `${girl.name} challenge video`;
 
+        page.querySelector("[data-video-placeholder]").remove();
+
     } else {
 
-        // No link yet: hide the video section instead of an empty player
-        page.querySelector("[data-video-section]").remove();
+        // No link yet: replace the empty player with a message + thumbnail
+        page.querySelector("[data-video-wrapper]").remove();
+
+        const thumb = page.querySelector("[data-video-thumb]");
+
+        thumb.src = getGirlAssetPath(girl.id, "t");
+        thumb.alt = `${girl.name} - thumbnail`;
 
     }
 

@@ -148,7 +148,17 @@
             <h2 data-field="videoHeading"></h2>
         </div>
 
-        <div class="video-wrapper">
+        <!-- Shown instead of the player when there is no video link yet -->
+
+        <div class="video-placeholder" data-video-placeholder style="text-align:center;">
+
+            <img data-video-thumb alt="" style="max-width:100%; height:auto; border-radius:8px;">
+
+            <p>I'm sorry, the video will be uploaded shortly, please check back soon.</p>
+
+        </div>
+
+        <div class="video-wrapper" data-video-wrapper>
 
             <iframe
                 data-video-frame
