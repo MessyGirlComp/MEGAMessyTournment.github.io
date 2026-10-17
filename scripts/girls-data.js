@@ -1149,7 +1149,7 @@ const girls = {
 
 "067": {
     id: "067",
-    name: "Caprice",
+    name: "Shayla",
     age: "",
     bio: "",
     appearance: "",
@@ -1164,7 +1164,7 @@ const girls = {
 
 "068": {
     id: "068",
-    name: "Macy",
+    name: "Krystal",
     age: "",
     bio: "",
     appearance: "",
@@ -1179,7 +1179,7 @@ const girls = {
 
 "069": {
     id: "069",
-    name: "Bailey",
+    name: "Maisie",
     age: "",
     bio: "",
     appearance: "",
@@ -1194,7 +1194,7 @@ const girls = {
 
 "070": {
     id: "070",
-    name: "Makenzie",
+    name: "Juliet",
     age: "",
     bio: "",
     appearance: "",
@@ -1209,7 +1209,7 @@ const girls = {
 
 "071": {
     id: "071",
-    name: "Tamara",
+    name: "Breigh-Ellen",
     age: "",
     bio: "",
     appearance: "",
@@ -1224,7 +1224,7 @@ const girls = {
 
 "072": {
     id: "072",
-    name: "Shayla",
+    name: "Tahlia",
     age: "",
     bio: "",
     appearance: "",
@@ -1239,7 +1239,7 @@ const girls = {
 
 "073": {
     id: "073",
-    name: "Krystal",
+    name: "Eloise",
     age: "",
     bio: "",
     appearance: "",
@@ -1254,7 +1254,7 @@ const girls = {
 
 "074": {
     id: "074",
-    name: "Maisie",
+    name: "Caprice",
     age: "",
     bio: "",
     appearance: "",
@@ -1269,7 +1269,7 @@ const girls = {
 
 "075": {
     id: "075",
-    name: "Juliet",
+    name: "Macy",
     age: "",
     bio: "",
     appearance: "",
@@ -1284,7 +1284,7 @@ const girls = {
 
 "076": {
     id: "076",
-    name: "Breigh-Ellen",
+    name: "Bailey",
     age: "",
     bio: "",
     appearance: "",
@@ -1299,7 +1299,7 @@ const girls = {
 
 "077": {
     id: "077",
-    name: "Tahlia",
+    name: "Makenzie",
     age: "",
     bio: "",
     appearance: "",
@@ -1314,7 +1314,7 @@ const girls = {
 
 "078": {
     id: "078",
-    name: "Eloise",
+    name: "Tamara",
     age: "",
     bio: "",
     appearance: "",
