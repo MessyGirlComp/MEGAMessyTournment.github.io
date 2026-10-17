@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MEGA Messy Tournament - Season 1</title>
+
+    <style>
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #171717;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(255, 255, 255, 0.97);
+            border-bottom: 1px solid #e5e7eb;
+
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-inner {
+            max-width: 1500px;
+            margin: auto;
+
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            padding: 12px 25px;
+        }
+
+
+        /* =========================================================
+           LOGO
+        ========================================================= */
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 900;
+            line-height: 1.1;
+
+            white-space: nowrap;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            opacity: 0.55;
+
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex: 1;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-button {
+            border: none;
+            background: transparent;
+
+            padding: 12px 14px;
+
+            border-radius: 10px;
+
+            font-size: 0.92rem;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .nav-button:hover {
+            background: #f0f2f7;
+        }
+
+        .nav-button:active {
+            transform: scale(0.97);
+        }
+
+        .nav-button.dropdown::after {
+            content: "▾";
+            margin-left: 7px;
+            font-size: 0.75rem;
+        }
+
+
+        /* =========================================================
+           DROPDOWNS
+        ========================================================= */
+
+        .dropdown-menu {
+            position: absolute;
+
+            top: calc(100% + 8px);
+            left: 0;
+
+            min-width: 245px;
+
+            background: white;
+
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+
+            padding: 8px;
+
+            box-shadow:
+                0 18px 45px rgba(0, 0, 0, 0.14);
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-5px);
+
+            transition:
+                opacity 0.18s ease,
+                transform 0.18s ease,
+                visibility 0.18s ease;
+        }
+
+        .nav-item:hover > .dropdown-menu,
+        .nav-item.open > .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            width: 100%;
+
+            border: none;
+            background: transparent;
+
+            padding: 11px 12px;
+
+            border-radius: 9px;
+
+            text-align: left;
+
+            font-size: 0.9rem;
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+        .dropdown-link:hover {
+            background: #f3f4f6;
+        }
+
+        .dropdown-link.has-submenu::after {
+            content: "›";
+            font-size: 1.1rem;
+            opacity: 0.5;
+        }
+
+
+        /* =========================================================
+           GROUP SUBMENU
+        ========================================================= */
+
+        .submenu {
+            position: absolute;
+
+            left: calc(100% + 5px);
+            top: 0;
+
+            width: 190px;
+
+            background: white;
+
+            border: 1px solid #e5e7eb;
+            border-radius: 13px;
+
+            padding: 8px;
+
+            box-shadow:
+                0 18px 45px rgba(0, 0, 0, 0.13);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform: translateX(-5px);
+
+            transition:
+                opacity 0.18s ease,
+                transform 0.18s ease,
+                visibility 0.18s ease;
+        }
+
+        .has-submenu-wrapper {
+            position: relative;
+        }
+
+        .has-submenu-wrapper:hover > .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .submenu-title {
+            padding: 9px 11px;
+
+            font-size: 0.72rem;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            opacity: 0.5;
+        }
+
+
+        /* =========================================================
+           SEARCH
+        ========================================================= */
+
+        .search-wrapper {
+            position: relative;
+            width: 270px;
+        }
+
+        .search-input {
+            width: 100%;
+
+            border: 1px solid #dfe3ea;
+            background: #f6f7f9;
+
+            border-radius: 12px;
+
+            padding: 11px 42px 11px 15px;
+
+            outline: none;
+
+            font-size: 0.9rem;
+
+            transition:
+                border 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .search-input:focus {
+            background: white;
+            border-color: #999;
+        }
+
+        .search-icon {
+            position: absolute;
+
+            right: 13px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 1rem;
+            opacity: 0.55;
+
+            pointer-events: none;
+        }
+
+        .search-results {
+            position: absolute;
+
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+
+            background: white;
+
+            border: 1px solid #e5e7eb;
+            border-radius: 13px;
+
+            padding: 7px;
+
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.13);
+
+            display: none;
+
+            max-height: 360px;
+            overflow-y: auto;
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result {
+            display: block;
+
+            padding: 10px 12px;
+
+            border-radius: 9px;
+
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .search-result:hover {
+            background: #f3f4f6;
+        }
+
+        .no-results {
+            padding: 12px;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+
+        /* =========================================================
+           MOBILE MENU
+        ========================================================= */
+
+        .mobile-menu-button {
+            display: none;
+
+            border: none;
+            background: #f0f2f5;
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 10px;
+
+            font-size: 1.2rem;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           MAIN
+        ========================================================= */
+
+        main {
+            max-width: 1500px;
+            margin: auto;
+
+            padding: 55px 25px 70px;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1;
+
+            margin-bottom: 12px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.6;
+
+            margin-bottom: 45px;
+        }
+
+
+        /* =========================================================
+           COUNTDOWN
+        ========================================================= */
+
+        .countdown-title {
+            font-size: 0.85rem;
+
+            text-transform: uppercase;
+            letter-spacing: 3px;
+
+            font-weight: 800;
+
+            opacity: 0.55;
+
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            max-width: 900px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 16px;
+        }
+
+        .time-box {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+
+            padding: 28px 15px;
+
+            box-shadow:
+                0 12px 35px rgba(0, 0, 0, 0.07);
+        }
+
+        .time-number {
+            display: block;
+
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 900;
+
+            line-height: 1;
+        }
+
+        .time-label {
+            display: block;
+
+            margin-top: 10px;
+
+            font-size: 0.72rem;
+
+            text-transform: uppercase;
+            letter-spacing: 2px;
+
+            opacity: 0.5;
+        }
+
+        .countdown-date {
+            margin-top: 22px;
+
+            font-size: 0.9rem;
+            font-weight: 600;
+
+            opacity: 0.55;
+        }
+
+
+        /* =========================================================
+           NEWS SECTION
+        ========================================================= */
+
+        .section-header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .section-description {
+            margin-top: 6px;
+
+            font-size: 0.9rem;
+            opacity: 0.55;
+        }
+
+        .view-all {
+            font-size: 0.85rem;
+            font-weight: 800;
+
+            padding: 10px 14px;
+
+            background: white;
+
+            border: 1px solid #e1e4e8;
+            border-radius: 9px;
+        }
+
+        .view-all:hover {
+            background: #f3f4f6;
+        }
+
+
+        /* =========================================================
+           NEWS GRID
+        ========================================================= */
+
+        .news-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 20px;
+        }
+
+        .news-card {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.05);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 190px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        .news-content {
+            padding: 18px;
+        }
+
+        .news-date {
+            font-size: 0.72rem;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            font-weight: 800;
+
+            opacity: 0.45;
+
+            margin-bottom: 8px;
+        }
+
+        .news-title {
+            font-size: 1.05rem;
+            line-height: 1.3;
+
+            font-weight: 800;
+
+            margin-bottom: 9px;
+        }
+
+        .news-text {
+            font-size: 0.85rem;
+            line-height: 1.5;
+
+            opacity: 0.6;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            border-top: 1px solid #e2e5e9;
+
+            background: white;
+
+            text-align: center;
+
+            padding: 28px 20px;
+
+            font-size: 0.85rem;
+
+            opacity: 0.75;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1200px) {
+
+            .main-nav {
+                gap: 0;
+            }
+
+            .nav-button {
+                padding: 11px 9px;
+                font-size: 0.82rem;
+            }
+
+            .search-wrapper {
+                width: 220px;
+            }
+
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 900px) {
+
+            .header-inner {
+                flex-wrap: wrap;
+            }
+
+            .mobile-menu-button {
+                display: block;
+                margin-left: auto;
+            }
+
+            .main-nav {
+                display: none;
+
+                width: 100%;
+
+                flex-direction: column;
+                align-items: stretch;
+
+                order: 4;
+            }
+
+            .main-nav.active {
+                display: flex;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-button {
+                width: 100%;
+                text-align: left;
+            }
+
+            .dropdown-menu {
+                position: static;
+
+                display: none;
+
+                width: 100%;
+
+                box-shadow: none;
+
+                border: none;
+
+                padding-left: 15px;
+
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+
+            .nav-item.open > .dropdown-menu {
+                display: block;
+            }
+
+            .submenu {
+                position: static;
+
+                display: none;
+
+                width: 100%;
+
+                box-shadow: none;
+                border: none;
+
+                padding-left: 15px;
+
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+
+            .has-submenu-wrapper.open > .submenu {
+                display: block;
+            }
+
+            .search-wrapper {
+                order: 3;
+                width: 100%;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            main {
+                padding: 40px 16px 55px;
+            }
+
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .hero {
+                margin-bottom: 55px;
+            }
+
+            .news-image {
+                height: 210px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <a href="index.html" class="logo">
+                MEGA Messy Tournament
+                <span>Season 1</span>
+            </a>
+
+
+            <button
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open navigation"
+            >
+                ☰
+            </button>
+
+
+            <nav class="main-nav" id="mainNav">
+
+
+                <!-- =================================================
+                     QUALIFYING STAGE
+                ================================================= -->
+
+                <div class="nav-item">
+
+                    <button class="nav-button dropdown">
+                        Qualifying Stage
+                    </button>
+
+                    <div class="dropdown-menu">
+
+                        <div class="has-submenu-wrapper">
+
+                            <button class="dropdown-link has-submenu">
+                                Group Stages
+                            </button>
+
+                            <div class="submenu">
+
+                                <div class="submenu-title">
+                                    Groups
+                                </div>
+
+                                <a href="#group1" class="dropdown-link">
+                                    Group 1
+                                </a>
+
+                                <a href="#group2" class="dropdown-link">
+                                    Group 2
+                                </a>
+
+                                <a href="#group3" class="dropdown-link">
+                                    Group 3
+                                </a>
+
+                                <a href="#group4" class="dropdown-link">
+                                    Group 4
+                                </a>
+
+                                <a href="#group5" class="dropdown-link">
+                                    Group 5
+                                </a>
+
+                                <a href="#group6" class="dropdown-link">
+                                    Group 6
+                                </a>
+
+                                <a href="#group7" class="dropdown-link">
+                                    Group 7
+                                </a>
+
+                                <a href="#group8" class="dropdown-link">
+                                    Group 8
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <a href="#wildcard" class="dropdown-link">
+                            Wildcard Stage
+                        </a>
+
+                        <a href="#eliminated" class="dropdown-link">
+                            Eliminated Girls
+                        </a>
+
+                        <a href="#qualifying" class="dropdown-link">
+                            Qualifying Girls
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     TOURNAMENT STAGE
+                ================================================== -->
+
+                <div class="nav-item">
+
+                    <button class="nav-button dropdown">
+                        Tournament Stage
+                    </button>
+
+                    <div class="dropdown-menu">
+
+                        <div class="has-submenu-wrapper">
+
+                            <button class="dropdown-link has-submenu">
+                                Group Stages
+                            </button>
+
+                            <div class="submenu">
+
+                                <div class="submenu-title">
+                                    Groups
+                                </div>
+
+                                <a href="#tournament-group1" class="dropdown-link">
+                                    Group 1
+                                </a>
+
+                                <a href="#tournament-group2" class="dropdown-link">
+                                    Group 2
+                                </a>
+
+                                <a href="#tournament-group3" class="dropdown-link">
+                                    Group 3
+                                </a>
+
+                                <a href="#tournament-group4" class="dropdown-link">
+                                    Group 4
+                                </a>
+
+                                <a href="#tournament-group5" class="dropdown-link">
+                                    Group 5
+                                </a>
+
+                                <a href="#tournament-group6" class="dropdown-link">
+                                    Group 6
+                                </a>
+
+                                <a href="#tournament-group7" class="dropdown-link">
+                                    Group 7
+                                </a>
+
+                                <a href="#tournament-group8" class="dropdown-link">
+                                    Group 8
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <a href="#round32" class="dropdown-link">
+                            Round of 32
+                        </a>
+
+                        <a href="#round16" class="dropdown-link">
+                            Round of 16
+                        </a>
+
+                        <a href="#quarterfinals" class="dropdown-link">
+                            Quarter Finals
+                        </a>
+
+                        <a href="#semifinals" class="dropdown-link">
+                            Semi Finals
+                        </a>
+
+                        <a href="#grandfinals" class="dropdown-link">
+                            Grand Finals
+                        </a>
+
+                        <a href="#thirdplace" class="dropdown-link">
+                            3rd Place Match
+                        </a>
+
+                    </div>
+
+                </div>
+				
+				<!-- =================================================
+     GIRLS PROFILES
+================================================== -->
+
+<div class="nav-item">
+
+    <button class="nav-button dropdown">
+        Girls Profiles
+    </button>
+
+    <div class="dropdown-menu">
+
+        <a href="girls/all.html" class="dropdown-link">
+            All Girls
+        </a>
+
+        <a href="#qualifying-girls" class="dropdown-link">
+            Qualifying Girls
+        </a>
+
+        <a href="#tournament-girls" class="dropdown-link">
+            Tournament Girls
+        </a>
+
+        <a href="#eliminated-girls" class="dropdown-link">
+            Eliminated Girls
+        </a>
+
+    </div>
+
+</div>
+
+
+
+                <!-- =================================================
+                     NEWS
+                ================================================== -->
+
+                <div class="nav-item">
+
+                    <a
+                        href="#news"
+                        class="nav-button"
+                    >
+                        News
+                    </a>
+
+                </div>
+
+  
+			
+			
+ <div class="nav-item">
+
+                    <a
+                        href="#vote"
+                        class="nav-button"
+                    >
+                        Vote Now
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <!-- =================================================
+                 SEARCH
+            ================================================== -->
+
+            <div class="search-wrapper">
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="Search tournament..."
+                    autocomplete="off"
+                >
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <div
+                    class="search-results"
+                    id="searchResults"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         MAIN CONTENT
+    ========================================================== -->
+
+    <main>
+
+
+        <!-- =====================================================
+             HERO / COUNTDOWN
+        ====================================================== -->
+
+        <section class="hero">
+
+            <h1>
+                MEGA Messy Tournament
+            </h1>
+
+            <p class="hero-subtitle">
+            </p>
+
+
+            <div class="countdown-title">
+                Tournament Starts In
+            </div>
+
+
+            <div class="countdown" id="countdown">
+
+                <div class="time-box">
+
+                    <span
+                        class="time-number"
+                        id="days"
+                    >
+                        00
+                    </span>
+
+                    <span class="time-label">
+                        Days
+                    </span>
+
+                </div>
+
+
+                <div class="time-box">
+
+                    <span
+                        class="time-number"
+                        id="hours"
+                    >
+                        00
+                    </span>
+
+                    <span class="time-label">
+                        Hours
+                    </span>
+
+                </div>
+
+
+                <div class="time-box">
+
+                    <span
+                        class="time-number"
+                        id="minutes"
+                    >
+                        00
+                    </span>
+
+                    <span class="time-label">
+                        Minutes
+                    </span>
+
+                </div>
+
+
+                <div class="time-box">
+
+                    <span
+                        class="time-number"
+                        id="seconds"
+                    >
+                        00
+                    </span>
+
+                    <span class="time-label">
+                        Seconds
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="countdown-date">
+                1 December 2026
+            </div>
+
+        </section>
+
+
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 MEGA Messy Tournament. All rights reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+        /* =========================================================
+           COUNTDOWN
+        ========================================================= */
+
+        const tournamentDate =
+            new Date("2026-12-01T00:00:00");
+
+
+        function updateCountdown() {
+
+            const now = new Date();
+
+            const difference =
+                tournamentDate.getTime() - now.getTime();
+
+
+            if (difference <= 0) {
+
+                document.getElementById("countdown").innerHTML = `
+                    <div style="
+                        grid-column: 1 / -1;
+                        background: white;
+                        border: 1px solid #e5e7eb;
+                        border-radius: 18px;
+                        padding: 35px;
+                        font-size: 1.5rem;
+                        font-weight: 900;
+                    ">
+                        🎉 The MEGA Messy Tournament has started!
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            const days =
+                Math.floor(
+                    difference /
+                    (1000 * 60 * 60 * 24)
+                );
+
+
+            const hours =
+                Math.floor(
+                    (difference /
+                    (1000 * 60 * 60)) % 24
+                );
+
+
+            const minutes =
+                Math.floor(
+                    (difference /
+                    (1000 * 60)) % 60
+                );
+
+
+            const seconds =
+                Math.floor(
+                    (difference / 1000) % 60
+                );
+
+
+            document.getElementById("days")
+                .textContent =
+                String(days).padStart(2, "0");
+
+
+            document.getElementById("hours")
+                .textContent =
+                String(hours).padStart(2, "0");
+
+
+            document.getElementById("minutes")
+                .textContent =
+                String(minutes).padStart(2, "0");
+
+
+            document.getElementById("seconds")
+                .textContent =
+                String(seconds).padStart(2, "0");
+        }
+
+
+        updateCountdown();
+
+        setInterval(updateCountdown, 1000);
+
+
+
+        /* =========================================================
+           MOBILE MENU
+        ========================================================= */
+
+        const mobileMenuButton =
+            document.getElementById("mobileMenuButton");
+
+        const mainNav =
+            document.getElementById("mainNav");
+
+
+        mobileMenuButton.addEventListener(
+            "click",
+            function () {
+
+                mainNav.classList.toggle("active");
+
+            }
+        );
+
+
+
+        /* =========================================================
+           MOBILE DROPDOWN BUTTONS
+        ========================================================= */
+
+        document.querySelectorAll(
+            ".nav-button.dropdown"
+        ).forEach(button => {
+
+            button.addEventListener(
+                "click",
+                function (event) {
+
+                    if (window.innerWidth <= 900) {
+
+                        event.preventDefault();
+
+                        const parent =
+                            this.closest(".nav-item");
+
+                        parent.classList.toggle("open");
+
+                    }
+
+                }
+            );
+
+        });
+
+
+
+        /* =========================================================
+           MOBILE GROUP SUBMENUS
+        ========================================================= */
+
+        document.querySelectorAll(
+            ".has-submenu-wrapper > .dropdown-link"
+        ).forEach(button => {
+
+            button.addEventListener(
+                "click",
+                function (event) {
+
+                    if (window.innerWidth <= 900) {
+
+                        event.preventDefault();
+
+                        const parent =
+                            this.closest(
+                                ".has-submenu-wrapper"
+                            );
+
+                        parent.classList.toggle("open");
+
+                    }
+
+                }
+            );
+
+        });
+
+
+
+        /* =========================================================
+           SEARCH
+        ========================================================= */
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const searchResults =
+            document.getElementById("searchResults");
+
+
+        const searchableItems = [
+
+            {
+                name: "Qualifying Stage",
+                url: "#qualifying"
+            },
+
+            {
+                name: "Qualifying Stage - Group 1",
+                url: "#group1"
+            },
+
+            {
+                name: "Qualifying Stage - Group 2",
+                url: "#group2"
+            },
+
+            {
+                name: "Qualifying Stage - Group 3",
+                url: "#group3"
+            },
+
+            {
+                name: "Qualifying Stage - Group 4",
+                url: "#group4"
+            },
+
+            {
+                name: "Qualifying Stage - Group 5",
+                url: "#group5"
+            },
+
+            {
+                name: "Qualifying Stage - Group 6",
+                url: "#group6"
+            },
+
+            {
+                name: "Qualifying Stage - Group 7",
+                url: "#group7"
+            },
+
+            {
+                name: "Qualifying Stage - Group 8",
+                url: "#group8"
+            },
+
+            {
+                name: "Wildcard Stage",
+                url: "#wildcard"
+            },
+
+            {
+                name: "Eliminated Girls",
+                url: "#eliminated"
+            },
+
+            {
+                name: "Qualifying Girls",
+                url: "#qualifying"
+            },
+
+            {
+                name: "Tournament Stage",
+                url: "#tournament"
+            },
+
+            {
+                name: "Tournament Group 1",
+                url: "#tournament-group1"
+            },
+
+            {
+                name: "Tournament Group 2",
+                url: "#tournament-group2"
+            },
+
+            {
+                name: "Tournament Group 3",
+                url: "#tournament-group3"
+            },
+
+            {
+                name: "Tournament Group 4",
+                url: "#tournament-group4"
+            },
+
+            {
+                name: "Tournament Group 5",
+                url: "#tournament-group5"
+            },
+
+            {
+                name: "Tournament Group 6",
+                url: "#tournament-group6"
+            },
+
+            {
+                name: "Tournament Group 7",
+                url: "#tournament-group7"
+            },
+
+            {
+                name: "Tournament Group 8",
+                url: "#tournament-group8"
+            },
+
+            {
+                name: "Round of 32",
+                url: "#round32"
+            },
+
+            {
+                name: "Round of 16",
+                url: "#round16"
+            },
+
+            {
+                name: "Quarter Finals",
+                url: "#quarterfinals"
+            },
+
+            {
+                name: "Semi Finals",
+                url: "#semifinals"
+            },
+
+            {
+                name: "Grand Finals",
+                url: "#grandfinals"
+            },
+
+            {
+                name: "3rd Place Match",
+                url: "#thirdplace"
+            },
+
+            {
+                name: "Latest News",
+                url: "#news"
+            },
+			
+		{
+    name: "Girls Profiles",
+    url: "#girls-profiles"
+},
+
+{
+    name: "All Girls",
+    url: "#all-girls"
+},
+
+{
+    name: "Qualifying Girls Profiles",
+    url: "#qualifying-girls"
+},
+
+{
+    name: "Tournament Girls Profiles",
+    url: "#tournament-girls"
+},
+
+{
+    name: "Eliminated Girls Profiles",
+    url: "#eliminated-girls"
+},
+			
+			
+
+        ];
+
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                const query =
+                    this.value
+                        .trim()
+                        .toLowerCase();
+
+
+                searchResults.innerHTML = "";
+
+
+                if (!query) {
+
+                    searchResults.classList.remove(
+                        "active"
+                    );
+
+                    return;
+
+                }
+
+
+                const matches =
+                    searchableItems.filter(item =>
+                        item.name
+                            .toLowerCase()
+                            .includes(query)
+                    );
+
+
+                if (matches.length === 0) {
+
+                    searchResults.innerHTML = `
+                        <div class="no-results">
+                            No results found.
+                        </div>
+                    `;
+
+                } else {
+
+                    matches.forEach(item => {
+
+                        const result =
+                            document.createElement("a");
+
+                        result.className =
+                            "search-result";
+
+                        result.href =
+                            item.url;
+
+                        result.textContent =
+                            item.name;
+
+
+                        result.addEventListener(
+                            "click",
+                            function () {
+
+                                searchResults
+                                    .classList
+                                    .remove("active");
+
+                                searchInput.value = "";
+
+                            }
+                        );
+
+
+                        searchResults.appendChild(
+                            result
+                        );
+
+                    });
+
+                }
+
+
+                searchResults.classList.add(
+                    "active"
+                );
+
+            }
+        );
+
+
+
+        /* =========================================================
+           CLOSE SEARCH WHEN CLICKING OUTSIDE
+        ========================================================= */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    !event.target.closest(
+                        ".search-wrapper"
+                    )
+                ) {
+
+                    searchResults.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================================================
+           CLOSE MOBILE MENU AFTER NAVIGATION
+        ========================================================= */
+
+        document.querySelectorAll(
+            ".main-nav a"
+        ).forEach(link => {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    if (window.innerWidth <= 900) {
+
+                        mainNav.classList.remove(
+                            "active"
+                        );
+
+                    }
+
+                }
+            );
+
+        });
+
+    </script>
+
+</body>
+</html>

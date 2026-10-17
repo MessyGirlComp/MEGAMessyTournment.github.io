@@ -77,8 +77,11 @@ function renderProfile(girl) {
         age: girl.age,
         bio: girl.bio,
         appearance: girl.appearance,
+        reaction: girl.reaction,
+        reactionLabel: `Reaction to Being ${getMessVerb(girl)}`,
+        videoHeading: `Watch ${girl.name} Getting ${getMessVerb(girl)}`,
         status: girl.status,
-        group: girl.group ? `Group ${girl.group}` : "Not assigned",
+        group: girl.group ? `Group ${girl.group}` : "",
         qualifyingGroup: girl.group
             ? `Qualifying Group ${girl.group}`
             : "Group not assigned",
@@ -91,6 +94,33 @@ function renderProfile(girl) {
         element.textContent = displayValue(
             values[element.dataset.field]
         );
+
+    });
+
+    /* ---------- no information: hide the whole field ---------- */
+
+    page.querySelectorAll(".profile-field").forEach(field => {
+
+        const valueElements = field.querySelectorAll(
+            "[data-field]:not(.profile-label)"
+        );
+
+        const hasInfo = [...valueElements].some(element =>
+            String(values[element.dataset.field] ?? "").trim()
+        );
+
+        if (valueElements.length && !hasInfo) {
+            field.remove();
+        }
+
+    });
+
+    // Mess Type / Media Source row: remove it if both were hidden
+    page.querySelectorAll(".profile-field-row-wrap").forEach(wrap => {
+
+        if (!wrap.querySelector(".profile-field")) {
+            wrap.remove();
+        }
 
     });
 

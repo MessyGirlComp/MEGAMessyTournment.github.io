@@ -93,6 +93,27 @@ const MESS_TYPES = [
     "Other"
 ];
 
+/*
+    Wording used in headings such as
+    "Watch Amy Getting Gunged" / "Reaction to Being Gunged".
+    Keep one entry per MESS_TYPES value.
+*/
+
+const MESS_VERBS = {
+    "gunge": "Gunged",
+    "slime": "Slimed",
+    "water": "Soaked",
+    "food": "Covered in Food",
+    "mud": "Muddied",
+    "other": "Messed"
+};
+
+function getMessVerb(girl) {
+
+    return MESS_VERBS[getMessKey(girl)];
+
+}
+
 const MEDIA_SOURCE_TYPES = [
     "Game Show",
     "Online Trend",
@@ -121,7 +142,9 @@ const groupVoteLinks = {
    name             display name
    age              text
    bio              text
-   appearance       text
+   appearance       text (shown together with bio under "Biography")
+   reaction         her reaction / feelings about being gunged,
+                    slimed, etc. (label follows messType)
    status           "Currently Competing", "Qualified",
                     "Eliminated" ...
    group            qualifying group number
@@ -141,6 +164,7 @@ const girls = {
         age: "12",
         bio: "Gunge was horrible and sticky, with huge lumps in it, especially at the bottom. Despite how sticky it looked, Amy would still love to go in it.",
         appearance: "Amy wears a bright pink, short-sleeved shirt with a smocked or gathered neckline and slightly puffed sleeves with gathered hems. She wears a textured maroon or deep red headband with a woven or braided appearance. Her medium-length blonde hair is pulled back from her face and gathered into a low ponytail at the nape of her neck, with a few loose wisps around her temples and ears.",
+        reaction: "",
         status: "Currently Competing",
         group: 7,
         from: "Wait For It",
