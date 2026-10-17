@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Girl Profile | MEGA Messy Tournament</title>
+
+<link rel="stylesheet" href="../../styles/site.css">
+
+</head>
+
+<body>
+
+<div id="siteHeader"></div>
+
+<!-- =========================================================
+     The profile template below is copied into #profileContent
+     by profile.js and filled in from girls-data.js.
+
+     data-field="x"        -> text filled from the girl's data
+     data-slide-image="n"  -> carousel image (0 = A, 1 = B, 2 = C)
+     data-video-frame      -> YouTube iframe (src set by profile.js)
+========================================================= -->
+
+<main>
+
+    <div class="profile-container">
+
+        <div id="profileContent"></div>
+
+    </div>
+
+</main>
+
+<div id="siteFooter"></div>
+
+
+<template id="profileTemplate">
+
+    <div class="profile-heading">
+
+        <h1 data-field="name"></h1>
+
+        <p>
+            Girl <span data-field="id"></span>
+            &bull;
+            <a data-group-link data-field="qualifyingGroup"></a>
+        </p>
+
+    </div>
+
+
+    <section class="profile-section">
+
+        <div class="profile-grid">
+
+            <!-- CAROUSEL -->
+
+            <div class="carousel">
+
+                <div class="carousel-image-wrapper" id="profileCarousel">
+
+                    <img class="carousel-image active" data-slide-image="0" alt="" loading="eager">
+                    <img class="carousel-image" data-slide-image="1" alt="" loading="lazy">
+                    <img class="carousel-image" data-slide-image="2" alt="" loading="lazy">
+
+                    <button type="button" class="carousel-arrow prev" aria-label="Previous image">&#10094;</button>
+                    <button type="button" class="carousel-arrow next" aria-label="Next image">&#10095;</button>
+
+                    <div class="carousel-dots">
+                        <button type="button" class="carousel-dot active" aria-label="Show first image"></button>
+                        <button type="button" class="carousel-dot" aria-label="Show second image"></button>
+                        <button type="button" class="carousel-dot" aria-label="Show third image"></button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div class="profile-info">
+
+                <div class="girl-name" data-field="name"></div>
+
+                <div class="profile-field">
+                    <span class="profile-label">Age</span>
+                    <div class="profile-value" data-field="age"></div>
+                </div>
+
+                <div class="profile-field">
+                    <span class="profile-label">Biography</span>
+                    <div class="profile-value" data-field="bio"></div>
+                </div>
+
+                <div class="profile-field">
+                    <span class="profile-label">Appearance</span>
+                    <div class="profile-value" data-field="appearance"></div>
+                </div>
+
+                <div class="profile-field-row-wrap">
+                    <div class="profile-field-row">
+
+                        <div class="profile-field">
+                            <span class="profile-label">Mess Type</span>
+                            <div><span class="tag" data-field="messType"></span></div>
+                        </div>
+
+                        <div class="profile-field">
+                            <span class="profile-label">Media Source</span>
+                            <div class="profile-value" data-field="mediaSource"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="profile-field">
+                    <span class="profile-label">Qualifying Group</span>
+                    <div class="profile-value" data-field="group"></div>
+                </div>
+
+                <div class="profile-field">
+                    <span class="profile-label">Status</span>
+                    <div><span class="status" data-field="status"></span></div>
+                </div>
+
+                <button type="button" class="button wide" id="voteButton">
+                    &#128499;&#65039; VOTE FOR HER
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- VIDEO (YouTube iframe) -->
+
+    <section class="video-section" data-video-section>
+
+        <div class="section-heading">
+            <h2>Challenge Video</h2>
+            <p>Watch <span data-field="name"></span>'s challenge.</p>
+        </div>
+
+        <div class="video-wrapper">
+
+            <iframe
+                data-video-frame
+                title="Challenge video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+
+        </div>
+
+    </section>
+
+</template>
+
+
+<template id="errorTemplate">
+
+    <div class="profile-error">
+
+        <h2>Girl Not Found</h2>
+
+        <p data-field="errorMessage"></p>
+
+        <a data-home-link class="button">View All Girls</a>
+
+    </div>
+
+</template>
+
+
+<script src="../../scripts/girls-data.js"></script>
+<script src="../../scripts/site.js"></script>
+<script src="../../scripts/profile.js"></script>
+
+</body>
+
+</html>

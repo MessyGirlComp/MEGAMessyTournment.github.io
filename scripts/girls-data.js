@@ -1,23 +1,96 @@
 // JavaScript Document
 /* =========================================================
    MEGA MESSY TOURNAMENT
-   GIRL DATABASE
+   GIRL DATABASE + SHARED HELPERS
+
+   Used by every page. Load it FIRST:
+
+   <script src="(path to)/scripts/girls-data.js"></script>
+   <script src="(path to)/scripts/site.js"></script>
+
+   Because this file works out where the site root is from
+   its OWN location (root/scripts/girls-data.js), every link
+   and image path it builds works from any page.
+
+   Folder layout this expects:
+
+   index.html
+   assets/girls/A/001.png   first image
+   assets/girls/B/001.png   second image
+   assets/girls/C/001.png   third image
+   assets/girls/T/001.png   thumbnail (cards on list pages)
+   scripts/girls-data.js
+   scripts/site.js
+   scripts/profile.js
+   scripts/group.js
+   styles/site.css
+   girls/all.html
+   girls/profiles/profile.html
+   qualifying/groups/group.html
 ========================================================= */
 
 
 /* =========================================================
-   ASSET LOCATION
-   ---------------------------------------------------------
-   Change this ONE line if profile.html moves.
-   The path is relative to profile.html.
-
-   assets/girls/A/001.png   first image
-   assets/girls/B/001.png   second image
-   assets/girls/C/001.png   third image
-   assets/girls/T/001.png   thumbnail (not used on profile)
+   SITE ROOT
 ========================================================= */
 
-const GIRL_ASSET_BASE = "../../assets/girls/";
+const GIRLS_DATA_SCRIPT_URL = document.currentScript.src;
+
+/*
+    siteURL("girls/all.html") -> full URL of that page,
+    no matter which page is calling it.
+*/
+
+function siteURL(path) {
+
+    return new URL(
+        path,
+        new URL("../", GIRLS_DATA_SCRIPT_URL)
+    ).href;
+
+}
+
+
+/* =========================================================
+   IMAGE FILE NAMES
+   ---------------------------------------------------------
+   If your files are named differently (for example
+   "001 A.png"), change ONLY this function.
+========================================================= */
+
+const GIRL_ASSET_BASE = siteURL("assets/girls/");
+
+function girlImageFileName(girlID) {
+
+    return `${girlID}.png`;
+
+}
+
+
+/* =========================================================
+   CATEGORY LISTS
+   ---------------------------------------------------------
+   The filters on the All Girls page are built from these,
+   so a girl's messType / mediaSourceType should be one of
+   these values (anything else is filed under "Other").
+========================================================= */
+
+const MESS_TYPES = [
+    "Gunge",
+    "Slime",
+    "Water",
+    "Food",
+    "Mud",
+    "Other"
+];
+
+const MEDIA_SOURCE_TYPES = [
+    "Game Show",
+    "Online Trend",
+    "YouTube",
+    "TV",
+    "Other"
+];
 
 
 /* =========================================================
@@ -40,24 +113,18 @@ const groupVoteLinks = {
    age              text
    bio              text
    appearance       text
-   status           e.g. "Currently Competing"
+   status           "Currently Competing", "Qualified",
+                    "Eliminated" ...
    group            qualifying group number
    from             title of the source (show / video / etc.)
-   mediaSourceType  what kind of source it came from,
-                    e.g. "TV Show", "YouTube Video", "Movie"
-   messType         e.g. "Gunge", "Slime", "Custard Pie"
+   mediaSourceType  one of MEDIA_SOURCE_TYPES
+   messType         one of MESS_TYPES
    youtube          YouTube EMBED link, used directly as the
                     iframe src:
                       https://www.youtube.com/embed/XXXXXXXXXXX
-                    (YouTube > Share > Embed > copy the src URL)
 ========================================================= */
 
 const girls = {
-
-
-    /* =====================================================
-       GROUP 7
-    ===================================================== */
 
     "001": {
         id: "001",
@@ -68,16 +135,16 @@ const girls = {
         status: "Currently Competing",
         group: 7,
         from: "Wait For It",
-        mediaSourceType: "TV Show",
+        mediaSourceType: "Game Show",
         messType: "Gunge",
-        youtube: "https://www.youtube.com/embed/JSC4bHpfB0U?si=FDyyKfe3YMcbByve"   // paste the embed link here
+        youtube: "https://www.youtube.com/embed/JSC4bHpfB0U?si=FDyyKfe3YMcbByve"
     },
 
 };
 
 
 /* =========================================================
-   GET GIRL BY ID
+   LOOKUPS
 ========================================================= */
 
 function getGirl(id) {
@@ -88,23 +155,21 @@ function getGirl(id) {
 
 }
 
+function getAllGirls() {
 
-/* =========================================================
-   GET GIRLS BY GROUP
-========================================================= */
-
-function getGirlsByGroup(groupNumber) {
-
-    return Object.values(girls).filter(
-        girl => girl.group === Number(groupNumber)
+    return Object.values(girls).sort(
+        (a, b) => a.id.localeCompare(b.id)
     );
 
 }
 
+function getGirlsByGroup(groupNumber) {
 
-/* =========================================================
-   GET GROUP VOTE LINK
-========================================================= */
+    return getAllGirls().filter(
+        girl => girl.group === Number(groupNumber)
+    );
+
+}
 
 function getGroupVoteLink(groupNumber) {
 
@@ -114,37 +179,115 @@ function getGroupVoteLink(groupNumber) {
 
 
 /* =========================================================
-   ASSET PATHS
+   FILTER KEYS
+   ---------------------------------------------------------
+   Turn a girl's data into the short keys the filters use.
+========================================================= */
+
+function toKey(value) {
+
+    return String(value ?? "")
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+
+}
+
+function getStatusKey(girl) {
+
+    const status = String(girl.status || "").toLowerCase();
+
+    if (status.includes("eliminat")) {
+        return "eliminated";
+    }
+
+    if (status.includes("qualif")) {
+        return "qualified";
+    }
+
+    return "remaining";
+
+}
+
+function getMessKey(girl) {
+
+    const key = toKey(girl.messType);
+
+    return MESS_TYPES.some(type => toKey(type) === key)
+        ? key
+        : "other";
+
+}
+
+function getSourceKey(girl) {
+
+    const key = toKey(girl.mediaSourceType);
+
+    return MEDIA_SOURCE_TYPES.some(type => toKey(type) === key)
+        ? key
+        : "other";
+
+}
+
+
+/* =========================================================
+   PAGE URLS
+========================================================= */
+
+function getAllGirlsURL() {
+
+    return siteURL("girls/all.html");
+
+}
+
+function getGirlProfileURL(id) {
+
+    const girlID = String(id).padStart(3, "0");
+
+    return siteURL(
+        `girls/profiles/profile.html?girl=${encodeURIComponent(girlID)}`
+    );
+
+}
+
+function getGroupURL(groupNumber) {
+
+    return siteURL(
+        `qualifying/groups/group.html?group=${Number(groupNumber)}`
+    );
+
+}
+
+
+/* =========================================================
+   IMAGE PATHS
 ========================================================= */
 
 function getGirlAssetPath(id, type) {
 
-    const girl = getGirl(id);
-
-    if (!girl) {
-        return "";
-    }
-
     const girlID = String(id).padStart(3, "0");
+
+    const file = girlImageFileName(girlID);
 
     switch (String(type).toLowerCase()) {
 
         case "a":
         case "first":
-            return `${GIRL_ASSET_BASE}A/${girlID}.png`;
+            return `${GIRL_ASSET_BASE}A/${file}`;
 
         case "b":
         case "second":
-            return `${GIRL_ASSET_BASE}B/${girlID}.png`;
+            return `${GIRL_ASSET_BASE}B/${file}`;
 
         case "c":
         case "third":
-            return `${GIRL_ASSET_BASE}C/${girlID}.png`;
+            return `${GIRL_ASSET_BASE}C/${file}`;
 
         case "t":
         case "thumbnail":
         case "thumb":
-            return `${GIRL_ASSET_BASE}T/${girlID}.png`;
+            return `${GIRL_ASSET_BASE}T/${file}`;
 
         default:
             console.warn(
@@ -152,14 +295,10 @@ function getGirlAssetPath(id, type) {
             );
             return "";
     }
+
 }
 
 function getGirlImageA(id)    { return getGirlAssetPath(id, "a"); }
 function getGirlImageB(id)    { return getGirlAssetPath(id, "b"); }
 function getGirlImageC(id)    { return getGirlAssetPath(id, "c"); }
 function getGirlThumbnail(id) { return getGirlAssetPath(id, "t"); }
-
-
-/* =========================================================
-   DATABASE COMPLETE
-========================================================= */

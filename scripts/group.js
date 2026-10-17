@@ -1,524 +1,188 @@
 // JavaScript Document
 /* =========================================================
    MEGA MESSY TOURNAMENT
-   GROUP.JS
+   QUALIFYING GROUP PAGE
 
-   Used by:
+   qualifying/groups/group.html?group=7
 
-   qualifying/groups/group.html?group=1
-   qualifying/groups/group.html?group=2
-   ...
-   qualifying/groups/group.html?group=24
+   Load order: girls-data.js, site.js, group.js
 ========================================================= */
 
+/* How many girls in each group qualify directly / go to wildcard */
 
-/* =========================================================
-   READ GROUP NUMBER FROM URL
-========================================================= */
+const QUALIFY_COUNT = 2;
+const WILDCARD_COUNT = 1;
 
-const groupParams = new URLSearchParams(
-    window.location.search
+const MAX_GROUPS = 42;
+
+
+const groupNumber = Number(
+    new URLSearchParams(window.location.search).get("group")
 );
 
-const groupNumber =
-    Number(groupParams.get("group"));
-
 
 /* =========================================================
-   BUILD GROUP
+   BUILD PAGE
 ========================================================= */
 
 function buildGroup() {
 
-    const girlsGrid =
-        document.getElementById("girlsGrid");
+    const groupGirls = getGirlsByGroup(groupNumber);
 
-    const groupTitle =
-        document.getElementById("groupTitle");
+    const validGroup =
+        Number.isInteger(groupNumber) &&
+        groupNumber >= 1 &&
+        groupNumber <= MAX_GROUPS;
 
-    const groupSubtitle =
-        document.getElementById("groupSubtitle");
-
-    const errorMessage =
-        document.getElementById("errorMessage");
-
-    const voteArea =
-        document.getElementById("voteArea");
-
-
-    /* =====================================================
-       CHECK REQUIRED ELEMENTS
-    ===================================================== */
-
-    if (!girlsGrid) {
-
-        console.error(
-            "ERROR: #girlsGrid was not found."
-        );
-
-        return;
-    }
-
-
-    /* =====================================================
-       CHECK GROUP NUMBER
-    ===================================================== */
-
-    if (
-        !Number.isInteger(groupNumber) ||
-        groupNumber < 1 ||
-        groupNumber > 42
-    ) {
+    if (!validGroup || groupGirls.length === 0) {
 
         showGroupError(
-            girlsGrid,
-            groupTitle,
-            groupSubtitle,
-            errorMessage,
-            voteArea,
-            "Invalid Group"
+            validGroup ? "Group Not Found" : "Invalid Group"
         );
 
         return;
     }
-
-
-    /* =====================================================
-       GET GIRLS
-    ===================================================== */
-
-    const groupGirls =
-        getGirlsByGroup(groupNumber);
-
-
-    /* =====================================================
-       CHECK GROUP DATA
-    ===================================================== */
-
-    if (
-        !groupGirls ||
-        groupGirls.length === 0
-    ) {
-
-        showGroupError(
-            girlsGrid,
-            groupTitle,
-            groupSubtitle,
-            errorMessage,
-            voteArea,
-            "Group Not Found"
-        );
-
-        return;
-    }
-
-
-    /* =====================================================
-       PAGE TITLE
-    ===================================================== */
 
     document.title =
         `Qualifying Group ${groupNumber} | MEGA Messy Tournament`;
 
+    document.getElementById("groupTitle").textContent =
+        `Qualifying Group ${groupNumber}`;
 
-    /* =====================================================
-       PAGE HEADER
-    ===================================================== */
+    document.getElementById("groupSubtitle").textContent =
+        "Meet the contestants and vote for your favourite.";
 
-    if (groupTitle) {
+    document.getElementById("contestantCount").textContent =
+        groupGirls.length;
 
-        groupTitle.textContent =
-            `Qualifying Group ${groupNumber}`;
+    document.getElementById("qualifyCount").textContent =
+        QUALIFY_COUNT;
 
-    }
+    document.getElementById("wildcardCount").textContent =
+        WILDCARD_COUNT;
 
+    const grid = document.getElementById("girlsGrid");
 
-    if (groupSubtitle) {
+    groupGirls.forEach(girl => {
+        grid.appendChild(createGirlCard(girl));
+    });
 
-        groupSubtitle.textContent =
-            "Select your favourite girl to vote for her to move on.";
-
-    }
-
-
-    /* =====================================================
-       HIDE ERROR
-    ===================================================== */
-
-    if (errorMessage) {
-
-        errorMessage.style.display =
-            "none";
-
-    }
-
-
-    /* =====================================================
-       SHOW GRID
-    ===================================================== */
-
-    girlsGrid.style.display =
-        "grid";
-
-
-    girlsGrid.innerHTML =
-        "";
-
-
-    /* =====================================================
-       BUILD GIRL CARDS
-    ===================================================== */
-
-    groupGirls.forEach(
-        girl => {
-
-            const card =
-                document.createElement("div");
-
-
-            card.className =
-                "girl-card";
-
-
-            const imagePath =
-                `../../girls/profiles/Before/${girl.id}.png`;
-
-
-            /* ---------------------------------------------
-               PROFILE PATH
-            --------------------------------------------- */
-
-            const profilePath =
-                `../../girls/profiles/profile.html?girl=${girl.id}`;
-
-
-            /* ---------------------------------------------
-               CARD CONTENT
-            --------------------------------------------- */
-
-            card.innerHTML = `
-
-                <div class="girl-image-wrapper">
-
-                    <img
-                        src="${imagePath}"
-                        class="girl-image"
-                        alt="${escapeHTML(girl.name)}"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="girl-info">
-
-                    <div class="girl-name">
-                        ${escapeHTML(girl.name)}
-                    </div>
-
-
-                    <a
-                        href="${profilePath}"
-                        class="profile-button"
-                    >
-                        View Profile
-                    </a>
-
-                </div>
-
-            `;
-
-
-            /* ---------------------------------------------
-               IMAGE ERROR HANDLING
-            --------------------------------------------- */
-
-            const image =
-                card.querySelector(".girl-image");
-
-
-            if (image) {
-
-                image.addEventListener(
-                    "error",
-                    () => {
-
-                        console.warn(
-                            "Could not load girl image:",
-                            imagePath
-                        );
-
-
-                        image.alt =
-                            `Image unavailable for ${girl.name}`;
-
-                    }
-                );
-
-            }
-
-
-            /* ---------------------------------------------
-               ADD CARD
-            --------------------------------------------- */
-
-            girlsGrid.appendChild(
-                card
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       BUILD VOTE BUTTON
-    ===================================================== */
-
-    buildVoteButton(
-        voteArea,
-        groupNumber
-    );
+    buildVoteButton(groupNumber);
 
 }
 
 
 /* =========================================================
-   BUILD VOTE BUTTON
+   GIRL CARD
 ========================================================= */
 
-function buildVoteButton(
-    voteArea,
-    group
-) {
+function createGirlCard(girl) {
 
-    if (!voteArea) {
-        return;
-    }
+    const card = document.createElement("div");
 
+    card.className = "girl-card";
 
-    /* =====================================================
-       CLEAR EXISTING BUTTON
-    ===================================================== */
+    const statusKey = getStatusKey(girl);
 
-    voteArea.innerHTML =
-        "";
+    card.innerHTML = `
 
+        <div class="girl-image-wrapper">
+            <img class="girl-image" alt="${escapeHTML(girl.name)}" loading="lazy">
+        </div>
 
-    /* =====================================================
-       CREATE BUTTON
-    ===================================================== */
+        <div class="girl-info">
+            <div class="girl-card-number">Girl ${escapeHTML(girl.id)}</div>
+            <div class="girl-card-name">${escapeHTML(girl.name)}</div>
+            <div class="status-badge ${statusKey}">
+                ${escapeHTML(girl.status || "Competing")}
+            </div>
+            <br>
+            <a class="profile-button" href="${escapeHTML(getGirlProfileURL(girl.id))}">
+                View Profile
+            </a>
+        </div>
 
-    const voteButton =
-        document.createElement("a");
+    `;
 
+    // Thumbnail first, first profile image if there is no thumbnail
+    const image = card.querySelector(".girl-image");
 
-    voteButton.className =
-        "vote-button";
+    image.addEventListener("error", function fallback() {
 
+        image.removeEventListener("error", fallback);
 
-    voteButton.textContent =
-        "?? VOTE FOR A GIRL TO MOVE ON";
+        image.src = getGirlImageA(girl.id);
 
+    });
 
-    /* =====================================================
-       GET VOTE LINK
-    ===================================================== */
+    image.src = getGirlThumbnail(girl.id);
 
-    const voteLink =
-        getGroupVoteLink(group);
+    return card;
 
-
-    /* =====================================================
-       CHECK VOTE LINK
-    ===================================================== */
-
-    const validVoteLink =
-        voteLink &&
-        voteLink !== "#" &&
-        !voteLink.startsWith("YOUR_");
+}
 
 
-    if (validVoteLink) {
+/* =========================================================
+   VOTE BUTTON
+========================================================= */
 
-        voteButton.href =
-            voteLink;
+function buildVoteButton(group) {
 
-        voteButton.target =
-            "_blank";
+    const voteArea = document.getElementById("voteArea");
 
-        voteButton.rel =
-            "noopener noreferrer";
+    const button = document.createElement("a");
+
+    button.className = "button";
+    button.innerHTML = "&#128499;&#65039; VOTE FOR A GIRL TO MOVE ON";
+
+    const voteLink = getGroupVoteLink(group);
+
+    // Only a real URL counts (ignores YOUR_GOOGLE_FORM_... placeholders)
+    if (/^https?:\/\//i.test(voteLink)) {
+
+        button.href = voteLink;
+        button.target = "_blank";
+        button.rel = "noopener noreferrer";
 
     } else {
 
-        /*
-            The form has not been added yet.
-        */
+        button.href = "#";
 
-        voteButton.href =
-            "#";
+        button.addEventListener("click", event => {
 
+            event.preventDefault();
 
-        voteButton.addEventListener(
-            "click",
-            event => {
+            alert(
+                `The voting form for Qualifying Group ${group} has not been added yet.`
+            );
 
-                event.preventDefault();
-
-
-                alert(
-                    `The voting form for Qualifying Group ${group} has not been added yet.`
-                );
-
-            }
-        );
+        });
 
     }
 
-
-    /* =====================================================
-       ADD BUTTON
-    ===================================================== */
-
-    voteArea.appendChild(
-        voteButton
-    );
+    voteArea.appendChild(button);
 
 }
 
 
 /* =========================================================
-   GROUP ERROR
+   ERROR
 ========================================================= */
 
-function showGroupError(
-    girlsGrid,
-    groupTitle,
-    groupSubtitle,
-    errorMessage,
-    voteArea,
-    title
-) {
+function showGroupError(title) {
 
+    document.getElementById("groupTitle").textContent = title;
 
-    /* =====================================================
-       HIDE GIRL GRID
-    ===================================================== */
+    document.getElementById("groupStatus").hidden = true;
 
-    if (girlsGrid) {
+    document.getElementById("errorTitle").textContent = title;
 
-        girlsGrid.innerHTML =
-            "";
+    document.getElementById("errorLink").href =
+        siteURL("qualifying/groups/index.html");
 
-        girlsGrid.style.display =
-            "none";
-
-    }
-
-
-    /* =====================================================
-       CHANGE TITLE
-    ===================================================== */
-
-    if (groupTitle) {
-
-        groupTitle.textContent =
-            title;
-
-    }
-
-
-    /* =====================================================
-       REMOVE SUBTITLE
-    ===================================================== */
-
-    if (groupSubtitle) {
-
-        groupSubtitle.textContent =
-            "";
-
-    }
-
-
-    /* =====================================================
-       HIDE VOTE AREA
-    ===================================================== */
-
-    if (voteArea) {
-
-        voteArea.innerHTML =
-            "";
-
-        voteArea.style.display =
-            "none";
-
-    }
-
-
-    /* =====================================================
-       SHOW ERROR MESSAGE
-    ===================================================== */
-
-    if (errorMessage) {
-
-        errorMessage.style.display =
-            "block";
-
-
-        errorMessage.innerHTML = `
-
-            <h2>
-                ${escapeHTML(title)}
-            </h2>
-
-            <p>
-                We couldn't find the requested
-                qualifying group.
-            </p>
-
-        `;
-
-    }
+    document.getElementById("errorMessage").hidden = false;
 
 }
 
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(value) {
-
-    return String(value ?? "")
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-
-/* =========================================================
-   INITIALISE
-========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    buildGroup
-);
+buildGroup();
