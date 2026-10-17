@@ -1,4 +1,5 @@
 // JavaScript Document
+// JavaScript Document
 /* =========================================================
    MEGA MESSY TOURNAMENT
    PROFILE PAGE  (girls/profiles/profile.html?girl=001)
@@ -197,7 +198,21 @@ function renderProfile(girl) {
    CAROUSEL
 ========================================================= */
 
-function setupCarousel() {
+function imageExists(source) {
+
+    return new Promise(resolve => {
+
+        const test = new Image();
+
+        test.onload = () => resolve(true);
+        test.onerror = () => resolve(false);
+        test.src = source;
+
+    });
+
+}
+
+async function setupCarousel() {
 
     const carousel = document.getElementById("profileCarousel");
 
@@ -205,8 +220,43 @@ function setupCarousel() {
         return;
     }
 
+    /* ---------- drop any image that does not exist ---------- */
+
+    carousel.style.visibility = "hidden";
+
+    const allImages = [...carousel.querySelectorAll(".carousel-image")];
+    const allDots = [...carousel.querySelectorAll(".carousel-dot")];
+
+    const found = await Promise.all(
+        allImages.map(image => imageExists(image.src))
+    );
+
+    allImages.forEach((image, i) => {
+
+        if (!found[i]) {
+            image.remove();
+            allDots[i].remove();
+        }
+
+    });
+
     const images = carousel.querySelectorAll(".carousel-image");
     const dots = carousel.querySelectorAll(".carousel-dot");
+
+    if (images.length === 0) {
+        // No images at all: hide the whole carousel
+        carousel.closest(".carousel").remove();
+        return;
+    }
+
+    if (images.length === 1) {
+        // Only one image: nothing to flip through
+        carousel.querySelector(".carousel-arrow.prev").remove();
+        carousel.querySelector(".carousel-arrow.next").remove();
+        carousel.querySelector(".carousel-dots").remove();
+    }
+
+    carousel.style.visibility = "";
     const previous = carousel.querySelector(".carousel-arrow.prev");
     const next = carousel.querySelector(".carousel-arrow.next");
 
@@ -239,12 +289,12 @@ function setupCarousel() {
         clearInterval(carouselTimer);
     }
 
-    previous.addEventListener("click", () => {
+    previous?.addEventListener("click", () => {
         showSlide(currentSlide - 1);
         restartCarousel();
     });
 
-    next.addEventListener("click", () => {
+    next?.addEventListener("click", () => {
         showSlide(currentSlide + 1);
         restartCarousel();
     });
