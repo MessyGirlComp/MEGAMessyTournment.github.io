@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Girl Profile | MEGA Messy Tournament</title>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f6f8;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+    background: #111;
+    color: white;
+    width: 100%;
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 18px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.site-logo {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+.site-logo span {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.7;
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.main-nav > a,
+.dropdown-button {
+    color: white;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    padding: 10px 13px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 7px;
+    transition: background 0.2s ease;
+}
+
+.main-nav > a:hover,
+.dropdown-button:hover {
+    background: #2a2a2a;
+}
+
+
+/* =========================================================
+   DROPDOWNS
+========================================================= */
+
+.nav-dropdown {
+    position: relative;
+}
+
+.dropdown-button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.dropdown-button span {
+    font-size: 16px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    min-width: 210px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+    padding: 7px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+    z-index: 1000;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Long girl list scrolls instead of running off the page */
+#girlsMenu {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.dropdown-menu a {
+    display: block;
+    color: #222;
+    text-decoration: none;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 7px;
+}
+
+.dropdown-menu a:hover {
+    background: #f0f1f3;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main {
+    flex: 1;
+    width: 100%;
+}
+
+.profile-container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 55px 30px 75px;
+}
+
+
+/* =========================================================
+   PROFILE HEADING
+========================================================= */
+
+.profile-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.profile-heading h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.profile-heading p {
+    color: #666;
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   PROFILE SECTION
+========================================================= */
+
+.profile-section {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    margin-bottom: 45px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+
+/* =========================================================
+   IMAGE CAROUSEL
+========================================================= */
+
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #eee;
+}
+
+.carousel-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 650px;
+    overflow: hidden;
+}
+
+.carousel-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.carousel-image.active {
+    opacity: 1;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.carousel-arrow:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-arrow.prev { left: 15px; }
+.carousel-arrow.next { right: 15px; }
+
+.carousel-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 5;
+}
+
+.carousel-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+}
+
+.carousel-dot.active {
+    background: white;
+    transform: scale(1.15);
+}
+
+
+/* =========================================================
+   PROFILE INFORMATION
+========================================================= */
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.girl-name {
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.profile-field {
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 15px;
+}
+
+.profile-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.profile-value {
+    font-size: 16px;
+    line-height: 1.55;
+    color: #333;
+}
+
+/* Two small fields side by side (mess type / source) */
+.profile-field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.profile-field-row .profile-field {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.profile-field-row-wrap {
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 15px;
+}
+
+
+/* =========================================================
+   TAGS / STATUS
+========================================================= */
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: #e8f7ed;
+    color: #18743a;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: #f0f1f3;
+    color: #333;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   VOTE BUTTON
+========================================================= */
+
+.vote-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 18px 25px;
+    margin-top: 5px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 800;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.vote-button:hover:not(:disabled) {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+.vote-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   VIDEO SECTION  (YouTube iframe)
+========================================================= */
+
+.video-section {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: #666;
+    font-size: 14px;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+    background: #111;
+    color: #aaa;
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 13px;
+    margin-top: auto;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
+
+.profile-error {
+    text-align: center;
+    background: white;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+.profile-error h2 {
+    margin-bottom: 10px;
+}
+
+.profile-error p {
+    color: #666;
+}
+
+.profile-error .vote-button {
+    max-width: 300px;
+    margin: 25px auto 0;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .site-logo {
+        text-align: center;
+    }
+
+    .main-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .carousel-image-wrapper {
+        height: 600px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .header-inner {
+        padding: 18px 15px;
+    }
+
+    .main-nav {
+        gap: 3px;
+    }
+
+    .main-nav > a,
+    .dropdown-button {
+        font-size: 12px;
+        padding: 8px 7px;
+    }
+
+    .profile-container {
+        padding: 35px 15px 50px;
+    }
+
+    .profile-heading h1 {
+        font-size: 30px;
+    }
+
+    .profile-section,
+    .video-section {
+        padding: 20px;
+    }
+
+    .girl-name {
+        font-size: 28px;
+    }
+
+    .carousel-image-wrapper {
+        height: 500px;
+    }
+
+    .profile-field-row {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+        <a href="../index.html" class="site-logo">
+            MEGA Messy Tournament
+            <span>Season 1</span>
+        </a>
+
+        <nav class="main-nav">
+
+            <a href="../index.html">Home</a>
+
+            <div class="nav-dropdown">
+
+                <button class="dropdown-button">
+                    Qualifying Stage
+                    <span>&#8964;</span>
+                </button>
+
+                <div class="dropdown-menu">
+                    <a href="../qualifying/index.html">Qualifying Home</a>
+                    <a href="../qualifying/groups/index.html">Group Stages</a>
+                    <a href="../qualifying/wildcard.html">Wildcard Stage</a>
+                    <a href="../qualifying/eliminated.html">Eliminated Girls</a>
+                    <a href="../qualifying/qualified.html">Qualifying Girls</a>
+                </div>
+
+            </div>
+
+            <div class="nav-dropdown">
+
+                <button class="dropdown-button">
+                    Tournament Stage
+                    <span>&#8964;</span>
+                </button>
+
+                <div class="dropdown-menu">
+                    <a href="../tournament/groups/index.html">Group Stages</a>
+                    <a href="../tournament/round32.html">Round of 32</a>
+                    <a href="../tournament/quarter-finals.html">Quarter Finals</a>
+                    <a href="../tournament/semi-finals.html">Semi Finals</a>
+                    <a href="../tournament/grand-finals.html">Grand Finals</a>
+                    <a href="../tournament/third-place.html">3rd Place Match</a>
+                </div>
+
+            </div>
+
+            <div class="nav-dropdown">
+
+                <button class="dropdown-button">
+                    Girls Profiles
+                    <span>&#8964;</span>
+                </button>
+
+                <!-- Filled in by profile.js (Girl 001 - Girl 040) -->
+                <div class="dropdown-menu" id="girlsMenu"></div>
+
+            </div>
+
+            <a href="../news/index.html">News</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+     The profile template below is copied into #profileContent
+     by profile.js and filled in from girls-data.js.
+========================================================= -->
+
+<main>
+
+    <div class="profile-container">
+
+        <div id="profileContent"></div>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+    <p>&copy; 2026 MEGA Messy Tournament. All rights reserved.</p>
+</footer>
+
+
+<!-- =========================================================
+     PROFILE TEMPLATE
+
+     data-field="x"        -> text filled from the girl's data
+     data-slide-image="n"  -> carousel image (0 = A, 1 = B, 2 = C)
+     data-video-frame      -> YouTube iframe (src set by profile.js)
+========================================================= -->
+
+<template id="profileTemplate">
+
+    <!-- HEADING -->
+
+    <div class="profile-heading">
+
+        <h1 data-field="name"></h1>
+
+        <p>
+            Girl <span data-field="id"></span>
+            &bull;
+            <span data-field="qualifyingGroup"></span>
+        </p>
+
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <section class="profile-section">
+
+        <div class="profile-grid">
+
+            <!-- CAROUSEL -->
+
+            <div class="carousel">
+
+                <div class="carousel-image-wrapper" id="profileCarousel">
+
+                    <img class="carousel-image active" data-slide-image="0" alt="" loading="eager">
+                    <img class="carousel-image" data-slide-image="1" alt="" loading="lazy">
+                    <img class="carousel-image" data-slide-image="2" alt="" loading="lazy">
+
+                    <button type="button" class="carousel-arrow prev" aria-label="Previous image">&#10094;</button>
+                    <button type="button" class="carousel-arrow next" aria-label="Next image">&#10095;</button>
+
+                    <div class="carousel-dots">
+                        <button type="button" class="carousel-dot active" aria-label="Show first image"></button>
+                        <button type="button" class="carousel-dot" aria-label="Show second image"></button>
+                        <button type="button" class="carousel-dot" aria-label="Show third image"></button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div class="profile-info">
+
+                <div class="girl-name" data-field="name"></div>
+
+                <div class="profile-field">
+                    <span class="profile-label">Age</span>
+                    <div class="profile-value" data-field="age"></div>
+                </div>
+
+                <div class="profile-field">
+                    <span class="profile-label">Biography</span>
+                    <div class="profile-value" data-field="bio"></div>
+                </div>
+
+                <div class="profile-field">
+                    <span class="profile-label">Appearance</span>
+                    <div class="profile-value" data-field="appearance"></div>
+                </div>
+
+                <div class="profile-field-row-wrap">
+                    <div class="profile-field-row">
+
+                        <div class="profile-field">
+                            <span class="profile-label">Mess Type</span>
+                            <div><span class="tag" data-field="messType"></span></div>
+                        </div>
+
+                        <div class="profile-field">
+                            <span class="profile-label">Media Source</span>
+                            <div class="profile-value" data-field="mediaSource"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="profile-field">
+                    <span class="profile-label">Qualifying Group</span>
+                    <div class="profile-value" data-field="group"></div>
+                </div>
+
+                <div class="profile-field">
+                    <span class="profile-label">Status</span>
+                    <div><span class="status" data-field="status"></span></div>
+                </div>
+
+                <button type="button" class="vote-button" id="voteButton">
+                    &#128499;&#65039; VOTE FOR HER
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- VIDEO (YouTube iframe) -->
+
+    <section class="video-section">
+
+        <div class="section-heading">
+            <h2>Challenge Video</h2>
+            <p>Watch <span data-field="name"></span>'s challenge.</p>
+        </div>
+
+        <div class="video-wrapper">
+
+            <iframe
+                data-video-frame
+                title="Challenge video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+
+        </div>
+
+    </section>
+
+</template>
+
+
+<!-- =========================================================
+     ERROR TEMPLATE
+========================================================= -->
+
+<template id="errorTemplate">
+
+    <div class="profile-error">
+
+        <h2>Girl Not Found</h2>
+
+        <p data-field="errorMessage"></p>
+
+        <a href="../index.html" class="vote-button">Return Home</a>
+
+    </div>
+
+</template>
+
+
+<script src="../../scripts/girls-data.js"></script>
+<script src="../../scripts/profile.js"></script>
+
+</body>
+
+</html>
