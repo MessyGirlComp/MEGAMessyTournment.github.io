@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Qualifying Group | MEGA Messy Tournament</title>
+
+<link rel="stylesheet" href="../../styles/site.css">
+
+</head>
+
+<body>
+
+<div id="siteHeader"></div>
+
+<main>
+
+    <div class="page-container">
+
+        <div class="page-heading">
+            <span class="stage-label">Qualifying Stage</span>
+            <h1 id="groupTitle">Qualifying Group</h1>
+            <p id="groupSubtitle"></p>
+        </div>
+
+        <div class="group-status" id="groupStatus">
+
+            <div class="status-box">
+                <span class="status-number" id="contestantCount">0</span>
+                <span class="status-label">Contestants</span>
+            </div>
+
+            <div class="status-box">
+                <span class="status-number" id="qualifyCount">0</span>
+                <span class="status-label">Qualify</span>
+            </div>
+
+            <div class="status-box">
+                <span class="status-number" id="wildcardCount">0</span>
+                <span class="status-label">Wildcard</span>
+            </div>
+
+        </div>
+
+        <div class="girls-grid" id="girlsGrid"></div>
+
+        <div class="profile-error" id="errorMessage" hidden>
+            <h2 id="errorTitle">Group Not Found</h2>
+            <p>We couldn't find the requested qualifying group.</p>
+            <a class="button" id="errorLink">View Group Stages</a>
+        </div>
+
+        <div class="vote-section" id="voteArea"></div>
+
+    </div>
+
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="../../scripts/girls-data.js"></script>
+<script src="../../scripts/site.js"></script>
+<script src="../../scripts/group.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Group Stages | MEGA Messy Tournament</title>
+
+<link rel="stylesheet" href="../../styles/site.css">
+
+</head>
+
+<body>
+
+<div id="siteHeader"></div>
+
+<main>
+
+    <div class="page-container">
+
+        <div class="page-heading">
+            <span class="stage-label">Qualifying Stage</span>
+            <h1>Group Stages</h1>
+            <p>Pick a group to see its contestants.</p>
+        </div>
+
+        <!-- Only groups that have girls in girls-data.js are listed -->
+        <div class="group-list" id="groupList"></div>
+
+    </div>
+
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="../../scripts/girls-data.js"></script>
+<script src="../../scripts/site.js"></script>
+
+<script>
+
+    const groupList = document.getElementById("groupList");
+
+    const groupNumbers = [
+        ...new Set(getAllGirls().map(girl => girl.group).filter(Boolean))
+    ].sort((a, b) => a - b);
+
+    if (groupNumbers.length === 0) {
+
+        groupList.innerHTML =
+            '<div class="no-results">No groups have been set up yet.</div>';
+
+    }
+
+    groupNumbers.forEach(number => {
+
+        const count = getGirlsByGroup(number).length;
+
+        const tile = document.createElement("a");
+
+        tile.className = "group-tile";
+        tile.href = getGroupURL(number);
+
+        tile.innerHTML = `
+            <strong>Group ${number}</strong>
+            <span>${count} ${count === 1 ? "girl" : "girls"}</span>
+        `;
+
+        groupList.appendChild(tile);
+
+    });
+
+</script>
+
+</body>
+
+</html>

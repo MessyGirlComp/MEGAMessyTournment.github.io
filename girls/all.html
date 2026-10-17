@@ -25,7 +25,9 @@
             <p>Browse every contestant in the MEGA Messy Tournament.</p>
         </div>
 
-        <!-- FILTERS (the Mess Type and Source options are filled in by all.js) -->
+        <!-- =====================================================
+             FILTERS
+        ====================================================== -->
 
         <div class="filters">
 
@@ -44,12 +46,23 @@
 
                 <select id="messFilter" class="filter-select">
                     <option value="all" selected>All Mess Types</option>
+                    <option value="gunge">Gunge</option>
+                    <option value="slime">Slime</option>
+                    <option value="water">Water</option>
+                    <option value="food">Food</option>
+                    <option value="mud">Mud</option>
+                    <option value="other">Other</option>
                 </select>
 
                 <label for="sourceFilter" class="filter-label">Source</label>
 
                 <select id="sourceFilter" class="filter-select">
                     <option value="all" selected>All Sources</option>
+                    <option value="game-show">Game Show</option>
+                    <option value="online-trend">Online Trend</option>
+                    <option value="youtube">YouTube</option>
+                    <option value="tv">TV</option>
+                    <option value="other">Other</option>
                 </select>
 
                 <input
@@ -67,9 +80,42 @@
 
         </div>
 
-        <!-- GRID (cards are built by all.js) -->
 
-        <div class="girls-grid" id="girlsGrid"></div>
+        <!-- =====================================================
+             GIRLS GRID
+
+             To add a girl: copy one card, then change
+             data-status, data-name, data-mess-type, data-source,
+             the image number, the name and the profile link.
+
+             data-status     qualified | remaining | eliminated
+             data-mess-type  gunge | slime | water | food | mud | other
+             data-source     game-show | online-trend | youtube | tv | other
+
+             Image: assets/girls/A/001.png (first profile image)
+        ====================================================== -->
+
+        <div class="girls-grid" id="girlsGrid">
+
+            <!-- 001 -->
+            <div class="girl-card" data-status="remaining" data-name="Amy" data-mess-type="gunge" data-source="game-show">
+                <div class="girl-image-wrapper">
+                    <img src="../assets/girls/A/001.png" class="girl-image" alt="Amy" loading="lazy">
+                </div>
+                <div class="girl-info">
+                    <div class="girl-card-number">Girl 001</div>
+                    <div class="girl-card-name">Amy</div>
+                    <div class="status-badge remaining">Competing</div>
+                    <br>
+                    <a href="profiles/profile.html?girl=001" class="profile-button">View Profile</a>
+                </div>
+            </div>
+
+            <div class="no-results" id="noResults" hidden>
+                No girls match your filters.
+            </div>
+
+        </div>
 
     </div>
 
@@ -79,120 +125,18 @@
 
 <script src="../scripts/girls-data.js"></script>
 <script src="../scripts/site.js"></script>
-<script src="../scripts/all.js"></script>
 
-	<script>
-	const statusFilter = document.getElementById("statusFilter");
+<script>
+
+const statusFilter = document.getElementById("statusFilter");
 const messFilter = document.getElementById("messFilter");
 const sourceFilter = document.getElementById("sourceFilter");
 const searchBox = document.getElementById("searchBox");
 const resetFilters = document.getElementById("resetFilters");
-const girlsGrid = document.getElementById("girlsGrid");
+const noResults = document.getElementById("noResults");
 
-const STATUS_LABELS = {
-    qualified: "Qualified",
-    remaining: "Competing",
-    eliminated: "Eliminated"
-};
+const cards = document.querySelectorAll(".girl-card");
 
-
-/* =========================================================
-   FILTER MENUS (from MESS_TYPES / MEDIA_SOURCE_TYPES)
-========================================================= */
-
-function fillSelect(select, items) {
-
-    items.forEach(item => {
-
-        const option = document.createElement("option");
-
-        option.value = toKey(item);
-        option.textContent = item;
-
-        select.appendChild(option);
-
-    });
-
-}
-
-fillSelect(messFilter, MESS_TYPES);
-fillSelect(sourceFilter, MEDIA_SOURCE_TYPES);
-
-
-/* =========================================================
-   CARDS
-========================================================= */
-
-function createGirlCard(girl) {
-
-    const card = document.createElement("div");
-
-    card.className = "girl-card";
-
-    card.dataset.status = getStatusKey(girl);
-    card.dataset.name = girl.name.toLowerCase();
-    card.dataset.messType = getMessKey(girl);
-    card.dataset.source = getSourceKey(girl);
-
-    const statusKey = getStatusKey(girl);
-
-    card.innerHTML = `
-
-        <div class="girl-image-wrapper">
-            <img class="girl-image" alt="${escapeHTML(girl.name)}" loading="lazy">
-        </div>
-
-        <div class="girl-info">
-            <div class="girl-card-number">Girl ${escapeHTML(girl.id)}</div>
-            <div class="girl-card-name">${escapeHTML(girl.name)}</div>
-            <div class="status-badge ${statusKey}">
-                ${escapeHTML(STATUS_LABELS[statusKey])}
-            </div>
-            <br>
-            <a class="profile-button" href="${escapeHTML(getGirlProfileURL(girl.id))}">
-                View Profile
-            </a>
-        </div>
-
-    `;
-
-    /*
-        Use the thumbnail (folder T). If it is missing,
-        fall back to the first profile image (folder A).
-    */
-
-    const image = card.querySelector(".girl-image");
-
-    image.addEventListener("error", function fallback() {
-
-        image.removeEventListener("error", fallback);
-
-        image.src = getGirlImageA(girl.id);
-
-    });
-
-    image.src = getGirlThumbnail(girl.id);
-
-    return card;
-
-}
-
-getAllGirls().forEach(girl => {
-    girlsGrid.appendChild(createGirlCard(girl));
-});
-
-const noResults = document.createElement("div");
-
-noResults.className = "no-results";
-noResults.textContent = "No girls match your filters.";
-noResults.hidden = true;
-
-girlsGrid.appendChild(noResults);
-
-
-/* =========================================================
-   FILTERING
-========================================================= */
 
 function updateCards() {
 
@@ -203,13 +147,13 @@ function updateCards() {
 
     let visible = 0;
 
-    girlsGrid.querySelectorAll(".girl-card").forEach(card => {
+    cards.forEach(card => {
 
         const match =
             (statusValue === "all" || card.dataset.status === statusValue) &&
             (messValue === "all" || card.dataset.messType === messValue) &&
             (sourceValue === "all" || card.dataset.source === sourceValue) &&
-            card.dataset.name.includes(searchValue);
+            (card.dataset.name || "").toLowerCase().includes(searchValue);
 
         card.hidden = !match;
 
@@ -240,9 +184,8 @@ resetFilters.addEventListener("click", () => {
 
 });
 
-updateCards();
+</script>
 
-	</script>
 </body>
 
 </html>

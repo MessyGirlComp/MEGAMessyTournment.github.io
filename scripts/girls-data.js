@@ -58,7 +58,16 @@ function siteURL(path) {
    "001 A.png"), change ONLY this function.
 ========================================================= */
 
-const GIRL_ASSET_BASE = siteURL("assets/girls/");
+/*
+    Plain relative path, used by profile.html and group.html
+    (both are two folders deep: girls/profiles/ and
+    qualifying/groups/). all.html has its image paths written
+    directly in the HTML instead.
+
+    Images:  assets/girls/A/001.png, B/001.png, C/001.png, T/001.png
+*/
+
+const GIRL_ASSET_BASE = "../../assets/girls/";
 
 function girlImageFileName(girlID) {
 
