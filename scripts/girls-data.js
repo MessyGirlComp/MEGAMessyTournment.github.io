@@ -2676,6 +2676,276 @@ const girls = {
     messType: "Gunge",
     youtube: ""
 },
+	
+"079": {
+  id: "079",
+  name: "Chole",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 29,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"080": {
+  id: "080",
+  name: "Olivia",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 29,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"081": {
+  id: "081",
+  name: "Ella",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 29,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"082": {
+  id: "082",
+  name: "Heidi",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 29,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"083": {
+  id: "083",
+  name: "Megan",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 29,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"084": {
+  id: "084",
+  name: "Abbie",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 29,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"085": {
+  id: "085",
+  name: "Jodie",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 30,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"086": {
+  id: "086",
+  name: "Phoebe",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 30,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"087": {
+  id: "087",
+  name: "Ayzia",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 30,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"088": {
+  id: "088",
+  name: "Tia",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 30,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"089": {
+  id: "089",
+  name: "Imogen",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 30,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"090": {
+  id: "090",
+  name: "Maisie",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 30,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"091": {
+  id: "091",
+  name: "Myah",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 31,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"092": {
+  id: "092",
+  name: "Sophie",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 31,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"093": {
+  id: "093",
+  name: "Flo",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 31,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"094": {
+  id: "094",
+  name: "Lucy",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 31,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"095": {
+  id: "095",
+  name: "Martha",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 31,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+},
+
+"096": {
+  id: "096",
+  name: "Nicole",
+  age: "",
+  bio: "",
+  appearance: "",
+  reaction: "",
+  status: "",
+  group: 31,
+  from: "Sam & Mark's Big Friday Wind Up",
+  mediaSourceType: "Game Show",
+  messType: "Slime",
+  youtube: ""
+}
 
 };
 
