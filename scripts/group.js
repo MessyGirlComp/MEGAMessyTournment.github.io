@@ -63,6 +63,8 @@ function buildGroup() {
 
     const grid = document.getElementById("girlsGrid");
 
+    grid.innerHTML = "";
+
     groupGirls.forEach(girl => {
         grid.appendChild(createGirlCard(girl));
     });
@@ -80,32 +82,61 @@ function createGirlCard(girl) {
 
     const card = document.createElement("div");
 
-    card.className = "girl-card";
+    /*
+        Group page uses its own card classes.
+
+        These are intentionally different from the
+        All Girls page classes so the two layouts can
+        be styled independently.
+    */
+    card.className = "group-girl-card";
 
     const statusKey = getStatusKey(girl);
 
     card.innerHTML = `
 
-        <div class="girl-image-wrapper">
-            <img class="girl-image" alt="${escapeHTML(girl.name)}" loading="lazy">
+        <div class="group-girl-image-wrapper">
+            <img
+                class="group-girl-image"
+                alt="${escapeHTML(girl.name)}"
+                loading="lazy"
+            >
         </div>
 
-        <div class="girl-info">
-            <div class="girl-card-number">Girl ${escapeHTML(girl.id)}</div>
-            <div class="girl-card-name">${escapeHTML(girl.name)}</div>
-            <div class="status-badge ${statusKey}">
+        <div class="group-girl-info">
+
+            <div class="group-girl-number">
+                Girl ${escapeHTML(girl.id)}
+            </div>
+
+            <div class="group-girl-name">
+                ${escapeHTML(girl.name)}
+            </div>
+
+            <div class="group-status-badge ${statusKey}">
                 ${escapeHTML(girl.status || "Competing")}
             </div>
+
             <br>
-            <a class="profile-button" href="${escapeHTML(getGirlProfileURL(girl.id))}">
+
+            <a
+                class="group-profile-button"
+                href="${escapeHTML(getGirlProfileURL(girl.id))}"
+            >
                 View Profile
             </a>
+
         </div>
 
     `;
 
+
+    /* =====================================================
+       IMAGE
+    ===================================================== */
+
     // Thumbnail first, first profile image if there is no thumbnail
-    const image = card.querySelector(".girl-image");
+    const image = card.querySelector(".group-girl-image");
 
     image.addEventListener("error", function fallback() {
 
@@ -116,6 +147,7 @@ function createGirlCard(girl) {
     });
 
     image.src = getGirlThumbnail(girl.id);
+
 
     return card;
 
@@ -130,14 +162,25 @@ function buildVoteButton(group) {
 
     const voteArea = document.getElementById("voteArea");
 
+    voteArea.innerHTML = "";
+
     const button = document.createElement("a");
 
     button.className = "button";
-    button.innerHTML = "&#128499;&#65039; VOTE FOR A GIRL TO MOVE ON";
+
+    button.innerHTML =
+        "&#128499;&#65039; VOTE FOR A GIRL TO MOVE ON";
 
     const voteLink = getGroupVoteLink(group);
 
-    // Only a real URL counts (ignores YOUR_GOOGLE_FORM_... placeholders)
+
+    /*
+       Only a real URL counts.
+
+       This ignores placeholders such as:
+       YOUR_GOOGLE_FORM_LINK
+    */
+
     if (/^https?:\/\//i.test(voteLink)) {
 
         button.href = voteLink;
@@ -160,6 +203,7 @@ function buildVoteButton(group) {
 
     }
 
+
     voteArea.appendChild(button);
 
 }
@@ -171,18 +215,26 @@ function buildVoteButton(group) {
 
 function showGroupError(title) {
 
-    document.getElementById("groupTitle").textContent = title;
+    document.getElementById("groupTitle").textContent =
+        title;
 
-    document.getElementById("groupStatus").hidden = true;
+    document.getElementById("groupStatus").hidden =
+        true;
 
-    document.getElementById("errorTitle").textContent = title;
+    document.getElementById("errorTitle").textContent =
+        title;
 
     document.getElementById("errorLink").href =
         siteURL("qualifying/groups/index.html");
 
-    document.getElementById("errorMessage").hidden = false;
+    document.getElementById("errorMessage").hidden =
+        false;
 
 }
 
+
+/* =========================================================
+   START
+========================================================= */
 
 buildGroup();
