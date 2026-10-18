@@ -1,0 +1,266 @@
+@charset "UTF-8";
+/* CSS Document */
+/* =========================================================
+   MEGA MESSY TOURNAMENT
+   ALL GIRLS PAGE
+========================================================= */
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.filters {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 35px;
+}
+
+.filter-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filter-label {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   FILTER INPUTS
+========================================================= */
+
+.filter-select,
+.search-box {
+    padding: 12px 15px;
+    background: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #222;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.filter-select {
+    min-width: 200px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.search-box {
+    width: 100%;
+    max-width: 400px;
+}
+
+.filter-select:hover {
+    border-color: #999;
+}
+
+.filter-select:focus,
+.search-box:focus {
+    border-color: #111;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   ALL GIRLS GRID
+   4 COLUMNS × AS MANY ROWS AS NEEDED
+========================================================= */
+
+.all-girls-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+}
+
+
+/* =========================================================
+   ALL GIRLS CARD
+========================================================= */
+
+.all-girl-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.all-girl-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.all-girl-card[hidden] {
+    display: none;
+}
+
+
+/* =========================================================
+   ALL GIRLS IMAGE
+   SQUARE
+========================================================= */
+
+.all-girl-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #e9edf3;
+}
+
+.all-girl-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   ALL GIRLS CARD INFORMATION
+========================================================= */
+
+.all-girl-info {
+    padding: 20px;
+}
+
+.all-girl-number {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.45;
+    margin-bottom: 6px;
+}
+
+.all-girl-name {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   ALL GIRLS STATUS
+========================================================= */
+
+.all-status-badge {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.all-status-badge.qualified {
+    background: #d4f7d4;
+    color: #157515;
+}
+
+.all-status-badge.remaining {
+    background: #dcecff;
+    color: #0055aa;
+}
+
+.all-status-badge.eliminated {
+    background: #ffdcdc;
+    color: #aa0000;
+}
+
+.all-status-badge.wildcard {
+    background: #fff0c7;
+    color: #9a6500;
+}
+
+
+/* =========================================================
+   ALL GIRLS PROFILE BUTTON
+========================================================= */
+
+.all-profile-button {
+    display: inline-block;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: background 0.2s ease;
+}
+
+.all-profile-button:hover {
+    background: #333;
+}
+
+
+/* =========================================================
+   NO RESULTS
+========================================================= */
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    background: white;
+    padding: 50px 25px;
+    border-radius: 16px;
+    color: #666;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .all-girls-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .filter-select {
+        min-width: 180px;
+    }
+
+    .search-box {
+        max-width: 300px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .all-girls-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-top {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-select,
+    .search-box,
+    .filters .button {
+        width: 100%;
+        max-width: none;
+    }
+}

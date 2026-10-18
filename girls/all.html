@@ -15,7 +15,8 @@
 
 <title>All Girls | MEGA Messy Tournament</title>
 
-<link rel="stylesheet" href="../styles/site.css">
+<link rel="stylesheet" href="../styles/page.css">
+<link rel="stylesheet" href="../styles/all.css">
 
 </head>
 
@@ -24,33 +25,33 @@
 <div id="siteHeader"></div>
 
 <main>
-
+ 
     <div class="page-container">
-
+ 
         <div class="page-heading">
             <h1>All Girls</h1>
             <p>Browse every contestant in the MEGA Messy Tournament.</p>
         </div>
-
+ 
         <!-- =====================================================
              FILTERS
         ====================================================== -->
-
+ 
         <div class="filters">
-
+ 
             <div class="filter-top">
-
+ 
                 <label for="statusFilter" class="filter-label">Status</label>
-
+ 
                 <select id="statusFilter" class="filter-select">
                     <option value="all" selected>All Girls</option>
                     <option value="qualified">Qualified Girls</option>
                     <option value="remaining">Remaining Girls</option>
                     <option value="eliminated">Eliminated Girls</option>
                 </select>
-
+ 
                 <label for="messFilter" class="filter-label">Mess Type</label>
-
+ 
                 <select id="messFilter" class="filter-select">
                     <option value="all" selected>All Mess Types</option>
                     <option value="gunge">Gunge</option>
@@ -60,9 +61,9 @@
                     <option value="mud">Mud</option>
                     <option value="other">Other</option>
                 </select>
-
+ 
                 <label for="sourceFilter" class="filter-label">Source</label>
-
+ 
                 <select id="sourceFilter" class="filter-select">
                     <option value="all" selected>All Sources</option>
                     <option value="game-show">Game Show</option>
@@ -71,2401 +72,2400 @@
                     <option value="tv">TV</option>
                     <option value="other">Other</option>
                 </select>
-
+ 
                 <input
                     type="text"
                     class="search-box"
                     id="searchBox"
                     placeholder="Search girls..."
                 >
-
+ 
                 <button type="button" class="button" id="resetFilters">
                     Reset Filters
                 </button>
-
+ 
             </div>
-
+ 
         </div>
-
-
+ 
+ 
         <!-- =====================================================
              GIRLS GRID
-
+ 
              To add a girl: copy one card, then change
              data-status, data-name, data-mess-type, data-source,
              the image number, the name and the profile link.
-
+ 
              data-status     qualified | remaining | eliminated
              data-mess-type  gunge | slime | water | food | mud | other
              data-source     game-show | online-trend | youtube | tv | other
-
+ 
              Image: assets/girls/A/001.png (first profile image)
         ====================================================== -->
-
-        <div class="girls-grid" id="girlsGrid">
+ 
+        <div class="all-girls-grid" id="girlsGrid">
 <!-- 001 -->
-<div class="girl-card" data-status="remaining" data-name="Amy" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/001.png" class="girl-image" alt="Amy" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Amy" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/001.png" class="all-girl-image" alt="Amy" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 001</div>
-        <div class="girl-card-name">Amy</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 001</div>
+        <div class="all-girl-name">Amy</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=001" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=001" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 002 -->
-<div class="girl-card" data-status="remaining" data-name="Rachel" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/002.png" class="girl-image" alt="Rachel" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Rachel" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/002.png" class="all-girl-image" alt="Rachel" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 002</div>
-        <div class="girl-card-name">Rachel</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 002</div>
+        <div class="all-girl-name">Rachel</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=002" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=002" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 003 -->
-<div class="girl-card" data-status="remaining" data-name="Grainne" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/003.png" class="girl-image" alt="Grainne" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Grainne" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/003.png" class="all-girl-image" alt="Grainne" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 003</div>
-        <div class="girl-card-name">Grainne</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 003</div>
+        <div class="all-girl-name">Grainne</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=003" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=003" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 004 -->
-<div class="girl-card" data-status="remaining" data-name="Aoife" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/004.png" class="girl-image" alt="Aoife" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Aoife" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/004.png" class="all-girl-image" alt="Aoife" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 004</div>
-        <div class="girl-card-name">Aoife</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 004</div>
+        <div class="all-girl-name">Aoife</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=004" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=004" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 005 -->
-<div class="girl-card" data-status="remaining" data-name="Hannah" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/005.png" class="girl-image" alt="Hannah" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Hannah" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/005.png" class="all-girl-image" alt="Hannah" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 005</div>
-        <div class="girl-card-name">Hannah</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 005</div>
+        <div class="all-girl-name">Hannah</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=005" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=005" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 006 -->
-<div class="girl-card" data-status="remaining" data-name="Carolanne" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/006.png" class="girl-image" alt="Carolanne" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Carolanne" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/006.png" class="all-girl-image" alt="Carolanne" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 006</div>
-        <div class="girl-card-name">Carolanne</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 006</div>
+        <div class="all-girl-name">Carolanne</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=006" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=006" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 007 -->
-<div class="girl-card" data-status="remaining" data-name="Carrie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/007.png" class="girl-image" alt="Carrie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Carrie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/007.png" class="all-girl-image" alt="Carrie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 007</div>
-        <div class="girl-card-name">Carrie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 007</div>
+        <div class="all-girl-name">Carrie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=007" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=007" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 008 -->
-<div class="girl-card" data-status="remaining" data-name="Georgie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/008.png" class="girl-image" alt="Georgie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Georgie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/008.png" class="all-girl-image" alt="Georgie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 008</div>
-        <div class="girl-card-name">Georgie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 008</div>
+        <div class="all-girl-name">Georgie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=008" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=008" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 009 -->
-<div class="girl-card" data-status="remaining" data-name="Louisa" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/009.png" class="girl-image" alt="Louisa" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Louisa" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/009.png" class="all-girl-image" alt="Louisa" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 009</div>
-        <div class="girl-card-name">Louisa</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 009</div>
+        <div class="all-girl-name">Louisa</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=009" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=009" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 010 -->
-<div class="girl-card" data-status="remaining" data-name="Lisa" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/010.png" class="girl-image" alt="Lisa" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Lisa" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/010.png" class="all-girl-image" alt="Lisa" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 010</div>
-        <div class="girl-card-name">Lisa</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 010</div>
+        <div class="all-girl-name">Lisa</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=010" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=010" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 011 -->
-<div class="girl-card" data-status="remaining" data-name="Georgia" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/011.png" class="girl-image" alt="Georgia" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Georgia" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/011.png" class="all-girl-image" alt="Georgia" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 011</div>
-        <div class="girl-card-name">Georgia</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 011</div>
+        <div class="all-girl-name">Georgia</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=011" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=011" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 012 -->
-<div class="girl-card" data-status="remaining" data-name="Ellie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/012.png" class="girl-image" alt="Ellie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Ellie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/012.png" class="all-girl-image" alt="Ellie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 012</div>
-        <div class="girl-card-name">Ellie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 012</div>
+        <div class="all-girl-name">Ellie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=012" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=012" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 013 -->
-<div class="girl-card" data-status="remaining" data-name="Nina" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/013.png" class="girl-image" alt="Nina" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Nina" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/013.png" class="all-girl-image" alt="Nina" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 013</div>
-        <div class="girl-card-name">Nina</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 013</div>
+        <div class="all-girl-name">Nina</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=013" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=013" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 014 -->
-<div class="girl-card" data-status="remaining" data-name="Katherine" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/014.png" class="girl-image" alt="Katherine" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Katherine" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/014.png" class="all-girl-image" alt="Katherine" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 014</div>
-        <div class="girl-card-name">Katherine</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 014</div>
+        <div class="all-girl-name">Katherine</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=014" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=014" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 015 -->
-<div class="girl-card" data-status="remaining" data-name="Katie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/015.png" class="girl-image" alt="Katie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Katie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/015.png" class="all-girl-image" alt="Katie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 015</div>
-        <div class="girl-card-name">Katie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 015</div>
+        <div class="all-girl-name">Katie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=015" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=015" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 016 -->
-<div class="girl-card" data-status="remaining" data-name="Joanna" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/016.png" class="girl-image" alt="Joanna" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Joanna" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/016.png" class="all-girl-image" alt="Joanna" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 016</div>
-        <div class="girl-card-name">Joanna</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 016</div>
+        <div class="all-girl-name">Joanna</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=016" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=016" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 017 -->
-<div class="girl-card" data-status="remaining" data-name="Courtney" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/017.png" class="girl-image" alt="Courtney" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Courtney" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/017.png" class="all-girl-image" alt="Courtney" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 017</div>
-        <div class="girl-card-name">Courtney</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 017</div>
+        <div class="all-girl-name">Courtney</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=017" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=017" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 018 -->
-<div class="girl-card" data-status="remaining" data-name="Cally" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/018.png" class="girl-image" alt="Cally" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Cally" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/018.png" class="all-girl-image" alt="Cally" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 018</div>
-        <div class="girl-card-name">Cally</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 018</div>
+        <div class="all-girl-name">Cally</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=018" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=018" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 019 -->
-<div class="girl-card" data-status="remaining" data-name="Chelsea" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/019.png" class="girl-image" alt="Chelsea" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Chelsea" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/019.png" class="all-girl-image" alt="Chelsea" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 019</div>
-        <div class="girl-card-name">Chelsea</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 019</div>
+        <div class="all-girl-name">Chelsea</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=019" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=019" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 020 -->
-<div class="girl-card" data-status="remaining" data-name="Emily" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/020.png" class="girl-image" alt="Emily" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Emily" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/020.png" class="all-girl-image" alt="Emily" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 020</div>
-        <div class="girl-card-name">Emily</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 020</div>
+        <div class="all-girl-name">Emily</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=020" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=020" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 021 -->
-<div class="girl-card" data-status="remaining" data-name="Iona" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/021.png" class="girl-image" alt="Iona" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Iona" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/021.png" class="all-girl-image" alt="Iona" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 021</div>
-        <div class="girl-card-name">Iona</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 021</div>
+        <div class="all-girl-name">Iona</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=021" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=021" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 022 -->
-<div class="girl-card" data-status="remaining" data-name="Holly" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/022.png" class="girl-image" alt="Holly" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Holly" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/022.png" class="all-girl-image" alt="Holly" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 022</div>
-        <div class="girl-card-name">Holly</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 022</div>
+        <div class="all-girl-name">Holly</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=022" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=022" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 023 -->
-<div class="girl-card" data-status="remaining" data-name="Ellen" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/023.png" class="girl-image" alt="Ellen" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Ellen" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/023.png" class="all-girl-image" alt="Ellen" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 023</div>
-        <div class="girl-card-name">Ellen</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 023</div>
+        <div class="all-girl-name">Ellen</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=023" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=023" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 024 -->
-<div class="girl-card" data-status="remaining" data-name="Erin" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/024.png" class="girl-image" alt="Erin" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Erin" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/024.png" class="all-girl-image" alt="Erin" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 024</div>
-        <div class="girl-card-name">Erin</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 024</div>
+        <div class="all-girl-name">Erin</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=024" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=024" class="all-profile-button">View Profile</a>
     </div>
 </div>
 			
 <!-- 025 -->
-<div class="girl-card" data-status="remaining" data-name="Carloline" data-mess-type="slime" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/025.png" class="girl-image" alt="Carloline" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Carloline" data-mess-type="slime" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/025.png" class="all-girl-image" alt="Carloline" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 025</div>
-        <div class="girl-card-name">Carloline</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 025</div>
+        <div class="all-girl-name">Carloline</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=025" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=025" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 026 -->
-<div class="girl-card" data-status="remaining" data-name="Daisy" data-mess-type="food" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/026.png" class="girl-image" alt="Daisy" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Daisy" data-mess-type="food" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/026.png" class="all-girl-image" alt="Daisy" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 026</div>
-        <div class="girl-card-name">Daisy</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 026</div>
+        <div class="all-girl-name">Daisy</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=026" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=026" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 027 -->
-<div class="girl-card" data-status="remaining" data-name="Chantell" data-mess-type="slime" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/027.png" class="girl-image" alt="Chantell" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Chantell" data-mess-type="slime" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/027.png" class="all-girl-image" alt="Chantell" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 027</div>
-        <div class="girl-card-name">Chantell</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 027</div>
+        <div class="all-girl-name">Chantell</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=027" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=027" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 028 -->
-<div class="girl-card" data-status="remaining" data-name="Rebecca" data-mess-type="slime" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/028.png" class="girl-image" alt="Rebecca" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Rebecca" data-mess-type="slime" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/028.png" class="all-girl-image" alt="Rebecca" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 028</div>
-        <div class="girl-card-name">Rebecca</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 028</div>
+        <div class="all-girl-name">Rebecca</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=028" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=028" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 029 -->
-<div class="girl-card" data-status="remaining" data-name="Jessica" data-mess-type="water" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/029.png" class="girl-image" alt="Jessica" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Jessica" data-mess-type="water" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/029.png" class="all-girl-image" alt="Jessica" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 029</div>
-        <div class="girl-card-name">Jessica</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 029</div>
+        <div class="all-girl-name">Jessica</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=029" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=029" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 030 -->
-<div class="girl-card" data-status="remaining" data-name="Tabatha" data-mess-type="slime" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/030.png" class="girl-image" alt="Tabatha" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Tabatha" data-mess-type="slime" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/030.png" class="all-girl-image" alt="Tabatha" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 030</div>
-        <div class="girl-card-name">Tabatha</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 030</div>
+        <div class="all-girl-name">Tabatha</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=030" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=030" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 031 -->
-<div class="girl-card" data-status="remaining" data-name="Daisy" data-mess-type="slime" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/031.png" class="girl-image" alt="Daisy" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Daisy" data-mess-type="slime" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/031.png" class="all-girl-image" alt="Daisy" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 031</div>
-        <div class="girl-card-name">Daisy</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 031</div>
+        <div class="all-girl-name">Daisy</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=031" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=031" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 032 -->
-<div class="girl-card" data-status="remaining" data-name="Emma" data-mess-type="food" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/032.png" class="girl-image" alt="Emma" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Emma" data-mess-type="food" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/032.png" class="all-girl-image" alt="Emma" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 032</div>
-        <div class="girl-card-name">Emma</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 032</div>
+        <div class="all-girl-name">Emma</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=032" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=032" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 033 -->
-<div class="girl-card" data-status="remaining" data-name="Jenifer" data-mess-type="food" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/033.png" class="girl-image" alt="Jenifer" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Jenifer" data-mess-type="food" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/033.png" class="all-girl-image" alt="Jenifer" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 033</div>
-        <div class="girl-card-name">Jenifer</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 033</div>
+        <div class="all-girl-name">Jenifer</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=033" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=033" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 034 -->
-<div class="girl-card" data-status="remaining" data-name="Pagie" data-mess-type="food" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/034.png" class="girl-image" alt="Pagie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Pagie" data-mess-type="food" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/034.png" class="all-girl-image" alt="Pagie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 034</div>
-        <div class="girl-card-name">Pagie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 034</div>
+        <div class="all-girl-name">Pagie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=034" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=034" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 035 -->
-<div class="girl-card" data-status="remaining" data-name="Jade" data-mess-type="slime" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/035.png" class="girl-image" alt="Jade" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Jade" data-mess-type="slime" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/035.png" class="all-girl-image" alt="Jade" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 035</div>
-        <div class="girl-card-name">Jade</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 035</div>
+        <div class="all-girl-name">Jade</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=035" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=035" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 036 -->
-<div class="girl-card" data-status="remaining" data-name="Maisie" data-mess-type="other" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/036.png" class="girl-image" alt="Maisie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Maisie" data-mess-type="other" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/036.png" class="all-girl-image" alt="Maisie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 036</div>
-        <div class="girl-card-name">Maisie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 036</div>
+        <div class="all-girl-name">Maisie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=036" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=036" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 037 -->
-<div class="girl-card" data-status="remaining" data-name="Rebbeca" data-mess-type="slime" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/037.png" class="girl-image" alt="Rebbeca" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Rebbeca" data-mess-type="slime" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/037.png" class="all-girl-image" alt="Rebbeca" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 037</div>
-        <div class="girl-card-name">Rebbeca</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 037</div>
+        <div class="all-girl-name">Rebbeca</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=037" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=037" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 038 -->
-<div class="girl-card" data-status="remaining" data-name="Faye" data-mess-type="slime" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/038.png" class="girl-image" alt="Faye" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Faye" data-mess-type="slime" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/038.png" class="all-girl-image" alt="Faye" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 038</div>
-        <div class="girl-card-name">Faye</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 038</div>
+        <div class="all-girl-name">Faye</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=038" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=038" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 039 -->
-<div class="girl-card" data-status="remaining" data-name="Lauren" data-mess-type="food" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/039.png" class="girl-image" alt="Lauren" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Lauren" data-mess-type="food" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/039.png" class="all-girl-image" alt="Lauren" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 039</div>
-        <div class="girl-card-name">Lauren</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 039</div>
+        <div class="all-girl-name">Lauren</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=039" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=039" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 040 -->
-<div class="girl-card" data-status="remaining" data-name="Amy" data-mess-type="food" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/040.png" class="girl-image" alt="Amy" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Amy" data-mess-type="food" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/040.png" class="all-girl-image" alt="Amy" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 040</div>
-        <div class="girl-card-name">Amy</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 040</div>
+        <div class="all-girl-name">Amy</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=040" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=040" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 041 -->
-<div class="girl-card" data-status="remaining" data-name="Regan" data-mess-type="food" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/041.png" class="girl-image" alt="Regan" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Regan" data-mess-type="food" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/041.png" class="all-girl-image" alt="Regan" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 041</div>
-        <div class="girl-card-name">Regan</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 041</div>
+        <div class="all-girl-name">Regan</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=041" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=041" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 042 -->
-<div class="girl-card" data-status="remaining" data-name="Sammy" data-mess-type="slime" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/042.png" class="girl-image" alt="Sammy" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Sammy" data-mess-type="slime" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/042.png" class="all-girl-image" alt="Sammy" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 042</div>
-        <div class="girl-card-name">Sammy</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 042</div>
+        <div class="all-girl-name">Sammy</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=042" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=042" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 043 -->
-<div class="girl-card" data-status="remaining" data-name="Grace C" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/043.png" class="girl-image" alt="Grace C" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Grace C" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/043.png" class="all-girl-image" alt="Grace C" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 043</div>
-        <div class="girl-card-name">Grace C</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 043</div>
+        <div class="all-girl-name">Grace C</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=043" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=043" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 044 -->
-<div class="girl-card" data-status="remaining" data-name="Jess" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/044.png" class="girl-image" alt="Jess" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Jess" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/044.png" class="all-girl-image" alt="Jess" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 044</div>
-        <div class="girl-card-name">Jess</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 044</div>
+        <div class="all-girl-name">Jess</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=044" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=044" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 045 -->
-<div class="girl-card" data-status="remaining" data-name="Chelesa" data-mess-type="slime" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/045.png" class="girl-image" alt="Chelesa" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Chelesa" data-mess-type="slime" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/045.png" class="all-girl-image" alt="Chelesa" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 045</div>
-        <div class="girl-card-name">Chelesa</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 045</div>
+        <div class="all-girl-name">Chelesa</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=045" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=045" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 046 -->
-<div class="girl-card" data-status="remaining" data-name="Amy" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/046.png" class="girl-image" alt="Amy" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Amy" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/046.png" class="all-girl-image" alt="Amy" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 046</div>
-        <div class="girl-card-name">Amy</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 046</div>
+        <div class="all-girl-name">Amy</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=046" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=046" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 047 -->
-<div class="girl-card" data-status="remaining" data-name="Lily" data-mess-type="water" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/047.png" class="girl-image" alt="Lily" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Lily" data-mess-type="water" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/047.png" class="all-girl-image" alt="Lily" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 047</div>
-        <div class="girl-card-name">Lily</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 047</div>
+        <div class="all-girl-name">Lily</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=047" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=047" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 048 -->
-<div class="girl-card" data-status="remaining" data-name="Abbie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/048.png" class="girl-image" alt="Abbie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Abbie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/048.png" class="all-girl-image" alt="Abbie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 048</div>
-        <div class="girl-card-name">Abbie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 048</div>
+        <div class="all-girl-name">Abbie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=048" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=048" class="all-profile-button">View Profile</a>
     </div>
 </div>
 			
 <!-- 049 -->
-<div class="girl-card" data-status="remaining" data-name="Ella" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/049.png" class="girl-image" alt="Ella" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Ella" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/049.png" class="all-girl-image" alt="Ella" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 049</div>
-        <div class="girl-card-name">Ella</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 049</div>
+        <div class="all-girl-name">Ella</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=049" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=049" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 050 -->
-<div class="girl-card" data-status="remaining" data-name="Zoe" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/050.png" class="girl-image" alt="Zoe" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Zoe" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/050.png" class="all-girl-image" alt="Zoe" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 050</div>
-        <div class="girl-card-name">Zoe</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 050</div>
+        <div class="all-girl-name">Zoe</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=050" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=050" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 051 -->
-<div class="girl-card" data-status="remaining" data-name="Emily" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/051.png" class="girl-image" alt="Emily" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Emily" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/051.png" class="all-girl-image" alt="Emily" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 051</div>
-        <div class="girl-card-name">Emily</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 051</div>
+        <div class="all-girl-name">Emily</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=051" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=051" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 052 -->
-<div class="girl-card" data-status="remaining" data-name="Olivia" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/052.png" class="girl-image" alt="Olivia" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Olivia" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/052.png" class="all-girl-image" alt="Olivia" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 052</div>
-        <div class="girl-card-name">Olivia</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 052</div>
+        <div class="all-girl-name">Olivia</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=052" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=052" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 053 -->
-<div class="girl-card" data-status="remaining" data-name="Lucinda" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/053.png" class="girl-image" alt="Lucinda" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Lucinda" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/053.png" class="all-girl-image" alt="Lucinda" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 053</div>
-        <div class="girl-card-name">Lucinda</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 053</div>
+        <div class="all-girl-name">Lucinda</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=053" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=053" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 054 -->
-<div class="girl-card" data-status="remaining" data-name="Zoe" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/054.png" class="girl-image" alt="Zoe" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Zoe" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/054.png" class="all-girl-image" alt="Zoe" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 054</div>
-        <div class="girl-card-name">Zoe</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 054</div>
+        <div class="all-girl-name">Zoe</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=054" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=054" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 055 -->
-<div class="girl-card" data-status="remaining" data-name="Kira" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/055.png" class="girl-image" alt="Kira" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Kira" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/055.png" class="all-girl-image" alt="Kira" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 055</div>
-        <div class="girl-card-name">Kira</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 055</div>
+        <div class="all-girl-name">Kira</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=055" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=055" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 056 -->
-<div class="girl-card" data-status="remaining" data-name="Isabelle" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/056.png" class="girl-image" alt="Isabelle" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Isabelle" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/056.png" class="all-girl-image" alt="Isabelle" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 056</div>
-        <div class="girl-card-name">Isabelle</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 056</div>
+        <div class="all-girl-name">Isabelle</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=056" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=056" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 057 -->
-<div class="girl-card" data-status="remaining" data-name="Reha" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/057.png" class="girl-image" alt="Reha" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Reha" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/057.png" class="all-girl-image" alt="Reha" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 057</div>
-        <div class="girl-card-name">Reha</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 057</div>
+        <div class="all-girl-name">Reha</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=057" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=057" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 058 -->
-<div class="girl-card" data-status="remaining" data-name="Eloise" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/058.png" class="girl-image" alt="Eloise" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Eloise" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/058.png" class="all-girl-image" alt="Eloise" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 058</div>
-        <div class="girl-card-name">Eloise</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 058</div>
+        <div class="all-girl-name">Eloise</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=058" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=058" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 059 -->
-<div class="girl-card" data-status="remaining" data-name="Grace" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/059.png" class="girl-image" alt="Grace" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Grace" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/059.png" class="all-girl-image" alt="Grace" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 059</div>
-        <div class="girl-card-name">Grace</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 059</div>
+        <div class="all-girl-name">Grace</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=059" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=059" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 060 -->
-<div class="girl-card" data-status="remaining" data-name="Avalone" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/060.png" class="girl-image" alt="Avalone" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Avalone" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/060.png" class="all-girl-image" alt="Avalone" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 060</div>
-        <div class="girl-card-name">Avalone</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 060</div>
+        <div class="all-girl-name">Avalone</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=060" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=060" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 061 -->
-<div class="girl-card" data-status="remaining" data-name="Stephany" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/061.png" class="girl-image" alt="Stephany" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Stephany" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/061.png" class="all-girl-image" alt="Stephany" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 061</div>
-        <div class="girl-card-name">Stephany</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 061</div>
+        <div class="all-girl-name">Stephany</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=061" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=061" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 062 -->
-<div class="girl-card" data-status="remaining" data-name="Sofia" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/062.png" class="girl-image" alt="Sofia" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Sofia" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/062.png" class="all-girl-image" alt="Sofia" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 062</div>
-        <div class="girl-card-name">Sofia</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 062</div>
+        <div class="all-girl-name">Sofia</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=062" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=062" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 063 -->
-<div class="girl-card" data-status="remaining" data-name="Khadejah" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/063.png" class="girl-image" alt="Khadejah" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Khadejah" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/063.png" class="all-girl-image" alt="Khadejah" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 063</div>
-        <div class="girl-card-name">Khadejah</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 063</div>
+        <div class="all-girl-name">Khadejah</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=063" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=063" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 064 -->
-<div class="girl-card" data-status="remaining" data-name="Andriana" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/064.png" class="girl-image" alt="Andriana" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Andriana" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/064.png" class="all-girl-image" alt="Andriana" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 064</div>
-        <div class="girl-card-name">Andriana</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 064</div>
+        <div class="all-girl-name">Andriana</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=064" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=064" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 065 -->
-<div class="girl-card" data-status="remaining" data-name="Indianna" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/065.png" class="girl-image" alt="Indianna" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Indianna" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/065.png" class="all-girl-image" alt="Indianna" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 065</div>
-        <div class="girl-card-name">Indianna</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 065</div>
+        <div class="all-girl-name">Indianna</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=065" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=065" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 066 -->
-<div class="girl-card" data-status="remaining" data-name="Kirra" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/066.png" class="girl-image" alt="Kirra" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Kirra" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/066.png" class="all-girl-image" alt="Kirra" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 066</div>
-        <div class="girl-card-name">Kirra</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 066</div>
+        <div class="all-girl-name">Kirra</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=066" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=066" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 067 -->
-<div class="girl-card" data-status="remaining" data-name="Shayla" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/067.png" class="girl-image" alt="Shayla" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Shayla" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/067.png" class="all-girl-image" alt="Shayla" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 067</div>
-        <div class="girl-card-name">Shayla</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 067</div>
+        <div class="all-girl-name">Shayla</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=067" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=067" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 068 -->
-<div class="girl-card" data-status="remaining" data-name="Krystal" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/068.png" class="girl-image" alt="Krystal" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Krystal" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/068.png" class="all-girl-image" alt="Krystal" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 068</div>
-        <div class="girl-card-name">Krystal</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 068</div>
+        <div class="all-girl-name">Krystal</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=068" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=068" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 069 -->
-<div class="girl-card" data-status="remaining" data-name="Maisie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/069.png" class="girl-image" alt="Maisie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Maisie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/069.png" class="all-girl-image" alt="Maisie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 069</div>
-        <div class="girl-card-name">Maisie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 069</div>
+        <div class="all-girl-name">Maisie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=069" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=069" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 070 -->
-<div class="girl-card" data-status="remaining" data-name="Juliet" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/070.png" class="girl-image" alt="Juliet" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Juliet" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/070.png" class="all-girl-image" alt="Juliet" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 070</div>
-        <div class="girl-card-name">Juliet</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 070</div>
+        <div class="all-girl-name">Juliet</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=070" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=070" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 071 -->
-<div class="girl-card" data-status="remaining" data-name="Breigh-Ellen" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/071.png" class="girl-image" alt="Breigh-Ellen" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Breigh-Ellen" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/071.png" class="all-girl-image" alt="Breigh-Ellen" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 071</div>
-        <div class="girl-card-name">Breigh-Ellen</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 071</div>
+        <div class="all-girl-name">Breigh-Ellen</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=071" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=071" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 072 -->
-<div class="girl-card" data-status="remaining" data-name="Tahlia" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/072.png" class="girl-image" alt="Tahlia" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Tahlia" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/072.png" class="all-girl-image" alt="Tahlia" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 072</div>
-        <div class="girl-card-name">Tahlia</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 072</div>
+        <div class="all-girl-name">Tahlia</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=072" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=072" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 073 -->
-<div class="girl-card" data-status="remaining" data-name="Eloise" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/073.png" class="girl-image" alt="Eloise" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Eloise" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/073.png" class="all-girl-image" alt="Eloise" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 073</div>
-        <div class="girl-card-name">Eloise</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 073</div>
+        <div class="all-girl-name">Eloise</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=073" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=073" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 074 -->
-<div class="girl-card" data-status="remaining" data-name="Caprice" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/074.png" class="girl-image" alt="Caprice" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Caprice" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/074.png" class="all-girl-image" alt="Caprice" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 074</div>
-        <div class="girl-card-name">Caprice</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 074</div>
+        <div class="all-girl-name">Caprice</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=074" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=074" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 075 -->
-<div class="girl-card" data-status="remaining" data-name="Macy" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/075.png" class="girl-image" alt="Macy" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Macy" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/075.png" class="all-girl-image" alt="Macy" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 075</div>
-        <div class="girl-card-name">Macy</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 075</div>
+        <div class="all-girl-name">Macy</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=075" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=075" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 076 -->
-<div class="girl-card" data-status="remaining" data-name="Bailey" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/076.png" class="girl-image" alt="Bailey" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Bailey" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/076.png" class="all-girl-image" alt="Bailey" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 076</div>
-        <div class="girl-card-name">Bailey</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 076</div>
+        <div class="all-girl-name">Bailey</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=076" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=076" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 077 -->
-<div class="girl-card" data-status="remaining" data-name="Makenzie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/077.png" class="girl-image" alt="Makenzie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Makenzie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/077.png" class="all-girl-image" alt="Makenzie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 077</div>
-        <div class="girl-card-name">Makenzie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 077</div>
+        <div class="all-girl-name">Makenzie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=077" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=077" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 078 -->
-<div class="girl-card" data-status="remaining" data-name="Tamara" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/078.png" class="girl-image" alt="Tamara" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Tamara" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/078.png" class="all-girl-image" alt="Tamara" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 078</div>
-        <div class="girl-card-name">Tamara</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 078</div>
+        <div class="all-girl-name">Tamara</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=078" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=078" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 079 -->
-<div class="girl-card" data-status="remaining" data-name="Keira" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/079.png" class="girl-image" alt="Keira" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Keira" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/079.png" class="all-girl-image" alt="Keira" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 079</div>
-        <div class="girl-card-name">Keira</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 079</div>
+        <div class="all-girl-name">Keira</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=079" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=079" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 080 -->
-<div class="girl-card" data-status="remaining" data-name="Jade" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/080.png" class="girl-image" alt="Jade" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Jade" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/080.png" class="all-girl-image" alt="Jade" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 080</div>
-        <div class="girl-card-name">Jade</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 080</div>
+        <div class="all-girl-name">Jade</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=080" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=080" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 081 -->
-<div class="girl-card" data-status="remaining" data-name="Saskia" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/081.png" class="girl-image" alt="Saskia" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Saskia" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/081.png" class="all-girl-image" alt="Saskia" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 081</div>
-        <div class="girl-card-name">Saskia</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 081</div>
+        <div class="all-girl-name">Saskia</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=081" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=081" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 082 -->
-<div class="girl-card" data-status="remaining" data-name="Evie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/082.png" class="girl-image" alt="Evie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Evie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/082.png" class="all-girl-image" alt="Evie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 082</div>
-        <div class="girl-card-name">Evie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 082</div>
+        <div class="all-girl-name">Evie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=082" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=082" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 083 -->
-<div class="girl-card" data-status="remaining" data-name="Girisha" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/083.png" class="girl-image" alt="Girisha" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Girisha" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/083.png" class="all-girl-image" alt="Girisha" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 083</div>
-        <div class="girl-card-name">Girisha</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 083</div>
+        <div class="all-girl-name">Girisha</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=083" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=083" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 084 -->
-<div class="girl-card" data-status="remaining" data-name="Elosie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/084.png" class="girl-image" alt="Elosie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Elosie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/084.png" class="all-girl-image" alt="Elosie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 084</div>
-        <div class="girl-card-name">Elosie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 084</div>
+        <div class="all-girl-name">Elosie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=084" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=084" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 085 -->
-<div class="girl-card" data-status="remaining" data-name="Jonty" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/085.png" class="girl-image" alt="Jonty" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Jonty" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/085.png" class="all-girl-image" alt="Jonty" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 085</div>
-        <div class="girl-card-name">Jonty</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 085</div>
+        <div class="all-girl-name">Jonty</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=085" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=085" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 086 -->
-<div class="girl-card" data-status="remaining" data-name="Emma" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/086.png" class="girl-image" alt="Emma" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Emma" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/086.png" class="all-girl-image" alt="Emma" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 086</div>
-        <div class="girl-card-name">Emma</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 086</div>
+        <div class="all-girl-name">Emma</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=086" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=086" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 087 -->
-<div class="girl-card" data-status="remaining" data-name="Kyra" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/087.png" class="girl-image" alt="Kyra" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Kyra" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/087.png" class="all-girl-image" alt="Kyra" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 087</div>
-        <div class="girl-card-name">Kyra</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 087</div>
+        <div class="all-girl-name">Kyra</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=087" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=087" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 088 -->
-<div class="girl-card" data-status="remaining" data-name="Aliyah" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/088.png" class="girl-image" alt="Aliyah" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Aliyah" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/088.png" class="all-girl-image" alt="Aliyah" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 088</div>
-        <div class="girl-card-name">Aliyah</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 088</div>
+        <div class="all-girl-name">Aliyah</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=088" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=088" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 089 -->
-<div class="girl-card" data-status="remaining" data-name="Georgia" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/089.png" class="girl-image" alt="Georgia" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Georgia" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/089.png" class="all-girl-image" alt="Georgia" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 089</div>
-        <div class="girl-card-name">Georgia</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 089</div>
+        <div class="all-girl-name">Georgia</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=089" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=089" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 090 -->
-<div class="girl-card" data-status="remaining" data-name="Rachel" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/090.png" class="girl-image" alt="Rachel" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Rachel" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/090.png" class="all-girl-image" alt="Rachel" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 090</div>
-        <div class="girl-card-name">Rachel</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 090</div>
+        <div class="all-girl-name">Rachel</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=090" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=090" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 091 -->
-<div class="girl-card" data-status="remaining" data-name="Anika" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/091.png" class="girl-image" alt="Anika" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Anika" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/091.png" class="all-girl-image" alt="Anika" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 091</div>
-        <div class="girl-card-name">Anika</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 091</div>
+        <div class="all-girl-name">Anika</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=091" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=091" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 092 -->
-<div class="girl-card" data-status="remaining" data-name="Harriert" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/092.png" class="girl-image" alt="Harriert" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Harriert" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/092.png" class="all-girl-image" alt="Harriert" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 092</div>
-        <div class="girl-card-name">Harriert</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 092</div>
+        <div class="all-girl-name">Harriert</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=092" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=092" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 093 -->
-<div class="girl-card" data-status="remaining" data-name="Emma" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/093.png" class="girl-image" alt="Emma" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Emma" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/093.png" class="all-girl-image" alt="Emma" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 093</div>
-        <div class="girl-card-name">Emma</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 093</div>
+        <div class="all-girl-name">Emma</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=093" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=093" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 094 -->
-<div class="girl-card" data-status="remaining" data-name="Celeste" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/094.png" class="girl-image" alt="Celeste" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Celeste" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/094.png" class="all-girl-image" alt="Celeste" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 094</div>
-        <div class="girl-card-name">Celeste</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 094</div>
+        <div class="all-girl-name">Celeste</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=094" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=094" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 095 -->
-<div class="girl-card" data-status="remaining" data-name="Sara" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/095.png" class="girl-image" alt="Sara" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Sara" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/095.png" class="all-girl-image" alt="Sara" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 095</div>
-        <div class="girl-card-name">Sara</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 095</div>
+        <div class="all-girl-name">Sara</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=095" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=095" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 096 -->
-<div class="girl-card" data-status="remaining" data-name="Ayesha" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/096.png" class="girl-image" alt="Ayesha" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Ayesha" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/096.png" class="all-girl-image" alt="Ayesha" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 096</div>
-        <div class="girl-card-name">Ayesha</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 096</div>
+        <div class="all-girl-name">Ayesha</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=096" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=096" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 097 -->
-<div class="girl-card" data-status="remaining" data-name="Gracie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/097.png" class="girl-image" alt="Gracie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Gracie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/097.png" class="all-girl-image" alt="Gracie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 097</div>
-        <div class="girl-card-name">Gracie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 097</div>
+        <div class="all-girl-name">Gracie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=097" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=097" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 098 -->
-<div class="girl-card" data-status="remaining" data-name="Talei" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/098.png" class="girl-image" alt="Talei" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Talei" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/098.png" class="all-girl-image" alt="Talei" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 098</div>
-        <div class="girl-card-name">Talei</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 098</div>
+        <div class="all-girl-name">Talei</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=098" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=098" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 099 -->
-<div class="girl-card" data-status="remaining" data-name="Juliea" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/099.png" class="girl-image" alt="Juliea" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Juliea" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/099.png" class="all-girl-image" alt="Juliea" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 099</div>
-        <div class="girl-card-name">Juliea</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 099</div>
+        <div class="all-girl-name">Juliea</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=099" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=099" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 100 -->
-<div class="girl-card" data-status="remaining" data-name="Ava" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/100.png" class="girl-image" alt="Ava" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Ava" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/100.png" class="all-girl-image" alt="Ava" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 100</div>
-        <div class="girl-card-name">Ava</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 100</div>
+        <div class="all-girl-name">Ava</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=100" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=100" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 101 -->
-<div class="girl-card" data-status="remaining" data-name="Evie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/101.png" class="girl-image" alt="Evie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Evie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/101.png" class="all-girl-image" alt="Evie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 101</div>
-        <div class="girl-card-name">Evie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 101</div>
+        <div class="all-girl-name">Evie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=101" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=101" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 102 -->
-<div class="girl-card" data-status="remaining" data-name="Sophie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/102.png" class="girl-image" alt="Sophie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Sophie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/102.png" class="all-girl-image" alt="Sophie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 102</div>
-        <div class="girl-card-name">Sophie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 102</div>
+        <div class="all-girl-name">Sophie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=102" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=102" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 103 -->
-<div class="girl-card" data-status="remaining" data-name="Chole" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/103.png" class="girl-image" alt="Chole" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Chole" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/103.png" class="all-girl-image" alt="Chole" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 103</div>
-        <div class="girl-card-name">Chole</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 103</div>
+        <div class="all-girl-name">Chole</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=103" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=103" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 104 -->
-<div class="girl-card" data-status="remaining" data-name="Hayley" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/104.png" class="girl-image" alt="Hayley" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Hayley" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/104.png" class="all-girl-image" alt="Hayley" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 104</div>
-        <div class="girl-card-name">Hayley</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 104</div>
+        <div class="all-girl-name">Hayley</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=104" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=104" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 105 -->
-<div class="girl-card" data-status="remaining" data-name="Emma" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/105.png" class="girl-image" alt="Emma" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Emma" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/105.png" class="all-girl-image" alt="Emma" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 105</div>
-        <div class="girl-card-name">Emma</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 105</div>
+        <div class="all-girl-name">Emma</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=105" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=105" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 106 -->
-<div class="girl-card" data-status="remaining" data-name="Mikaela" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/106.png" class="girl-image" alt="Mikaela" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Mikaela" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/106.png" class="all-girl-image" alt="Mikaela" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 106</div>
-        <div class="girl-card-name">Mikaela</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 106</div>
+        <div class="all-girl-name">Mikaela</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=106" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=106" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 107 -->
-<div class="girl-card" data-status="remaining" data-name="Uma" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/107.png" class="girl-image" alt="Uma" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Uma" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/107.png" class="all-girl-image" alt="Uma" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 107</div>
-        <div class="girl-card-name">Uma</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 107</div>
+        <div class="all-girl-name">Uma</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=107" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=107" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 108 -->
-<div class="girl-card" data-status="remaining" data-name="Sophie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/108.png" class="girl-image" alt="Sophie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Sophie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/108.png" class="all-girl-image" alt="Sophie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 108</div>
-        <div class="girl-card-name">Sophie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 108</div>
+        <div class="all-girl-name">Sophie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=108" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=108" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 109 -->
-<div class="girl-card" data-status="remaining" data-name="Tyla-Bell" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/109.png" class="girl-image" alt="Tyla-Bell" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Tyla-Bell" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/109.png" class="all-girl-image" alt="Tyla-Bell" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 109</div>
-        <div class="girl-card-name">Tyla-Bell</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 109</div>
+        <div class="all-girl-name">Tyla-Bell</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=109" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=109" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 110 -->
-<div class="girl-card" data-status="remaining" data-name="Maria" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/110.png" class="girl-image" alt="Maria" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Maria" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/110.png" class="all-girl-image" alt="Maria" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 110</div>
-        <div class="girl-card-name">Maria</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 110</div>
+        <div class="all-girl-name">Maria</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=110" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=110" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 111 -->
-<div class="girl-card" data-status="remaining" data-name="Scarlett" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/111.png" class="girl-image" alt="Scarlett" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Scarlett" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/111.png" class="all-girl-image" alt="Scarlett" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 111</div>
-        <div class="girl-card-name">Scarlett</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 111</div>
+        <div class="all-girl-name">Scarlett</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=111" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=111" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 112 -->
-<div class="girl-card" data-status="remaining" data-name="Jasmine" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/112.png" class="girl-image" alt="Jasmine" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Jasmine" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/112.png" class="all-girl-image" alt="Jasmine" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 112</div>
-        <div class="girl-card-name">Jasmine</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 112</div>
+        <div class="all-girl-name">Jasmine</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=112" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=112" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 113 -->
-<div class="girl-card" data-status="remaining" data-name="Tayla" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/113.png" class="girl-image" alt="Tayla" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Tayla" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/113.png" class="all-girl-image" alt="Tayla" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 113</div>
-        <div class="girl-card-name">Tayla</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 113</div>
+        <div class="all-girl-name">Tayla</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=113" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=113" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 114 -->
-<div class="girl-card" data-status="remaining" data-name="Jess D" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/114.png" class="girl-image" alt="Jess D" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Jess D" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/114.png" class="all-girl-image" alt="Jess D" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 114</div>
-        <div class="girl-card-name">Jess D</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 114</div>
+        <div class="all-girl-name">Jess D</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=114" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=114" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 115 -->
-<div class="girl-card" data-status="remaining" data-name="Lacey" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/115.png" class="girl-image" alt="Lacey" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Lacey" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/115.png" class="all-girl-image" alt="Lacey" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 115</div>
-        <div class="girl-card-name">Lacey</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 115</div>
+        <div class="all-girl-name">Lacey</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=115" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=115" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 116 -->
-<div class="girl-card" data-status="remaining" data-name="Stevie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/116.png" class="girl-image" alt="Stevie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Stevie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/116.png" class="all-girl-image" alt="Stevie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 116</div>
-        <div class="girl-card-name">Stevie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 116</div>
+        <div class="all-girl-name">Stevie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=116" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=116" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 117 -->
-<div class="girl-card" data-status="remaining" data-name="Tali S" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/117.png" class="girl-image" alt="Tali S" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Tali S" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/117.png" class="all-girl-image" alt="Tali S" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 117</div>
-        <div class="girl-card-name">Tali S</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 117</div>
+        <div class="all-girl-name">Tali S</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=117" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=117" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 118 -->
-<div class="girl-card" data-status="remaining" data-name="Georgia" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/118.png" class="girl-image" alt="Georgia" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Georgia" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/118.png" class="all-girl-image" alt="Georgia" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 118</div>
-        <div class="girl-card-name">Georgia</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 118</div>
+        <div class="all-girl-name">Georgia</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=118" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=118" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 119 -->
-<div class="girl-card" data-status="remaining" data-name="Amber" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/119.png" class="girl-image" alt="Amber" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Amber" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/119.png" class="all-girl-image" alt="Amber" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 119</div>
-        <div class="girl-card-name">Amber</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 119</div>
+        <div class="all-girl-name">Amber</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=119" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=119" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 120 -->
-<div class="girl-card" data-status="remaining" data-name="Lily" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/120.png" class="girl-image" alt="Lily" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Lily" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/120.png" class="all-girl-image" alt="Lily" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 120</div>
-        <div class="girl-card-name">Lily</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 120</div>
+        <div class="all-girl-name">Lily</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=120" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=120" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 121 -->
-<div class="girl-card" data-status="remaining" data-name="Sasha" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/121.png" class="girl-image" alt="Sasha" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Sasha" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/121.png" class="all-girl-image" alt="Sasha" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 121</div>
-        <div class="girl-card-name">Sasha</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 121</div>
+        <div class="all-girl-name">Sasha</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=121" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=121" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 122 -->
-<div class="girl-card" data-status="remaining" data-name="Jayde" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/122.png" class="girl-image" alt="Jayde" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Jayde" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/122.png" class="all-girl-image" alt="Jayde" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 122</div>
-        <div class="girl-card-name">Jayde</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 122</div>
+        <div class="all-girl-name">Jayde</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=122" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=122" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 123 -->
-<div class="girl-card" data-status="remaining" data-name="Josephine" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/123.png" class="girl-image" alt="Josephine" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Josephine" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/123.png" class="all-girl-image" alt="Josephine" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 123</div>
-        <div class="girl-card-name">Josephine</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 123</div>
+        <div class="all-girl-name">Josephine</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=123" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=123" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 124 -->
-<div class="girl-card" data-status="remaining" data-name="Lilly" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/124.png" class="girl-image" alt="Lilly" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Lilly" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/124.png" class="all-girl-image" alt="Lilly" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 124</div>
-        <div class="girl-card-name">Lilly</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 124</div>
+        <div class="all-girl-name">Lilly</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=124" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=124" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 125 -->
-<div class="girl-card" data-status="remaining" data-name="Emma" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/125.png" class="girl-image" alt="Emma" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Emma" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/125.png" class="all-girl-image" alt="Emma" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 125</div>
-        <div class="girl-card-name">Emma</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 125</div>
+        <div class="all-girl-name">Emma</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=125" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=125" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 126 -->
-<div class="girl-card" data-status="remaining" data-name="Mia" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/126.png" class="girl-image" alt="Mia" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Mia" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/126.png" class="all-girl-image" alt="Mia" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 126</div>
-        <div class="girl-card-name">Mia</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 126</div>
+        <div class="all-girl-name">Mia</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=126" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=126" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 127 -->
-<div class="girl-card" data-status="remaining" data-name="Erin" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/127.png" class="girl-image" alt="Erin" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Erin" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/127.png" class="all-girl-image" alt="Erin" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 127</div>
-        <div class="girl-card-name">Erin</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 127</div>
+        <div class="all-girl-name">Erin</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=127" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=127" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 128 -->
-<div class="girl-card" data-status="remaining" data-name="Madeline" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/128.png" class="girl-image" alt="Madeline" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Madeline" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/128.png" class="all-girl-image" alt="Madeline" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 128</div>
-        <div class="girl-card-name">Madeline</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 128</div>
+        <div class="all-girl-name">Madeline</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=128" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=128" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 129 -->
-<div class="girl-card" data-status="remaining" data-name="Ashleigh" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/129.png" class="girl-image" alt="Ashleigh" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Ashleigh" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/129.png" class="all-girl-image" alt="Ashleigh" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 129</div>
-        <div class="girl-card-name">Ashleigh</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 129</div>
+        <div class="all-girl-name">Ashleigh</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=129" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=129" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 130 -->
-<div class="girl-card" data-status="remaining" data-name="Sarah" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/130.png" class="girl-image" alt="Sarah" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Sarah" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/130.png" class="all-girl-image" alt="Sarah" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 130</div>
-        <div class="girl-card-name">Sarah</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 130</div>
+        <div class="all-girl-name">Sarah</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=130" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=130" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 131 -->
-<div class="girl-card" data-status="remaining" data-name="Sophie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/131.png" class="girl-image" alt="Sophie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Sophie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/131.png" class="all-girl-image" alt="Sophie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 131</div>
-        <div class="girl-card-name">Sophie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 131</div>
+        <div class="all-girl-name">Sophie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=131" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=131" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 132 -->
-<div class="girl-card" data-status="remaining" data-name="Hayley" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/132.png" class="girl-image" alt="Hayley" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Hayley" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/132.png" class="all-girl-image" alt="Hayley" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 132</div>
-        <div class="girl-card-name">Hayley</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 132</div>
+        <div class="all-girl-name">Hayley</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=132" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=132" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 133 -->
-<div class="girl-card" data-status="remaining" data-name="Raquel" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/133.png" class="girl-image" alt="Raquel" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Raquel" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/133.png" class="all-girl-image" alt="Raquel" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 133</div>
-        <div class="girl-card-name">Raquel</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 133</div>
+        <div class="all-girl-name">Raquel</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=133" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=133" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 134 -->
-<div class="girl-card" data-status="remaining" data-name="Scarlett" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/134.png" class="girl-image" alt="Scarlett" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Scarlett" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/134.png" class="all-girl-image" alt="Scarlett" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 134</div>
-        <div class="girl-card-name">Scarlett</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 134</div>
+        <div class="all-girl-name">Scarlett</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=134" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=134" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 135 -->
-<div class="girl-card" data-status="remaining" data-name="Abbey-Rose" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/135.png" class="girl-image" alt="Abbey-Rose" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Abbey-Rose" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/135.png" class="all-girl-image" alt="Abbey-Rose" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 135</div>
-        <div class="girl-card-name">Abbey-Rose</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 135</div>
+        <div class="all-girl-name">Abbey-Rose</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=135" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=135" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 136 -->
-<div class="girl-card" data-status="remaining" data-name="Lillie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/136.png" class="girl-image" alt="Lillie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Lillie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/136.png" class="all-girl-image" alt="Lillie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 136</div>
-        <div class="girl-card-name">Lillie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 136</div>
+        <div class="all-girl-name">Lillie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=136" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=136" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 137 -->
-<div class="girl-card" data-status="remaining" data-name="Tyeisha" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/137.png" class="girl-image" alt="Tyeisha" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Tyeisha" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/137.png" class="all-girl-image" alt="Tyeisha" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 137</div>
-        <div class="girl-card-name">Tyeisha</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 137</div>
+        <div class="all-girl-name">Tyeisha</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=137" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=137" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 138 -->
-<div class="girl-card" data-status="remaining" data-name="Claudia" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/138.png" class="girl-image" alt="Claudia" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Claudia" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/138.png" class="all-girl-image" alt="Claudia" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 138</div>
-        <div class="girl-card-name">Claudia</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 138</div>
+        <div class="all-girl-name">Claudia</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=138" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=138" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 139 -->
-<div class="girl-card" data-status="remaining" data-name="Andie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/139.png" class="girl-image" alt="Andie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Andie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/139.png" class="all-girl-image" alt="Andie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 139</div>
-        <div class="girl-card-name">Andie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 139</div>
+        <div class="all-girl-name">Andie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=139" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=139" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 140 -->
-<div class="girl-card" data-status="remaining" data-name="Crystal" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/140.png" class="girl-image" alt="Crystal" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Crystal" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/140.png" class="all-girl-image" alt="Crystal" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 140</div>
-        <div class="girl-card-name">Crystal</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 140</div>
+        <div class="all-girl-name">Crystal</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=140" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=140" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 141 -->
-<div class="girl-card" data-status="remaining" data-name="Liv" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/141.png" class="girl-image" alt="Liv" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Liv" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/141.png" class="all-girl-image" alt="Liv" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 141</div>
-        <div class="girl-card-name">Liv</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 141</div>
+        <div class="all-girl-name">Liv</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=141" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=141" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 142 -->
-<div class="girl-card" data-status="remaining" data-name="Mia" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/142.png" class="girl-image" alt="Mia" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Mia" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/142.png" class="all-girl-image" alt="Mia" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 142</div>
-        <div class="girl-card-name">Mia</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 142</div>
+        <div class="all-girl-name">Mia</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=142" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=142" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 143 -->
-<div class="girl-card" data-status="remaining" data-name="Sara" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/143.png" class="girl-image" alt="Sara" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Sara" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/143.png" class="all-girl-image" alt="Sara" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 143</div>
-        <div class="girl-card-name">Sara</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 143</div>
+        <div class="all-girl-name">Sara</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=143" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=143" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 144 -->
-<div class="girl-card" data-status="remaining" data-name="Sofia" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/144.png" class="girl-image" alt="Sofia" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Sofia" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/144.png" class="all-girl-image" alt="Sofia" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 144</div>
-        <div class="girl-card-name">Sofia</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 144</div>
+        <div class="all-girl-name">Sofia</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=144" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=144" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 145 -->
-<div class="girl-card" data-status="remaining" data-name="Zoe" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/145.png" class="girl-image" alt="Zoe" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Zoe" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/145.png" class="all-girl-image" alt="Zoe" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 145</div>
-        <div class="girl-card-name">Zoe</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 145</div>
+        <div class="all-girl-name">Zoe</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=145" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=145" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 146 -->
-<div class="girl-card" data-status="remaining" data-name="Scarlett" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/146.png" class="girl-image" alt="Scarlett" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Scarlett" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/146.png" class="all-girl-image" alt="Scarlett" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 146</div>
-        <div class="girl-card-name">Scarlett</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 146</div>
+        <div class="all-girl-name">Scarlett</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=146" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=146" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 147 -->
-<div class="girl-card" data-status="remaining" data-name="Ella" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/147.png" class="girl-image" alt="Ella" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Ella" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/147.png" class="all-girl-image" alt="Ella" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 147</div>
-        <div class="girl-card-name">Ella</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 147</div>
+        <div class="all-girl-name">Ella</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=147" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=147" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 148 -->
-<div class="girl-card" data-status="remaining" data-name="Isbella" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/148.png" class="girl-image" alt="Isbella" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Isbella" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/148.png" class="all-girl-image" alt="Isbella" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 148</div>
-        <div class="girl-card-name">Isbella</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 148</div>
+        <div class="all-girl-name">Isbella</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=148" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=148" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 149 -->
-<div class="girl-card" data-status="remaining" data-name="Grace-Violet" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/149.png" class="girl-image" alt="Grace-Violet" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Grace-Violet" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/149.png" class="all-girl-image" alt="Grace-Violet" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 149</div>
-        <div class="girl-card-name">Grace-Violet</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 149</div>
+        <div class="all-girl-name">Grace-Violet</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=149" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=149" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 150 -->
-<div class="girl-card" data-status="remaining" data-name="Rheanna" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/150.png" class="girl-image" alt="Rheanna" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Rheanna" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/150.png" class="all-girl-image" alt="Rheanna" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 150</div>
-        <div class="girl-card-name">Rheanna</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 150</div>
+        <div class="all-girl-name">Rheanna</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=150" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=150" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 151 -->
-<div class="girl-card" data-status="remaining" data-name="Lola" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/151.png" class="girl-image" alt="Lola" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Lola" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/151.png" class="all-girl-image" alt="Lola" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 151</div>
-        <div class="girl-card-name">Lola</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 151</div>
+        <div class="all-girl-name">Lola</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=151" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=151" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 152 -->
-<div class="girl-card" data-status="remaining" data-name="Tayla" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/152.png" class="girl-image" alt="Tayla" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Tayla" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/152.png" class="all-girl-image" alt="Tayla" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 152</div>
-        <div class="girl-card-name">Tayla</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 152</div>
+        <div class="all-girl-name">Tayla</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=152" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=152" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 153 -->
-<div class="girl-card" data-status="remaining" data-name="Crystal" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/153.png" class="girl-image" alt="Crystal" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Crystal" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/153.png" class="all-girl-image" alt="Crystal" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 153</div>
-        <div class="girl-card-name">Crystal</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 153</div>
+        <div class="all-girl-name">Crystal</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=153" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=153" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 154 -->
-<div class="girl-card" data-status="remaining" data-name="Amelia R" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/154.png" class="girl-image" alt="Amelia R" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Amelia R" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/154.png" class="all-girl-image" alt="Amelia R" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 154</div>
-        <div class="girl-card-name">Amelia R</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 154</div>
+        <div class="all-girl-name">Amelia R</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=154" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=154" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 155 -->
-<div class="girl-card" data-status="remaining" data-name="Milly" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/155.png" class="girl-image" alt="Milly" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Milly" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/155.png" class="all-girl-image" alt="Milly" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 155</div>
-        <div class="girl-card-name">Milly</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 155</div>
+        <div class="all-girl-name">Milly</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=155" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=155" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 156 -->
-<div class="girl-card" data-status="remaining" data-name="Danielle" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/156.png" class="girl-image" alt="Danielle" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Danielle" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/156.png" class="all-girl-image" alt="Danielle" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 156</div>
-        <div class="girl-card-name">Danielle</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 156</div>
+        <div class="all-girl-name">Danielle</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=156" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=156" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 157 -->
-<div class="girl-card" data-status="remaining" data-name="Elouise" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/157.png" class="girl-image" alt="Elouise" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Elouise" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/157.png" class="all-girl-image" alt="Elouise" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 157</div>
-        <div class="girl-card-name">Elouise</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 157</div>
+        <div class="all-girl-name">Elouise</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=157" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=157" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 158 -->
-<div class="girl-card" data-status="remaining" data-name="Katie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/158.png" class="girl-image" alt="Katie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Katie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/158.png" class="all-girl-image" alt="Katie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 158</div>
-        <div class="girl-card-name">Katie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 158</div>
+        <div class="all-girl-name">Katie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=158" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=158" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 159 -->
-<div class="girl-card" data-status="remaining" data-name="Amber" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/159.png" class="girl-image" alt="Amber" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Amber" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/159.png" class="all-girl-image" alt="Amber" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 159</div>
-        <div class="girl-card-name">Amber</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 159</div>
+        <div class="all-girl-name">Amber</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=159" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=159" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 160 -->
-<div class="girl-card" data-status="remaining" data-name="Tamara" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/160.png" class="girl-image" alt="Tamara" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Tamara" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/160.png" class="all-girl-image" alt="Tamara" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 160</div>
-        <div class="girl-card-name">Tamara</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 160</div>
+        <div class="all-girl-name">Tamara</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=160" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=160" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 161 -->
-<div class="girl-card" data-status="remaining" data-name="Charlotte" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/161.png" class="girl-image" alt="Charlotte" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Charlotte" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/161.png" class="all-girl-image" alt="Charlotte" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 161</div>
-        <div class="girl-card-name">Charlotte</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 161</div>
+        <div class="all-girl-name">Charlotte</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=161" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=161" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 162 -->
-<div class="girl-card" data-status="remaining" data-name="Chelsea" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/162.png" class="girl-image" alt="Chelsea" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Chelsea" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/162.png" class="all-girl-image" alt="Chelsea" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 162</div>
-        <div class="girl-card-name">Chelsea</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 162</div>
+        <div class="all-girl-name">Chelsea</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=162" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=162" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 163 -->
-<div class="girl-card" data-status="remaining" data-name="Millie" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/163.png" class="girl-image" alt="Millie" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Millie" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/163.png" class="all-girl-image" alt="Millie" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 163</div>
-        <div class="girl-card-name">Millie</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 163</div>
+        <div class="all-girl-name">Millie</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=163" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=163" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 164 -->
-<div class="girl-card" data-status="remaining" data-name="Keira" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/164.png" class="girl-image" alt="Keira" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Keira" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/164.png" class="all-girl-image" alt="Keira" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 164</div>
-        <div class="girl-card-name">Keira</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 164</div>
+        <div class="all-girl-name">Keira</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=164" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=164" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 165 -->
-<div class="girl-card" data-status="remaining" data-name="Amelia" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/165.png" class="girl-image" alt="Amelia" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Amelia" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/165.png" class="all-girl-image" alt="Amelia" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 165</div>
-        <div class="girl-card-name">Amelia</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 165</div>
+        <div class="all-girl-name">Amelia</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=165" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=165" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 166 -->
-<div class="girl-card" data-status="remaining" data-name="Jacquline" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/166.png" class="girl-image" alt="Jacquline" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Jacquline" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/166.png" class="all-girl-image" alt="Jacquline" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 166</div>
-        <div class="girl-card-name">Jacquline</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 166</div>
+        <div class="all-girl-name">Jacquline</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=166" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=166" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 167 -->
-<div class="girl-card" data-status="remaining" data-name="Sasha" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/167.png" class="girl-image" alt="Sasha" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Sasha" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/167.png" class="all-girl-image" alt="Sasha" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 167</div>
-        <div class="girl-card-name">Sasha</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 167</div>
+        <div class="all-girl-name">Sasha</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=167" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=167" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
+ 
 <!-- 168 -->
-<div class="girl-card" data-status="remaining" data-name="Anais" data-mess-type="gunge" data-source="game-show">
-    <div class="girl-image-wrapper">
-        <img src="../assets/girls/A/168.png" class="girl-image" alt="Anais" loading="lazy">
+<div class="all-girl-card" data-status="remaining" data-name="Anais" data-mess-type="gunge" data-source="game-show">
+    <div class="all-girl-image-wrapper">
+        <img src="../assets/girls/A/168.png" class="all-girl-image" alt="Anais" loading="lazy">
     </div>
-    <div class="girl-info">
-        <div class="girl-card-number">Girl 168</div>
-        <div class="girl-card-name">Anais</div>
-        <div class="status-badge remaining">Competing</div>
+    <div class="all-girl-info">
+        <div class="all-girl-number">Girl 168</div>
+        <div class="all-girl-name">Anais</div>
+        <div class="all-status-badge remaining">Competing</div>
         <br>
-        <a href="profiles/profile.html?girl=168" class="profile-button">View Profile</a>
+        <a href="profiles/profile.html?girl=168" class="all-profile-button">View Profile</a>
     </div>
 </div>
-
-
+ 
+ 
             <div class="no-results" id="noResults" hidden>
                 No girls match your filters.
             </div>
-
+ 
         </div>
-
+ 
     </div>
-
+ 
 </main>
-
 <div id="siteFooter"></div>
 
 <script src="../scripts/girls-data.js"></script>

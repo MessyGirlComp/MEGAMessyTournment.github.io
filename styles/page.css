@@ -1,0 +1,335 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* =========================================================
+   MEGA MESSY TOURNAMENT
+   PAGE / SHARED LAYOUT
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f6f8;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+}
+
+
+/* =========================================================
+   PAGE CONTAINER
+========================================================= */
+
+.page-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 50px 30px 70px;
+}
+
+.page-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.page-heading h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.page-heading p {
+    color: #666;
+}
+
+.stage-label {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    border-radius: 20px;
+    background: #e9edf3;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+    background: #111;
+    color: white;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 18px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.site-logo {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+.site-logo span {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.7;
+    margin-top: 4px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.main-nav > a,
+.dropdown-button {
+    color: white;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    padding: 10px 13px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 7px;
+    transition: background 0.2s ease;
+}
+
+.main-nav > a:hover,
+.dropdown-button:hover {
+    background: #2a2a2a;
+}
+
+.nav-dropdown {
+    position: relative;
+}
+
+.dropdown-button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: inherit;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    min-width: 210px;
+    max-height: 70vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+    padding: 7px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+    z-index: 1000;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    display: block;
+    color: #222;
+    text-decoration: none;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 7px;
+}
+
+.dropdown-menu a:hover {
+    background: #f0f1f3;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+    background: #111;
+    color: #aaa;
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 13px;
+    margin-top: auto;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 800;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.button:hover:not(:disabled) {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.button.wide {
+    display: flex;
+    width: 100%;
+    padding: 18px 25px;
+    font-size: 18px;
+    border-radius: 12px;
+}
+
+
+/* =========================================================
+   HOME PAGE
+========================================================= */
+
+.home-hero {
+    text-align: center;
+    padding: 80px 20px 40px;
+}
+
+.home-hero h1 {
+    font-size: 54px;
+    margin-bottom: 14px;
+}
+
+.home-hero p {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.home-hero .button + .button {
+    margin-left: 10px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .site-logo {
+        text-align: center;
+    }
+
+    .main-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .header-inner {
+        padding: 18px 15px;
+    }
+
+    .main-nav {
+        gap: 3px;
+    }
+
+    .main-nav > a,
+    .dropdown-button {
+        font-size: 12px;
+        padding: 8px 7px;
+    }
+
+    .page-container {
+        padding: 35px 15px 50px;
+    }
+
+    .page-heading h1 {
+        font-size: 32px;
+    }
+
+    .home-hero h1 {
+        font-size: 36px;
+    }
+
+    .home-hero .button + .button {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
