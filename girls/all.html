@@ -2463,6 +2463,13 @@
             </div>
  
         </div>
+
+        <!-- =====================================================
+             PAGINATION (20 girls per page, built by the script)
+        ====================================================== -->
+
+        <div class="pagination-info" id="paginationInfo"></div>
+        <nav class="pagination" id="pagination" aria-label="Pagination"></nav>
  
     </div>
  
@@ -2474,50 +2481,158 @@
 
 <script>
 
+const GIRLS_PER_PAGE = 20;
+
 const statusFilter = document.getElementById("statusFilter");
 const messFilter = document.getElementById("messFilter");
 const sourceFilter = document.getElementById("sourceFilter");
 const searchBox = document.getElementById("searchBox");
 const resetFilters = document.getElementById("resetFilters");
 const noResults = document.getElementById("noResults");
+const pagination = document.getElementById("pagination");
+const paginationInfo = document.getElementById("paginationInfo");
 
-const cards = document.querySelectorAll(".girl-card");
+const cards = Array.from(document.querySelectorAll(".all-girl-card"));
+
+let currentPage = 1;
+let filteredCards = cards;
 
 
-function updateCards() {
+function applyFilters() {
 
     const statusValue = statusFilter.value;
     const messValue = messFilter.value;
     const sourceValue = sourceFilter.value;
     const searchValue = searchBox.value.toLowerCase().trim();
 
-    let visible = 0;
+    filteredCards = cards.filter(card =>
+        (statusValue === "all" || card.dataset.status === statusValue) &&
+        (messValue === "all" || card.dataset.messType === messValue) &&
+        (sourceValue === "all" || card.dataset.source === sourceValue) &&
+        (card.dataset.name || "").toLowerCase().includes(searchValue)
+    );
 
-    cards.forEach(card => {
-
-        const match =
-            (statusValue === "all" || card.dataset.status === statusValue) &&
-            (messValue === "all" || card.dataset.messType === messValue) &&
-            (sourceValue === "all" || card.dataset.source === sourceValue) &&
-            (card.dataset.name || "").toLowerCase().includes(searchValue);
-
-        card.hidden = !match;
-
-        if (match) {
-            visible++;
-        }
-
-    });
-
-    noResults.hidden = visible > 0;
+    currentPage = 1;
+    renderPage();
 
 }
 
+
+function renderPage() {
+
+    const total = filteredCards.length;
+    const totalPages = Math.max(1, Math.ceil(total / GIRLS_PER_PAGE));
+
+    if (currentPage > totalPages) {
+        currentPage = totalPages;
+    }
+
+    const start = (currentPage - 1) * GIRLS_PER_PAGE;
+    const end = start + GIRLS_PER_PAGE;
+    const visibleSet = new Set(filteredCards.slice(start, end));
+
+    cards.forEach(card => {
+        card.hidden = !visibleSet.has(card);
+    });
+
+    noResults.hidden = total > 0;
+
+    if (total > 0) {
+        paginationInfo.textContent =
+            "Showing " + (start + 1) + "–" + Math.min(end, total) +
+            " of " + total + " girls";
+    } else {
+        paginationInfo.textContent = "";
+    }
+
+    renderPagination(totalPages);
+
+}
+
+
+function pageButton(label, page, options) {
+
+    options = options || {};
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "page-button";
+    button.textContent = label;
+
+    if (options.active) {
+        button.classList.add("active");
+        button.setAttribute("aria-current", "page");
+    }
+
+    if (options.disabled) {
+        button.disabled = true;
+    } else {
+        button.addEventListener("click", () => goToPage(page));
+    }
+
+    return button;
+
+}
+
+
+function renderPagination(totalPages) {
+
+    pagination.innerHTML = "";
+
+    if (totalPages <= 1) {
+        return;
+    }
+
+    pagination.appendChild(pageButton("Prev", currentPage - 1, { disabled: currentPage === 1 }));
+
+    // Show first, last, and a window around the current page
+    const pages = [];
+
+    for (let p = 1; p <= totalPages; p++) {
+        if (p === 1 || p === totalPages || Math.abs(p - currentPage) <= 1) {
+            pages.push(p);
+        }
+    }
+
+    let previous = 0;
+
+    pages.forEach(p => {
+
+        if (p - previous > 1) {
+            const dots = document.createElement("span");
+            dots.className = "page-dots";
+            dots.textContent = "…";
+            pagination.appendChild(dots);
+        }
+
+        pagination.appendChild(pageButton(String(p), p, { active: p === currentPage }));
+        previous = p;
+
+    });
+
+    pagination.appendChild(pageButton("Next", currentPage + 1, { disabled: currentPage === totalPages }));
+
+}
+
+
+function goToPage(page) {
+
+    currentPage = page;
+    renderPage();
+
+    window.scrollTo({
+        top: document.querySelector(".filters").offsetTop - 20,
+        behavior: "smooth"
+    });
+
+}
+
+
 [statusFilter, messFilter, sourceFilter].forEach(select => {
-    select.addEventListener("change", updateCards);
+    select.addEventListener("change", applyFilters);
 });
 
-searchBox.addEventListener("input", updateCards);
+searchBox.addEventListener("input", applyFilters);
 
 resetFilters.addEventListener("click", () => {
 
@@ -2526,9 +2641,11 @@ resetFilters.addEventListener("click", () => {
     sourceFilter.value = "all";
     searchBox.value = "";
 
-    updateCards();
+    applyFilters();
 
 });
+
+applyFilters();
 
 </script>
 
