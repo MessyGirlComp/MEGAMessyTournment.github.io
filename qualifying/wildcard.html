@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wildcard Stage | MEGA Messy Tournament</title>
+
+<link rel="icon" type="image/png" href="../assets/favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="../assets/favicon/favicon.svg" />
+<link rel="shortcut icon" href="../assets/favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="M.M.Cup" />
+<link rel="manifest" href="../assets/favicon/site.webmanifest" />
+
+<link rel="stylesheet" href="../styles/page.css">
+<link rel="stylesheet" href="../styles/group.css">
+
+<style>
+
+.status-group {
+    margin-bottom: 50px;
+}
+
+.status-group-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.status-group-heading a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.status-group-heading a:hover {
+    text-decoration: underline;
+}
+
+.status-empty {
+    text-align: center;
+    background: white;
+    padding: 50px 25px;
+    border-radius: 16px;
+    color: #666;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.status-total {
+    max-width: 260px;
+    margin: 0 auto 40px;
+}
+
+</style>
+
+</head>
+
+<body data-status-page="wildcard">
+
+<div id="siteHeader"></div>
+
+<main>
+
+    <div class="page-container">
+
+        <div class="page-heading">
+            <span class="stage-label">Qualifying Stage</span>
+            <h1 id="statusTitle">Wildcard Stage</h1>
+            <p id="statusSubtitle"></p>
+        </div>
+
+        <div class="group-status status-total">
+
+            <div class="status-box">
+                <span class="status-number" id="girlCount">0</span>
+                <span class="status-label">Girls</span>
+            </div>
+
+        </div>
+
+        <div id="statusList"></div>
+
+    </div>
+
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="../scripts/girls-data.js"></script>
+<script src="../scripts/site.js"></script>
+<script src="../scripts/status-list.js"></script>
+
+</body>
+
+</html>

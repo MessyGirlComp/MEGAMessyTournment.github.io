@@ -144,23 +144,6 @@ function renderSiteHeader() {
                     <div class="nav-dropdown">
 
                         <button type="button" class="dropdown-button">
-                            Tournament Stage <span>&#8964;</span>
-                        </button>
-
-                        <div class="dropdown-menu">
-                            <a href="${escapeHTML(siteURL("tournament/groups/index.html"))}">Group Stages</a>
-                            <a href="${escapeHTML(siteURL("tournament/round32.html"))}">Round of 32</a>
-                            <a href="${escapeHTML(siteURL("tournament/quarter-finals.html"))}">Quarter Finals</a>
-                            <a href="${escapeHTML(siteURL("tournament/semi-finals.html"))}">Semi Finals</a>
-                            <a href="${escapeHTML(siteURL("tournament/grand-finals.html"))}">Grand Finals</a>
-                            <a href="${escapeHTML(siteURL("tournament/third-place.html"))}">3rd Place Match</a>
-                        </div>
-
-                    </div>
-
-                    <div class="nav-dropdown">
-
-                        <button type="button" class="dropdown-button">
                             Girls Profiles <span>&#8964;</span>
                         </button>
 
