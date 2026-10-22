@@ -23,8 +23,8 @@
 
 /* Paste the two Microsoft Forms links here (full https:// URLs) */
 
-const HELP_FEEDBACK_URL = "YOUR_MICROSOFT_FORM_FEEDBACK_LINK";
-const HELP_REPORT_URL = "YOUR_MICROSOFT_FORM_REPORT_LINK";
+const HELP_FEEDBACK_URL = "https://forms.cloud.microsoft/r/XUywaaPNMN";
+const HELP_REPORT_URL = "https://forms.cloud.microsoft/r/g6jTczdrEw";
 
 /* How many girls go in each sub-dropdown of "Girls Profiles" */
 
