@@ -333,3 +333,221 @@ main {
         margin-top: 10px;
     }
 }
+
+/* =========================================================
+   HEADER: GIRLS SUB-DROPDOWNS, HELP MENU, SEARCH
+========================================================= */
+
+/* Girls menu holds sub-dropdowns that fly out to the side,
+   so it must not clip them (each sub-menu scrolls instead) */
+
+.dropdown-menu.has-submenus {
+    overflow: visible;
+    max-height: none;
+}
+
+.dropdown-menu.align-right {
+    left: auto;
+    right: 0;
+}
+
+.dropdown-sub {
+    position: relative;
+}
+
+.dropdown-sub-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #222;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    padding: 10px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.dropdown-sub:hover > .dropdown-sub-button,
+.dropdown-sub:focus-within > .dropdown-sub-button {
+    background: #f0f1f3;
+}
+
+.submenu {
+    position: absolute;
+    top: -7px;
+    left: calc(100% + 4px);
+    min-width: 220px;
+    max-height: 70vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+    padding: 7px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-5px);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+}
+
+.dropdown-sub:hover > .submenu,
+.dropdown-sub:focus-within > .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.submenu a {
+    display: block;
+    color: #222;
+    text-decoration: none;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 7px;
+}
+
+.submenu a:hover {
+    background: #f0f1f3;
+}
+
+
+/* ---------- search ---------- */
+
+.header-search {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.header-search input {
+    width: 230px;
+    padding: 10px 14px;
+    background: #2a2a2a;
+    color: white;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition:
+        width 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.header-search input::placeholder {
+    color: #aaa;
+}
+
+.header-search input:focus {
+    width: 290px;
+    background: #333;
+    border-color: #888;
+}
+
+.search-results {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 360px;
+    max-width: calc(100vw - 30px);
+    max-height: 70vh;
+    overflow-y: auto;
+    background: white;
+    color: #222;
+    border-radius: 10px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+    padding: 7px;
+    z-index: 1000;
+}
+
+.search-results[hidden] {
+    display: none;
+}
+
+.search-heading {
+    padding: 8px 12px 4px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #777;
+}
+
+.search-result {
+    display: block;
+    padding: 9px 12px;
+    color: #222;
+    text-decoration: none;
+    border-radius: 7px;
+}
+
+.search-result:hover,
+.search-result.active {
+    background: #f0f1f3;
+}
+
+.search-result-title {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.search-result-sub {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    color: #777;
+}
+
+.search-empty {
+    padding: 14px 12px;
+    font-size: 14px;
+    color: #666;
+}
+
+@media (max-width: 1000px) {
+
+    .header-search {
+        width: 100%;
+    }
+
+    .header-search input,
+    .header-search input:focus {
+        width: 100%;
+    }
+
+    .search-results {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 600px) {
+
+    /* Sub-menus open downwards inside the menu instead of to the side */
+
+    .submenu {
+        position: static;
+        display: none;
+        box-shadow: none;
+        max-height: 40vh;
+        padding: 0 0 0 12px;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .dropdown-sub:hover > .submenu,
+    .dropdown-sub:focus-within > .submenu {
+        display: block;
+    }
+}
