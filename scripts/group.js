@@ -227,7 +227,7 @@ function setupVoting(group) {
 
     if (!isVotingConfigured()) {
 
-        buttons.forEach(button => { button.disabled = true; });
+        buttons.forEach(button => { button.disabled = false; });
 
         setVoteMessage("Voting for this group has not opened yet.", false);
 
