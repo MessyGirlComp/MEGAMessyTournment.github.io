@@ -1,63 +1,77 @@
-# Supabase voting: setup guide
+# Supabase voting: guide (v2)
 
-## What Supabase is (in plain words)
+## How voting works
 
-Your site is just files (HTML + JavaScript), so it can't remember anything between visitors. Supabase is a free online database. Your site sends each vote to it, and asks it for the totals.
+- On a group page, each voter picks **2 different girls** (the Vote buttons turn into "Selected"), then presses **Submit my 2 votes**.
+- One submission per browser per group. After that the buttons lock and the girls they picked show "Your vote".
+- **Votes and counts are hidden from the public.** The site cannot read them at all. Only you can see results, in Supabase.
+- The rules are enforced by the database, not just the page: exactly 2 votes, 2 different girls, one submission per voter per group.
 
-- **Project URL + anon key**: the address and a public "key" that lets your site talk to *your* database. Safe to put in the site.
-- **Table (`votes`)**: a spreadsheet in the database. One row per vote: group, girl, voter, time.
-- **Row Level Security (RLS)**: rules that say what the public key may do. Ours says: visitors can only *add* a vote. They can't read, edit or delete votes.
-- **Function (`get_group_results`)**: lets the site ask for vote *counts* without ever seeing who voted.
+## Setup
 
-## Setup (about 10 minutes)
+1. Supabase: **SQL Editor > New query**, paste all of `supabase-setup.sql`, **Run**. Safe to run again. It upgrades the older one-vote version and removes the public results function.
+2. `scripts/supabase-config.js`: paste your Project URL and the anon/publishable key.
+3. Upload to your site, overwriting old copies:
+   - `scripts/`: `supabase-config.js`, `votes.js`, `group.js`, `profile.js`, `girls-data.js`
+   - `qualifying/groups/`: `group.html`
+4. Hard refresh (Ctrl+Shift+R) and test.
 
-1. Go to supabase.com, sign up (free), and click **New project**. Pick a name, a database password (save it somewhere), and the region nearest your visitors. Wait about a minute for it to start.
-2. In the left menu open **SQL Editor** > **New query**. Paste in everything from `supabase-setup.sql` and click **Run**. You should see "Success". This creates the table, the rules and the results function.
-3. Open **Project Settings > API**. Copy the **Project URL** and the **anon / publishable** key.
-4. Open `scripts/supabase-config.js` and paste them over `YOUR_SUPABASE_URL` and `YOUR_SUPABASE_ANON_KEY`.
-5. Upload the files to your site (see "Where each file goes").
-6. Open a group page, vote, and check the **Table Editor > votes** in Supabase: your vote should be there.
+## Viewing results (SQL Editor)
 
-**Never** put the `service_role` / secret key in the site. Only the anon / publishable key.
+Votes store the girl's ID (like `004`), which matches her ID in `girls-data.js`.
 
-## Where each file goes
-
-| File | Location on your site |
-|---|---|
-| `supabase-config.js` (new) | `scripts/` |
-| `votes.js` (new) | `scripts/` |
-| `group.js` (changed) | `scripts/` |
-| `profile.js` (changed) | `scripts/` |
-| `girls-data.js` (changed) | `scripts/` |
-| `group.html` (changed) | `qualifying/groups/` |
-| `supabase-setup.sql` | not uploaded, only pasted into Supabase |
-
-## How voting works now
-
-- Every girl's card on a group page has a **Vote** button.
-- Each browser gets a random ID (stored in the browser). The database allows **one vote per ID per group**.
-- After voting, the buttons lock and each card shows its vote count.
-- A girl's profile page "Vote" button now takes people to her group page.
-- The old `groupVoteLinks` / Microsoft Forms voting code is gone.
-
-## Reading your results
-
-In Supabase, **SQL Editor**, run:
+**One group, most votes first** (change 7 to your group):
 
 ```sql
 select girl_id, count(*) as votes
-from votes
+from public.votes
 where group_number = 7
 group by girl_id
-order by votes desc;
+order by votes desc, girl_id;
 ```
 
-Change `7` to the group you want. The top two are your qualifiers and third is the wildcard, matching `QUALIFY_COUNT` and `WILDCARD_COUNT` in `group.js`.
+**Every group at once, with places** (place 1 and 2 qualify, 3 is the wildcard):
 
-To restart a group's voting: `delete from votes where group_number = 7;` (then people who voted before can vote again only if they also clear their browser data, see below).
+```sql
+select group_number, girl_id, votes, place
+from (
+    select group_number, girl_id,
+           count(*) as votes,
+           rank() over (
+               partition by group_number
+               order by count(*) desc
+           ) as place
+    from public.votes
+    group by group_number, girl_id
+) results
+order by group_number, place, girl_id;
+```
+
+**How many people voted in each group:**
+
+```sql
+select group_number, count(distinct voter_id) as voters
+from public.votes
+group by group_number
+order by group_number;
+```
+
+You can also look at the raw rows in **Table Editor > votes**.
+
+Ties show the same place number (two girls both on place 2, for example), so check for them before choosing the wildcard.
+
+## Clearing votes
+
+```sql
+delete from public.votes where group_number = 7;  -- one group
+delete from public.votes;                         -- everything (after testing)
+```
+
+Browsers that voted still remember it. To test again, use a fresh private window.
 
 ## Honest limits
 
-- **It's not cheat-proof.** The one-vote limit follows the browser. Someone who clears site data, uses a private window or another device can vote again. That's normal for a public no-login poll. If it matters later, the upgrade is Supabase's anonymous sign-in or requiring a login, and I can add it.
-- **Vote counts are visible to everyone who has voted** (they come from the public results function). If you'd rather hide counts until a group closes, I can switch it off.
-- The free plan pauses a project after about a week of no activity, so open the dashboard now and then during quiet periods.
+- The one-submission limit follows the browser. Clearing site data, a private window or another device lets someone vote again. For stricter control the next step is requiring a sign-in.
+- Because votes are tied to a random browser ID, you can't tell who a voter is, only that it's one browser.
+- The number of votes per voter (2) is set in `votes.js` (`VOTES_PER_GROUP`) and in the `cast_votes` function in the SQL. Change both together if you ever want a different number.
+- The free Supabase plan pauses projects after about a week of no activity.

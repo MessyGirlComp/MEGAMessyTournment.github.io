@@ -7,14 +7,17 @@
    girls-data.js, site.js, supabase-config.js, votes.js, group.js
 
    Rules:
-   - one vote per browser per qualifying group
-     (enforced by the database: unique group_number + voter_id)
-   - votes are only ever ADDED from the browser
-   - results are counts only (get_group_results in the database)
+   - each voter picks exactly VOTES_PER_GROUP different girls
+     per qualifying group, and can only vote once per group
+   - the database enforces this (cast_votes in supabase-setup.sql)
+   - votes and counts are NOT readable from the website;
+     you view results in the Supabase SQL Editor
 ========================================================= */
 
+const VOTES_PER_GROUP = 2;
+
 const VOTER_ID_KEY = "mmt_voter_id";
-const MY_VOTE_KEY_PREFIX = "mmt_vote_group_";
+const MY_VOTE_KEY_PREFIX = "mmt_votes_group_";
 
 let supabaseClient = null;
 let memoryVoterId = null;
@@ -94,20 +97,27 @@ function getVoterId() {
 
 }
 
-function getMyVote(group) {
+/* The girls this browser voted for in a group, e.g. ["004", "009"].
+   Returns null if it has not voted. */
+
+function getMyVotes(group) {
 
     try {
-        return localStorage.getItem(MY_VOTE_KEY_PREFIX + group) || null;
+
+        const saved = localStorage.getItem(MY_VOTE_KEY_PREFIX + group);
+
+        return saved ? saved.split(",").filter(Boolean) : null;
+
     } catch (error) {
         return null;
     }
 
 }
 
-function rememberMyVote(group, girlID) {
+function rememberMyVotes(group, girlIDs) {
 
     try {
-        localStorage.setItem(MY_VOTE_KEY_PREFIX + group, girlID);
+        localStorage.setItem(MY_VOTE_KEY_PREFIX + group, girlIDs.join(","));
     } catch (error) {
         // ignore: the database still blocks a second vote
     }
@@ -116,76 +126,59 @@ function rememberMyVote(group, girlID) {
 
 
 /* =========================================================
-   CAST A VOTE
+   CAST VOTES
    returns { ok: true }
         or { ok: false, alreadyVoted: true }
         or { ok: false, error: "message" }
 ========================================================= */
 
-async function castVote(group, girlID) {
+async function castVotes(group, girlIDs) {
 
     if (!isVotingConfigured()) {
         return { ok: false, error: "Voting has not been set up yet." };
     }
 
-    const { error } = await getSupabase()
-        .from("votes")
-        .insert({
-            group_number: Number(group),
-            girl_id: String(girlID),
-            voter_id: getVoterId()
-        });
+    if (girlIDs.length !== VOTES_PER_GROUP) {
+        return {
+            ok: false,
+            error: `Please pick exactly ${VOTES_PER_GROUP} girls.`
+        };
+    }
 
-    if (!error) {
-        rememberMyVote(group, girlID);
+    const { data, error } = await getSupabase().rpc("cast_votes", {
+        p_group: Number(group),
+        p_voter: getVoterId(),
+        p_girls: girlIDs.map(String)
+    });
+
+    if (error) {
+
+        console.error("Vote failed:", error);
+
+        return {
+            ok: false,
+            error: "Your votes could not be saved. Please try again."
+        };
+
+    }
+
+    if (data === "ok") {
+        rememberMyVotes(group, girlIDs);
         return { ok: true };
     }
 
-    // 23505 = unique violation: this voter already voted in this group
-    if (error.code === "23505") {
+    if (data === "already_voted") {
 
-        if (!getMyVote(group)) {
-            rememberMyVote(group, "unknown");
+        if (!getMyVotes(group)) {
+            rememberMyVotes(group, ["unknown"]);
         }
 
         return { ok: false, alreadyVoted: true };
     }
 
-    console.error("Vote failed:", error);
-
     return {
         ok: false,
-        error: "Your vote could not be saved. Please try again."
+        error: "Your votes could not be saved. Please try again."
     };
-
-}
-
-
-/* =========================================================
-   RESULTS
-   returns { "004": 12, "009": 7, ... }   (empty object on failure)
-========================================================= */
-
-async function getGroupResults(group) {
-
-    if (!isVotingConfigured()) {
-        return {};
-    }
-
-    const { data, error } = await getSupabase()
-        .rpc("get_group_results", { p_group: Number(group) });
-
-    if (error) {
-        console.error("Could not load results:", error);
-        return {};
-    }
-
-    const results = {};
-
-    (data || []).forEach(row => {
-        results[row.girl_id] = Number(row.vote_count);
-    });
-
-    return results;
 
 }
