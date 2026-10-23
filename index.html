@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>MEGA Messy Tournament - Season 1</title>
-	
+
     <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
     <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
@@ -14,76 +14,217 @@
     <link rel="manifest" href="assets/favicon/site.webmanifest" />
 
     <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
         body {
             min-height: 100vh;
+
             font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(
-                135deg,
-                #1a1a2e,
-                #16213e,
-                #0f3460
-            );
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(125, 211, 252, 0.12),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #1a1a2e 0%,
+                    #16213e 50%,
+                    #0f3460 100%
+                );
+
             color: white;
 
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
 
-            padding: 30px;
+            padding: 40px 25px;
+
+            position: relative;
+            overflow: hidden;
         }
+
+
+        /* =====================================================
+           SUBTLE BACKGROUND EFFECT
+        ===================================================== */
+
+        body::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            top: -250px;
+            right: -200px;
+
+            background: rgba(125, 211, 252, 0.06);
+
+            border-radius: 50%;
+
+            filter: blur(10px);
+
+            pointer-events: none;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
 
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 850px;
+
             text-align: center;
+
+            position: relative;
+            z-index: 1;
         }
+
+
+        /* =====================================================
+           TITLE
+        ===================================================== */
 
         .title {
-            font-size: clamp(2rem, 6vw, 4.5rem);
+            font-size: clamp(2.1rem, 6vw, 4.5rem);
+
             font-weight: 900;
+
             text-transform: uppercase;
+
             letter-spacing: 2px;
-            margin-bottom: 15px;
+
+            line-height: 1.05;
+
+            margin-bottom: 12px;
+
+            text-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.25);
         }
+
+
+        /* =====================================================
+           SEASON
+        ===================================================== */
 
         .season {
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            font-weight: 700;
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
+
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            opacity: 0.7;
+
             margin-bottom: 45px;
-            opacity: 0.85;
         }
+
+
+        /* =====================================================
+           COMING SOON CARD
+        ===================================================== */
 
         .coming-soon {
-            display: inline-block;
-            padding: 25px 40px;
+            width: 100%;
+            max-width: 650px;
 
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
+            margin: 0 auto;
 
-            backdrop-filter: blur(10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            padding: 38px 35px 42px;
 
-            font-size: clamp(1.8rem, 5vw, 3.5rem);
-            font-weight: 900;
+            background: rgba(255, 255, 255, 0.08);
+
+            border: 1px solid rgba(255, 255, 255, 0.16);
+
+            border-radius: 22px;
+
+            backdrop-filter: blur(14px);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.28),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+            font-size: clamp(1.5rem, 4vw, 2.3rem);
+
+            font-weight: 800;
+
             text-transform: uppercase;
+
             letter-spacing: 3px;
+
+            line-height: 1.2;
         }
+
+
+        /* =====================================================
+           YEAR
+        ===================================================== */
 
         .coming-soon .year {
             display: block;
-            margin-top: 12px;
 
-            font-size: clamp(3rem, 9vw, 6rem);
-            line-height: 1;
+            margin-top: 15px;
+
+            font-size: clamp(4rem, 11vw, 7rem);
+
+            line-height: 0.95;
+
+            font-weight: 900;
+
             color: #7dd3fc;
+
+            letter-spacing: 1px;
+
+            text-shadow:
+                0 5px 30px rgba(125, 211, 252, 0.18);
         }
+
+
+        /* =====================================================
+           WEBSITE AREA
+        ===================================================== */
+
+        .website-area {
+            margin-top: 38px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .website-text {
+            font-size: 14px;
+
+            color: rgba(255, 255, 255, 0.6);
+
+            margin-bottom: 13px;
+
+            letter-spacing: 0.3px;
+        }
+
 
         /* =====================================================
            VIEW WEBSITE BUTTON
@@ -91,93 +232,188 @@
 
         .website-button {
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
-            gap: 10px;
 
-            margin-top: 35px;
-            padding: 14px 24px;
+            gap: 11px;
 
-            background: #111;
-            color: white;
+            min-width: 205px;
+
+            padding: 14px 22px;
+
+            background: #ffffff;
+
+            color: #111827;
+
             text-decoration: none;
 
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+
             border-radius: 10px;
 
-            font-size: 16px;
-            font-weight: 800;
-            letter-spacing: 0.3px;
+            font-size: 15px;
 
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-weight: 800;
+
+            letter-spacing: 0.2px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.22);
 
             transition:
-                background 0.2s ease,
                 transform 0.2s ease,
-                box-shadow 0.2s ease;
+                box-shadow 0.2s ease,
+                background 0.2s ease;
         }
+
 
         .website-button:hover {
-            background: #222;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+            background: #f0f9ff;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 14px 32px rgba(0, 0, 0, 0.3);
         }
+
 
         .website-button:active {
-            transform: translateY(0);
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.22);
         }
+
+
+        /* =====================================================
+           ARROW
+        ===================================================== */
 
         .website-button .arrow {
-            font-size: 18px;
-            color: #7dd3fc;
-            transition: transform 0.2s ease;
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+
+            color: #0f6f9f;
+
+            transition:
+                transform 0.2s ease;
         }
 
+
         .website-button:hover .arrow {
-            transform: translateX(3px);
+            transform: translateX(4px);
         }
+
+
+        /* =====================================================
+           FOOTER NOTE
+        ===================================================== */
+
+        .footer-note {
+            margin-top: 45px;
+
+            font-size: 12px;
+
+            color: rgba(255, 255, 255, 0.38);
+
+            letter-spacing: 0.4px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
         @media (max-width: 600px) {
 
             body {
-                padding: 20px;
+                padding: 30px 18px;
+            }
+
+            .title {
+                letter-spacing: 1px;
             }
 
             .season {
-                margin-bottom: 35px;
+                margin-bottom: 32px;
             }
 
             .coming-soon {
-                padding: 25px 20px;
+                padding: 30px 20px 35px;
+
+                border-radius: 18px;
+
                 letter-spacing: 2px;
             }
 
-            .website-button {
+            .coming-soon .year {
+                margin-top: 12px;
+            }
+
+            .website-area {
                 margin-top: 30px;
+            }
+
+            .website-button {
                 width: 100%;
-                max-width: 300px;
+                max-width: 280px;
+            }
+
+            .footer-note {
+                margin-top: 35px;
             }
         }
+
     </style>
 </head>
+
 
 <body>
 
     <main class="container">
 
-        <h1 class="title">MEGA Messy Tournament</h1>
+        <h1 class="title">
+            MEGA Messy Tournament
+        </h1>
 
-        <div class="season">Season 1</div>
-
-        <div class="coming-soon">
-            Coming in
-            <span class="year">2027</span>
+        <div class="season">
+            Season 1
         </div>
 
-        <a href="home.html" class="website-button">
-            View Website
-            <span class="arrow">→</span>
-        </a>
+
+        <section class="coming-soon">
+
+            Coming in
+
+            <span class="year">
+                2027
+            </span>
+
+        </section>
+
+
+        <div class="website-area">
+
+            <p class="website-text">
+                Explore the tournament website
+            </p>
+
+            <a href="home.html" class="website-button">
+                <span>View Website</span>
+                <span class="arrow" aria-hidden="true">→</span>
+            </a>
+
+        </div>
+
+
+        <p class="footer-note">
+            MEGA Messy Tournament · Season 1
+        </p>
 
     </main>
 
