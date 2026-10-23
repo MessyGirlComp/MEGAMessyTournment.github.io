@@ -153,7 +153,6 @@ function renderSiteHeader() {
 
                     </div>
 
-                    <a href="${escapeHTML(siteURL("news/index.html"))}">News</a>
 
                     <div class="nav-dropdown">
 
