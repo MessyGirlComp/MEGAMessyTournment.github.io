@@ -124,13 +124,10 @@ const MEDIA_SOURCE_TYPES = [
 
 
 /* =========================================================
-   GROUP VOTE LINKS
+   VOTING
+   Votes are stored in Supabase. See votes.js and
+   supabase-config.js (no per-group links needed any more).
 ========================================================= */
-
-const groupVoteLinks = {
-    1: "YOUR_GOOGLE_FORM_GROUP_1",
-    7: "YOUR_GOOGLE_FORM_GROUP_7"
-};
 
 
 /* =========================================================
@@ -2708,13 +2705,6 @@ function getGirlsByGroup(groupNumber) {
     );
 
 }
-
-function getGroupVoteLink(groupNumber) {
-
-    return groupVoteLinks[Number(groupNumber)] || "#";
-
-}
-
 
 /* =========================================================
    FILTER KEYS

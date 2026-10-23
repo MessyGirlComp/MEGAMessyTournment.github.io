@@ -251,6 +251,63 @@
 
 
 /* =========================================================
+   VOTING
+========================================================= */
+
+.group-vote-button {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    margin: 12px auto 0;
+    background: #e8344e;
+    color: white;
+    border: 0;
+    padding: 11px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.group-vote-button:hover:not(:disabled) {
+    background: #c42a41;
+}
+
+.group-vote-button:disabled {
+    background: #c9ced6;
+    color: #5b6470;
+    cursor: default;
+}
+
+.group-vote-button.voted {
+    background: #157515;
+    color: white;
+}
+
+.group-vote-count {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    opacity: 0.7;
+}
+
+.group-vote-count[hidden] {
+    display: none;
+}
+
+.vote-message {
+    max-width: 600px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.vote-message.error {
+    color: #aa0000;
+}
+
+
+/* =========================================================
    TABLET
 ========================================================= */
 
@@ -340,8 +397,11 @@
 
 <div id="siteFooter"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../../scripts/girls-data.js"></script>
 <script src="../../scripts/site.js"></script>
+<script src="../../scripts/supabase-config.js"></script>
+<script src="../../scripts/votes.js"></script>
 <script src="../../scripts/group.js"></script>
 
 </body>

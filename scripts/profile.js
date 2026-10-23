@@ -356,20 +356,8 @@ function setupVoteButton() {
 
     voteButton.addEventListener("click", () => {
 
-        const group = Number(currentGirl.group);
-
-        const voteLink = getGroupVoteLink(group);
-
-        // Only open a real URL (ignores YOUR_GOOGLE_FORM_... placeholders)
-        if (/^https?:\/\//i.test(voteLink)) {
-
-            window.open(voteLink, "_blank", "noopener,noreferrer");
-            return;
-
-        }
-
-        // Otherwise show her group page
-        window.location.href = getGroupURL(group);
+        // Voting happens on the group page (Supabase), so go there
+        window.location.href = getGroupURL(Number(currentGirl.group));
 
     });
 

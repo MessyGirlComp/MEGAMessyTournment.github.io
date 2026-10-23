@@ -5,7 +5,8 @@
 
    qualifying/groups/group.html?group=7
 
-   Load order: girls-data.js, site.js, group.js
+   Load order: Supabase library, girls-data.js, site.js,
+   supabase-config.js, votes.js, group.js
 ========================================================= */
 
 /* How many girls in each group qualify directly / go to wildcard */
@@ -69,7 +70,7 @@ function buildGroup() {
         grid.appendChild(createGirlCard(girl));
     });
 
-    buildVoteButton(groupNumber);
+    setupVoting(groupNumber);
 
 }
 
@@ -126,9 +127,21 @@ function createGirlCard(girl) {
                 View Profile
             </a>
 
+            <button
+                type="button"
+                class="group-vote-button"
+                data-girl-id="${escapeHTML(girl.id)}"
+            >
+                Vote
+            </button>
+
+            <div class="group-vote-count" hidden></div>
+
         </div>
 
     `;
+
+    card.dataset.girlId = girl.id;
 
 
     /* =====================================================
@@ -155,56 +168,123 @@ function createGirlCard(girl) {
 
 
 /* =========================================================
-   VOTE BUTTON
+   VOTING (Supabase)
+   Each card has a Vote button. One vote per browser per group.
+   Vote counts are shown once you have voted.
 ========================================================= */
 
-function buildVoteButton(group) {
+function setVoteMessage(text, isError) {
 
-    const voteArea = document.getElementById("voteArea");
+    const area = document.getElementById("voteArea");
 
-    voteArea.innerHTML = "";
+    area.innerHTML = "";
 
-    const button = document.createElement("a");
+    if (!text) {
+        return;
+    }
 
-    button.className = "button";
+    const message = document.createElement("p");
 
-    button.innerHTML =
-        "&#128499;&#65039; VOTE FOR A GIRL TO MOVE ON";
+    message.className = "vote-message" + (isError ? " error" : "");
+    message.textContent = text;
 
-    const voteLink = getGroupVoteLink(group);
+    area.appendChild(message);
 
+}
 
-    /*
-       Only a real URL counts.
+function showVoteCounts(group, myGirlID) {
 
-       This ignores placeholders such as:
-       YOUR_GOOGLE_FORM_LINK
-    */
+    return getGroupResults(group).then(results => {
 
-    if (/^https?:\/\//i.test(voteLink)) {
+        document.querySelectorAll(".group-girl-card[data-girl-id]").forEach(card => {
 
-        button.href = voteLink;
-        button.target = "_blank";
-        button.rel = "noopener noreferrer";
+            const id = card.dataset.girlId;
+            const count = results[id] || 0;
+            const box = card.querySelector(".group-vote-count");
+            const button = card.querySelector(".group-vote-button");
 
-    } else {
+            box.textContent = `${count} ${count === 1 ? "vote" : "votes"}`;
+            box.hidden = false;
 
-        button.href = "#";
+            button.disabled = true;
 
-        button.addEventListener("click", event => {
-
-            event.preventDefault();
-
-            alert(
-                `The voting form for Qualifying Group ${group} has not been added yet.`
-            );
+            if (id === myGirlID) {
+                button.textContent = "✔ Your vote";
+                button.classList.add("voted");
+            } else {
+                button.textContent = "Vote closed for you";
+            }
 
         });
 
+    });
+
+}
+
+function setupVoting(group) {
+
+    const buttons = document.querySelectorAll(".group-vote-button");
+
+    if (!isVotingConfigured()) {
+
+        buttons.forEach(button => { button.disabled = true; });
+
+        setVoteMessage("Voting for this group has not opened yet.", false);
+
+        return;
     }
 
+    const existingVote = getMyVote(group);
 
-    voteArea.appendChild(button);
+    if (existingVote) {
+
+        setVoteMessage("Thanks, your vote for this group has been counted.", false);
+
+        showVoteCounts(group, existingVote);
+
+        return;
+    }
+
+    setVoteMessage("Pick your favourite girl and press Vote. You can only vote once per group.", false);
+
+    buttons.forEach(button => {
+
+        button.addEventListener("click", async () => {
+
+            const girlID = button.dataset.girlId;
+            const girl = getGirl(girlID);
+
+            if (!confirm(`Vote for ${girl.name}? You can't change your vote afterwards.`)) {
+                return;
+            }
+
+            buttons.forEach(b => { b.disabled = true; });
+
+            const result = await castVote(group, girlID);
+
+            if (result.ok) {
+
+                setVoteMessage(`Thanks! Your vote for ${girl.name} has been counted.`, false);
+
+                showVoteCounts(group, girlID);
+
+            } else if (result.alreadyVoted) {
+
+                setVoteMessage("You have already voted in this group.", false);
+
+                showVoteCounts(group, getMyVote(group));
+
+            } else {
+
+                setVoteMessage(result.error, true);
+
+                buttons.forEach(b => { b.disabled = false; });
+
+            }
+
+        });
+
+    });
 
 }
 
