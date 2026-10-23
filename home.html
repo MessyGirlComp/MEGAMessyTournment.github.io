@@ -65,65 +65,26 @@
             margin-bottom: 50px;
         }
 
-        .countdown-title {
-            font-size: 13px;
-            font-weight: 800;
+        .coming-soon {
+            display: inline-block;
+            padding: 25px 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            font-size: clamp(1.6rem, 5vw, 2.8rem);
+            font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 3px;
-            opacity: 0.7;
-            margin-bottom: 20px;
         }
 
-        .countdown {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 16px;
-            max-width: 760px;
-            margin: 0 auto;
-        }
-
-        .time-box {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 16px;
-            padding: 26px 10px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
-        }
-
-        .time-number {
-            display: block;
-            font-size: clamp(2.2rem, 6vw, 3.6rem);
-            font-weight: 900;
-            line-height: 1;
-            color: #7dd3fc;
-        }
-
-        .time-label {
+        .coming-soon .year {
             display: block;
             margin-top: 10px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.7;
-        }
-
-        .countdown-date {
-            margin-top: 24px;
-            font-size: 15px;
-            font-weight: 600;
-            opacity: 0.7;
-        }
-
-        .countdown-started {
-            grid-column: 1 / -1;
-            padding: 32px;
-            font-size: 1.5rem;
-            font-weight: 900;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 16px;
+            font-size: clamp(3rem, 9vw, 6rem);
+            line-height: 1;
+            color: #7dd3fc;
         }
 
         .hero-actions {
@@ -162,6 +123,12 @@
             margin-bottom: 30px;
         }
 
+        .group-list.two-tiles {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
         .explore-tile {
             padding: 34px 22px;
         }
@@ -177,8 +144,12 @@
                 padding: 60px 16px 55px;
             }
 
-            .countdown {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+            .coming-soon {
+                padding: 22px 24px;
+            }
+
+            .group-list.two-tiles {
+                grid-template-columns: 1fr;
             }
 
             .hero-actions .button {
@@ -205,7 +176,10 @@
 
                 <p class="hero-subtitle">The ultimate showdown begins soon.</p>
 
-                <div class="countdown-title">Coming In 2027</div>
+                <div class="coming-soon">
+                    Coming in
+                    <span class="year">2027</span>
+                </div>
 
                 <div class="hero-actions">
                     <a href="girls/all.html" class="button" id="heroGirlsLink">Meet the Girls</a>
@@ -243,7 +217,7 @@
                 <p>Jump straight to the part you're looking for.</p>
             </div>
 
-            <div class="group-list">
+            <div class="group-list two-tiles">
 
                 <a href="girls/all.html" class="group-tile explore-tile">
                     <span class="icon">👩</span>
@@ -256,6 +230,7 @@
                     <strong>Qualifying Stage</strong>
                     <span>Group pages and voting</span>
                 </a>
+
             </div>
 
         </div>
@@ -271,7 +246,6 @@
     <script src="scripts/site.js"></script>
 
     <script>
-    
         /* =========================================================
            LIVE STATS (from girls-data.js)
         ========================================================= */

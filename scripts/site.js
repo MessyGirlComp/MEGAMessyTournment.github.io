@@ -252,7 +252,6 @@ const SEARCH_PAGES = [
     { title: "Tournament Stage: Grand Finals", path: "tournament/grand-finals.html", keywords: "tournament grand final winner champion" },
     { title: "Tournament Stage: 3rd Place Match", path: "tournament/third-place.html", keywords: "tournament third place bronze" },
 
-    { title: "News", path: "news/index.html", keywords: "updates announcements latest" },
 
     { title: "Help: Feedback Form", url: HELP_FEEDBACK_URL, keywords: "help feedback suggestion comment contact", external: true },
     { title: "Help: Report Form", url: HELP_REPORT_URL, keywords: "help report problem issue bug error contact", external: true }
