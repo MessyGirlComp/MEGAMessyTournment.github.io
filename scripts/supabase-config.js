@@ -14,5 +14,5 @@
    NEVER paste the "service_role" / "secret" key here.
 ========================================================= */
 
-const SUPABASE_URL = "YOUR_SUPABASE_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "bqjgsuikfbidprzbxupx";
+const SUPABASE_ANON_KEY = "sb_publishable__idASd_azTO-SYy8ll0oSg_rH8j6v_p";
