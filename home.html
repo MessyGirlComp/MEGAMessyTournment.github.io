@@ -205,28 +205,7 @@
 
                 <p class="hero-subtitle">The ultimate showdown begins soon.</p>
 
-                <div class="countdown-title">Tournament Starts In</div>
-
-                <div class="countdown" id="countdown">
-                    <div class="time-box">
-                        <span class="time-number" id="days">00</span>
-                        <span class="time-label">Days</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="time-number" id="hours">00</span>
-                        <span class="time-label">Hours</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="time-number" id="minutes">00</span>
-                        <span class="time-label">Minutes</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="time-number" id="seconds">00</span>
-                        <span class="time-label">Seconds</span>
-                    </div>
-                </div>
-
-                <div class="countdown-date">1 December 2026</div>
+                <div class="countdown-title">Coming In 2027</div>
 
                 <div class="hero-actions">
                     <a href="girls/all.html" class="button" id="heroGirlsLink">Meet the Girls</a>
@@ -277,19 +256,6 @@
                     <strong>Qualifying Stage</strong>
                     <span>Group pages and voting</span>
                 </a>
-
-                <a href="tournament/groups/index.html" class="group-tile explore-tile">
-                    <span class="icon">🏆</span>
-                    <strong>Tournament Stage</strong>
-                    <span>From groups to the Grand Final</span>
-                </a>
-
-                <a href="news/index.html" class="group-tile explore-tile">
-                    <span class="icon">📰</span>
-                    <strong>News</strong>
-                    <span>Latest updates and announcements</span>
-                </a>
-
             </div>
 
         </div>
@@ -305,50 +271,7 @@
     <script src="scripts/site.js"></script>
 
     <script>
-        /* =========================================================
-           COUNTDOWN
-        ========================================================= */
-
-        const tournamentDate = new Date("2026-12-01T00:00:00");
-
-        function pad(value) {
-            return String(value).padStart(2, "0");
-        }
-
-        let countdownTimer = null;
-
-        function updateCountdown() {
-
-            const difference = tournamentDate.getTime() - Date.now();
-
-            if (difference <= 0) {
-
-                document.getElementById("countdown").innerHTML =
-                    '<div class="countdown-started">🎉 The MEGA Messy Tournament has started!</div>';
-
-                clearInterval(countdownTimer);
-
-                return;
-            }
-
-            document.getElementById("days").textContent =
-                pad(Math.floor(difference / 86400000));
-
-            document.getElementById("hours").textContent =
-                pad(Math.floor(difference / 3600000) % 24);
-
-            document.getElementById("minutes").textContent =
-                pad(Math.floor(difference / 60000) % 60);
-
-            document.getElementById("seconds").textContent =
-                pad(Math.floor(difference / 1000) % 60);
-
-        }
-
-        updateCountdown();
-        countdownTimer = setInterval(updateCountdown, 1000);
-
-
+    
         /* =========================================================
            LIVE STATS (from girls-data.js)
         ========================================================= */
