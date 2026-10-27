@@ -205,18 +205,17 @@ function createStatusCard(girl, config) {
         is used instead.
     */
 
-    const file = girlImageFileName(girl.id);
     const image = card.querySelector(".group-girl-image");
 
     image.addEventListener("error", function fallback() {
 
         image.removeEventListener("error", fallback);
 
-        image.src = siteURL(`assets/girls/A/${file}`);
+        image.src = getGirlImageA(girl.id);
 
     });
 
-    image.src = siteURL(`assets/girls/T/${file}`);
+    image.src = getGirlThumbnail(girl.id);
 
     return card;
 
