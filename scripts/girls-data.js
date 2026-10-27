@@ -16,10 +16,11 @@
 
    index.html
    assets/images/girls/<Media Source Type>/<From>/<Name> (<ID>)/
-       A.png   first image
-       B.png   second image
-       C.png   third image
-       T.png   thumbnail (cards on list pages)
+       001A.png   first image   (girl ID + A)
+       001B.png   second image
+       001C.png   third image
+       001T.png   thumbnail (cards on list pages)
+       (png, jpg or jpeg - the site tries all three)
    scripts/girls-data.js
    scripts/site.js
    scripts/profile.js
@@ -59,7 +60,7 @@ function siteURL(path) {
 
    assets/images/girls/<Media Source Type>/<From>/<Name> (<ID>)/
 
-   e.g.  assets/images/girls/Game Show/Wait For It/Amy (001)/A.png
+   e.g.  assets/images/girls/Game Show/Wait For It/Amy (001)/001A.png
 
    Paths are built from the site root (see siteURL), so they
    work from every page, however deep the page is.
@@ -81,13 +82,18 @@ const GIRL_FALLBACK_FROM_FOLDER = "Other";
     File names inside a girl's folder.
     slot = "A", "B", "C" (profile carousel) or "T" (thumbnail).
 
-    Default extension is png. If one girl's files are jpeg, add
-    imageExt: "jpeg" to her entry in the database below.
+    Files are named <girl ID><slot>, e.g. 001A.png, 001B.jpg, 001T.jpeg.
+
+    The extension can be png, jpg or jpeg. The site tries png first
+    (or imageExt if a girl has one) and then the other extensions
+    automatically, so imageExt is now OPTIONAL.
 */
+
+const GIRL_IMAGE_EXTENSIONS = ["png", "jpg", "jpeg"];
 
 function girlImageFileName(girl, slot) {
 
-    return `${slot}.${girl.imageExt || "png"}`;
+    return `${girl.id}${slot}.${girl.imageExt || "png"}`;
 
 }
 
@@ -3568,3 +3574,93 @@ function getGirlImageA(id)    { return getGirlAssetPath(id, "a"); }
 function getGirlImageB(id)    { return getGirlAssetPath(id, "b"); }
 function getGirlImageC(id)    { return getGirlAssetPath(id, "c"); }
 function getGirlThumbnail(id) { return getGirlAssetPath(id, "t"); }
+
+
+/* =========================================================
+   IMAGE EXTENSION FALLBACK
+   ---------------------------------------------------------
+   Images can be png, jpg or jpeg. These helpers try each
+   extension until one loads.
+========================================================= */
+
+/* Every URL to try for one image (the girl's own extension first) */
+
+function getGirlAssetCandidates(idOrGirl, type) {
+
+    const first = getGirlAssetPath(idOrGirl, type);
+
+    if (!first) {
+        return [];
+    }
+
+    const dot = first.lastIndexOf(".");
+    const stem = first.slice(0, dot);
+    const ext = first.slice(dot + 1).toLowerCase();
+
+    return [ext, ...GIRL_IMAGE_EXTENSIONS.filter(e => e !== ext)]
+        .map(e => `${stem}.${e}`);
+
+}
+
+/* Put an image on an <img>, trying png / jpg / jpeg in turn.
+   onAllFailed(img) runs if none of them exist. */
+
+function setGirlImage(img, idOrGirl, type, onAllFailed) {
+
+    const candidates = getGirlAssetCandidates(idOrGirl, type);
+    let index = 0;
+
+    if (!candidates.length) {
+        if (onAllFailed) { onAllFailed(img); }
+        return;
+    }
+
+    img.addEventListener("error", function tryNext() {
+
+        index++;
+
+        if (index < candidates.length) {
+            img.src = candidates[index];
+            return;
+        }
+
+        img.removeEventListener("error", tryNext);
+
+        if (onAllFailed) { onAllFailed(img); }
+
+    });
+
+    img.src = candidates[0];
+
+}
+
+/* Promise that resolves to the first URL that loads, or "" */
+
+function resolveGirlImage(idOrGirl, type) {
+
+    const candidates = getGirlAssetCandidates(idOrGirl, type);
+
+    return new Promise(resolve => {
+
+        let index = 0;
+
+        function attempt() {
+
+            if (index >= candidates.length) {
+                resolve("");
+                return;
+            }
+
+            const test = new Image();
+
+            test.onload = () => resolve(candidates[index]);
+            test.onerror = () => { index++; attempt(); };
+            test.src = candidates[index];
+
+        }
+
+        attempt();
+
+    });
+
+}

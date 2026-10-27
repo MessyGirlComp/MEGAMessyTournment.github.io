@@ -207,15 +207,11 @@ function createStatusCard(girl, config) {
 
     const image = card.querySelector(".group-girl-image");
 
-    image.addEventListener("error", function fallback() {
+    setGirlImage(image, girl.id, "t", function () {
 
-        image.removeEventListener("error", fallback);
-
-        image.src = getGirlImageA(girl.id);
+        setGirlImage(image, girl.id, "a");
 
     });
-
-    image.src = getGirlThumbnail(girl.id);
 
     return card;
 

@@ -152,11 +152,12 @@ function renderProfile(girl) {
         { key: "c", label: "Third image" }
     ];
 
+    // (src is set in setupCarousel, once it knows which extension exists)
+
     page.querySelectorAll("[data-slide-image]").forEach(image => {
 
         const slide = slides[Number(image.dataset.slideImage)];
 
-        image.src = getGirlAssetPath(girl.id, slide.key);
         image.alt = `${girl.name} - ${slide.label}`;
 
     });
@@ -179,7 +180,7 @@ function renderProfile(girl) {
 
         const thumb = page.querySelector("[data-video-thumb]");
 
-        thumb.src = getGirlAssetPath(girl.id, "t");
+        setGirlImage(thumb, girl.id, "t");
         thumb.alt = `${girl.name} - thumbnail`;
 
     }
@@ -227,13 +228,19 @@ async function setupCarousel() {
     const allImages = [...carousel.querySelectorAll(".carousel-image")];
     const allDots = [...carousel.querySelectorAll(".carousel-dot")];
 
-    const found = await Promise.all(
-        allImages.map(image => imageExists(image.src))
+    const slideKeys = ["a", "b", "c"];
+
+    const resolved = await Promise.all(
+        allImages.map((image, i) =>
+            resolveGirlImage(currentGirl, slideKeys[i])
+        )
     );
 
     allImages.forEach((image, i) => {
 
-        if (!found[i]) {
+        if (resolved[i]) {
+            image.src = resolved[i];
+        } else {
             image.remove();
             allDots[i].remove();
         }
