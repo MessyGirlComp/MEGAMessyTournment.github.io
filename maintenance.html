@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+
+    <title>Updating | MEGA Messy Tournament</title>
+
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="M.M.Cup" />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+
+    <!-- Same file as every other page; on this page it only handles the admin login -->
+    <script src="scripts/maintenance.js"></script>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(125, 211, 252, 0.18), transparent 60%),
+                linear-gradient(135deg, #111 0%, #1a1a2e 45%, #0f3460 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .stage-label {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 14px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #cfe9fb;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 7vw, 4.2rem);
+            font-weight: 900;
+            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.75;
+            margin-bottom: 40px;
+        }
+
+        .message {
+            padding: 32px 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .message strong {
+            display: block;
+            font-size: clamp(1.4rem, 4.5vw, 2.1rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #7dd3fc;
+            margin-bottom: 10px;
+        }
+
+        .message span {
+            font-size: 17px;
+            opacity: 0.85;
+        }
+
+        /* ---------- admin ---------- */
+
+        .admin {
+            margin-top: 40px;
+        }
+
+        .admin-toggle {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.45);
+            font-family: inherit;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            padding: 6px;
+        }
+
+        .admin-toggle:hover,
+        .admin-toggle:focus-visible {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .admin-form {
+            display: none;
+            max-width: 320px;
+            margin: 14px auto 0;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .admin-form.open {
+            display: flex;
+        }
+
+        .admin-form input {
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .admin-form input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .admin-form input:focus {
+            border-color: #7dd3fc;
+        }
+
+        .admin-form button[type="submit"] {
+            padding: 12px;
+            background: #7dd3fc;
+            color: #0b1d33;
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .admin-form button[type="submit"]:hover {
+            background: #a5e1fd;
+        }
+
+        .admin-error {
+            min-height: 18px;
+            font-size: 13px;
+            color: #ffb4b4;
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        @media (max-width: 600px) {
+            .message {
+                padding: 26px 20px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <span class="stage-label">Season 1</span>
+
+        <h1>MEGA Messy Tournament</h1>
+
+        <p class="subtitle">The ultimate showdown begins soon.</p>
+
+        <section class="message">
+            <strong>Currently updating the website</strong>
+            <span>Please check back again soon.</span>
+        </section>
+
+        <div class="admin">
+
+            <button type="button" class="admin-toggle" id="adminToggle" aria-expanded="false" aria-controls="adminForm">
+                Enter admin code
+            </button>
+
+            <form class="admin-form" id="adminForm" autocomplete="off">
+
+                <input type="text" id="adminUser" placeholder="Username" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+                <input type="password" id="adminPass" placeholder="Passcode" autocomplete="off" required>
+
+                <div class="admin-error" id="adminError" role="alert"></div>
+
+                <button type="submit">Enter site</button>
+
+            </form>
+
+        </div>
+
+        <p class="footer-note">MEGA Messy Tournament · Season 1</p>
+
+    </main>
+
+    <script>
+
+        const adminToggle = document.getElementById("adminToggle");
+        const adminForm = document.getElementById("adminForm");
+        const adminError = document.getElementById("adminError");
+
+        adminToggle.addEventListener("click", function () {
+
+            const open = adminForm.classList.toggle("open");
+
+            adminToggle.setAttribute("aria-expanded", open);
+
+            if (open) {
+                document.getElementById("adminUser").focus();
+            }
+        });
+
+        adminForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const user = document.getElementById("adminUser").value.trim();
+            const pass = document.getElementById("adminPass").value.trim();
+
+            if (!window.MegaMaintenance.login(user, pass)) {
+                adminError.textContent = "Incorrect username or passcode.";
+                document.getElementById("adminPass").value = "";
+                return;
+            }
+
+            adminError.textContent = "";
+        });
+
+    </script>
+
+</body>
+</html>
