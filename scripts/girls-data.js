@@ -15,10 +15,11 @@
    Folder layout this expects:
 
    index.html
-   assets/girls/A/001.png   first image
-   assets/girls/B/001.png   second image
-   assets/girls/C/001.png   third image
-   assets/girls/T/001.png   thumbnail (cards on list pages)
+   assets/images/girls/<Media Source Type>/<From>/<Name> (<ID>)/
+       A.png   first image
+       B.png   second image
+       C.png   third image
+       T.png   thumbnail (cards on list pages)
    scripts/girls-data.js
    scripts/site.js
    scripts/profile.js
@@ -52,26 +53,57 @@ function siteURL(path) {
 
 
 /* =========================================================
-   IMAGE FILE NAMES
+   IMAGE FOLDERS + FILE NAMES
    ---------------------------------------------------------
-   If your files are named differently (for example
-   "001 A.png"), change ONLY this function.
+   Every girl has her own folder:
+
+   assets/images/girls/<Media Source Type>/<From>/<Name> (<ID>)/
+
+   e.g.  assets/images/girls/Game Show/Wait For It/Amy (001)/A.png
+
+   Paths are built from the site root (see siteURL), so they
+   work from every page, however deep the page is.
+
+   To change the root folder or the file names, change ONLY
+   the settings and girlImageFileName() below.
 ========================================================= */
 
-/*
-    Plain relative path, used by profile.html and group.html
-    (both are two folders deep: girls/profiles/ and
-    qualifying/groups/). all.html has its image paths written
-    directly in the HTML instead.
+/* Root folder (relative to the site root, with trailing slash) */
 
-    Images:  assets/girls/A/001.png, B/001.png, C/001.png, T/001.png
+const GIRL_ASSET_ROOT = "assets/images/girls/";
+
+/* Used when a girl has no mediaSourceType / from filled in */
+
+const GIRL_FALLBACK_SOURCE_FOLDER = "Other";
+const GIRL_FALLBACK_FROM_FOLDER = "Other";
+
+/*
+    File names inside a girl's folder.
+    slot = "A", "B", "C" (profile carousel) or "T" (thumbnail).
+
+    Default extension is png. If one girl's files are jpeg, add
+    imageExt: "jpeg" to her entry in the database below.
 */
 
-const GIRL_ASSET_BASE = "../../assets/girls/";
+function girlImageFileName(girl, slot) {
 
-function girlImageFileName(girlID) {
+    return `${slot}.${girl.imageExt || "png"}`;
 
-    return `${girlID}.png`;
+}
+
+/*
+    Folder names can't contain  \ / : * ? " < > |
+    so those are removed (and doubled spaces tidied up).
+    A folder called  4 Downs With Cam Jordan | 'NFL Slimetime'
+    is therefore  4 Downs With Cam Jordan 'NFL Slimetime'
+*/
+
+function folderSafe(value) {
+
+    return String(value ?? "")
+        .replace(/[\\/:*?"<>|]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
 
 }
 
@@ -148,6 +180,7 @@ const MEDIA_SOURCE_TYPES = [
    from             title of the source (show / video / etc.)
    mediaSourceType  one of MEDIA_SOURCE_TYPES
    messType         one of MESS_TYPES
+   imageExt         (optional) image extension if not png, e.g. "jpeg"
    youtube          YouTube EMBED link, used directly as the
                     iframe src:
                       https://www.youtube.com/embed/XXXXXXXXXXX
@@ -524,7 +557,7 @@ const girls = {
    status: "",
    group: 5,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Slime",
    youtube: "https://www.youtube.com/embed/Zhf_whyeZac"
 },
@@ -539,7 +572,7 @@ const girls = {
    status: "",
    group: 5,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Food",
    youtube: "https://www.youtube.com/embed/AjktkdpamUg"
 },
@@ -554,7 +587,7 @@ const girls = {
    status: "",
    group: 6,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Slime",
    youtube: "https://www.youtube.com/embed/VrwQQ91CI0w"
 },
@@ -569,7 +602,7 @@ const girls = {
    status: "",
    group: 8,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Slime",
    youtube: "https://www.youtube.com/embed/rKVPR0VJIas"
 },
@@ -584,7 +617,7 @@ const girls = {
    status: "",
    group: 5,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Water",
    youtube: "https://www.youtube.com/embed/ZKfGwuXLkcc"
 },
@@ -599,7 +632,7 @@ const girls = {
    status: "",
    group: 8,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Slime",
    youtube: "https://www.youtube.com/embed/_E77kfSLzFM"
 },
@@ -614,7 +647,7 @@ const girls = {
    status: "",
    group: 7,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Slime",
    youtube: "https://www.youtube.com/embed/zR530PImvL0"
 },
@@ -629,7 +662,7 @@ const girls = {
    status: "",
    group: 6,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Food",
    youtube: "https://www.youtube.com/embed/FGT8jDJinBM"
 },
@@ -644,7 +677,7 @@ const girls = {
    status: "",
    group: 8,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Food",
    youtube: "https://www.youtube.com/embed/fSw6IF2Vt2U"
 },
@@ -659,7 +692,7 @@ const girls = {
    status: "",
    group: 8,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Food",
    youtube: "https://www.youtube.com/embed/2Tp-UB4fcDM"
 },
@@ -674,7 +707,7 @@ const girls = {
    status: "",
    group: 6,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Slime",
    youtube: "https://www.youtube.com/embed/waRWtKV7ags"
 },
@@ -689,7 +722,7 @@ const girls = {
    status: "",
    group: 5,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Other",
    youtube: "https://www.youtube.com/embed/Ck-_bQ50dHA"
 },
@@ -704,7 +737,7 @@ const girls = {
    status: "",
    group: 8,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Slime",
    youtube: "https://www.youtube.com/embed/hBnLT8K4wPY"
 },
@@ -719,7 +752,7 @@ const girls = {
    status: "",
    group: 5,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Slime",
    youtube: "https://www.youtube.com/embed/C5lLhxhAcwM"
 },
@@ -734,7 +767,7 @@ const girls = {
    status: "",
    group: 7,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Food",
    youtube: "https://www.youtube.com/embed/QNgzB0YbK_A"
 },
@@ -749,7 +782,7 @@ const girls = {
    status: "",
    group: 7,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Food",
    youtube: "https://www.youtube.com/embed/GRWjuRieS-M"
 },
@@ -764,7 +797,7 @@ const girls = {
    status: "",
    group: 6,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Food",
    youtube: "https://www.youtube.com/embed/oAfbwBEq-EY"
 },
@@ -779,7 +812,7 @@ const girls = {
    status: "",
    group: 7,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Slime",
    youtube: "https://www.youtube.com/embed/2s9CYALX0kU"
 },
@@ -794,7 +827,7 @@ const girls = {
    status: "",
    group: 7,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/VJS_PFKD2Us"
 },
@@ -809,7 +842,7 @@ const girls = {
    status: "",
    group: 8,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/g2APyuk9zcw"
 },
@@ -824,7 +857,7 @@ const girls = {
    status: "",
    group: 7,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Slime",
    youtube: "https://www.youtube.com/embed/kkbbZtphzRA"
 },
@@ -839,7 +872,7 @@ const girls = {
    status: "",
    group: 6,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/zcdPdeOGNXo"
 },
@@ -854,7 +887,7 @@ const girls = {
    status: "",
    group: 6,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Water",
    youtube: "https://www.youtube.com/embed/mfDCU8j66o4"
 },
@@ -869,7 +902,7 @@ const girls = {
    status: "",
    group: 5,
    from: "Dick and Dom",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/rsSp2aWyLyo"
 },
@@ -885,7 +918,7 @@ const girls = {
     status: "",
     group: 9,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/KZpoYGXGE6A?si=igldpW4NeMdahrVH"
 },
@@ -900,7 +933,7 @@ const girls = {
     status: "",
     group: 9,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/tnwP5QcDIuk?si=ia-Y3E4YaZpIClK5"
 },
@@ -915,7 +948,7 @@ const girls = {
     status: "",
     group: 9,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/iUUGzW7Bvvk?si=vtI-uRmwg1bGFRg_"
 },
@@ -930,7 +963,7 @@ const girls = {
     status: "",
     group: 9,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/lmPAPHVloqk?si=1kbTE_E1HQzXHsH5"
 },
@@ -945,7 +978,7 @@ const girls = {
     status: "",
     group: 9,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/XhIfY79eBf4?si=j4r0dmIOkiH3TRbc"
 },
@@ -960,7 +993,7 @@ const girls = {
     status: "",
     group: 9,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/gw6imhQQ4CQ?si=C9VGLtJt-rfBaggu"
 },
@@ -975,7 +1008,7 @@ const girls = {
     status: "",
     group: 10,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/6QzZm6f-cy4?si=yCYClLDo4ETNXkKH"
 },
@@ -990,7 +1023,7 @@ const girls = {
     status: "",
     group: 10,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/kShi4SmGNig?si=SYqCEMgGSP4vP6xD"
 },
@@ -1005,7 +1038,7 @@ const girls = {
     status: "",
     group: 10,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/hXOSh2agaMo?si=vdsVvFvxHztkv0RT"
 },
@@ -1020,7 +1053,7 @@ const girls = {
     status: "",
     group: 10,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/hTHqmOUdIRk?si=Wp-duoSc-WxXPIjc"
 },
@@ -1035,7 +1068,7 @@ const girls = {
     status: "",
     group: 10,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/YjbtggvebMU?si=wTgQJYiAuPv5Mymy"
 },
@@ -1050,7 +1083,7 @@ const girls = {
     status: "",
     group: 10,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/T0x3POHCv8k?si=bSEfFjyWTI1WqWO5"
 },
@@ -1065,7 +1098,7 @@ const girls = {
     status: "",
     group: 11,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/YI5VAS2thps?si=HLOGQip2q4HWPCBq"
 },
@@ -1080,7 +1113,7 @@ const girls = {
     status: "",
     group: 11,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/iJVPTOZB9b8?si=o8LKf5z5BoR9Gaml"
 },
@@ -1095,7 +1128,7 @@ const girls = {
     status: "",
     group: 11,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/vAFk-BCe2GY?si=cygcEondmst382I5"
 },
@@ -1110,7 +1143,7 @@ const girls = {
     status: "",
     group: 11,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/4ZK4JYhWq5Q?si=ZpzopFKx8ApWvjHA"
 },
@@ -1125,7 +1158,7 @@ const girls = {
     status: "",
     group: 11,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/h4WvDex1j9E?si=XMp7_lKXFcgZjCc8"
 },
@@ -1140,7 +1173,7 @@ const girls = {
     status: "",
     group: 11,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/k1ZaqQfyeGU?si=-LtFnHgz_9RYXRKr"
 },
@@ -1155,7 +1188,7 @@ const girls = {
     status: "",
     group: 12,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/ManhYUADgzo?si=0AjaUCMsBi_b-3yZ"
 },
@@ -1170,7 +1203,7 @@ const girls = {
     status: "",
     group: 12,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/mTPjKjZMkeY?si=2uPH6yDrD7Yqh59s"
 },
@@ -1185,7 +1218,7 @@ const girls = {
     status: "",
     group: 12,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/QmnJUjKvtSc?si=bX8nY-Vz9EAN0Y6j"
 },
@@ -1200,7 +1233,7 @@ const girls = {
     status: "",
     group: 12,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/2uGVw1f2qzk?si=DcRuc3FyWdIvgo4T"
 },
@@ -1215,7 +1248,7 @@ const girls = {
     status: "",
     group: 12,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/-nKbc9o2C6U?si=XlHNJZ2LtrBhaUnE"
 },
@@ -1230,7 +1263,7 @@ const girls = {
     status: "",
     group: 12,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/CIFX52bAZsI?si=QoibTY0bQT8dxPWV"
 },
@@ -1245,7 +1278,7 @@ const girls = {
     status: "",
     group: 13,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/qarTHlUji44?si=LnvSd6MrBB75d7mp"
 },
@@ -1260,7 +1293,7 @@ const girls = {
     status: "",
     group: 13,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/lHPdIt3oyk8?si=1wTvLyc1oLxWP3YF"
 },
@@ -1275,7 +1308,7 @@ const girls = {
     status: "",
     group: 13,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/UYYLmqByWLg?si=7qNXzK_Gv-p6ZRoP"
 },
@@ -1290,7 +1323,7 @@ const girls = {
     status: "",
     group: 13,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/orUD7-ds3Dw?si=gvNVd14jm81HVGhX"
 },
@@ -1305,7 +1338,7 @@ const girls = {
     status: "",
     group: 13,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/_MaL4HHFPnI?si=2QS3vBrdocPbnMYi"
 },
@@ -1320,7 +1353,7 @@ const girls = {
     status: "",
     group: 13,
     from: "Flushed",
-    mediaSourceType: "",
+    mediaSourceType: "Game Show",
     messType: "Gunge",
     youtube: "https://www.youtube.com/embed/w1FOtLydsmA?si=cKxelljupqDEQCNI"
 },
@@ -1335,7 +1368,7 @@ const girls = {
    status: "",
    group: 14,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/pl371LXXuOw?si=weT7RJVqjtPHkVwU"
 },
@@ -1350,7 +1383,7 @@ const girls = {
    status: "",
    group: 14,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/Xqa2Ky4M1rE?si=W17VjYQttineA7tT"
 },
@@ -1365,7 +1398,7 @@ const girls = {
    status: "",
    group: 14,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/8EUyR-P0PfA?si=izbuVTrKbsyoOKQW"
 },
@@ -1380,7 +1413,7 @@ const girls = {
    status: "",
    group: 14,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/Qz2UFmEyyyQ?si=wA0EeX_xSPzyfXpb"
 },
@@ -1395,7 +1428,7 @@ const girls = {
    status: "",
    group: 14,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/1BT0uLjfLKE?si=kHPXFo6rd3fCagSg"
 },
@@ -1410,7 +1443,7 @@ const girls = {
    status: "",
    group: 14,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/9X1YhY_nHkg?si=2dknihjG5ieVbub2"
 },
@@ -1425,7 +1458,7 @@ const girls = {
    status: "",
    group: 15,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/ahMUd8EkCxk?si=E8TSXx2lbYpUvi7Q"
 },
@@ -1440,7 +1473,7 @@ const girls = {
    status: "",
    group: 15,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/7nr97DoNqAM?si=qT6cP9XVEwxwrP5b"
 },
@@ -1455,7 +1488,7 @@ const girls = {
    status: "",
    group: 15,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/p6Jguejj4cQ?si=b1i-O6kqg13qqMQD"
 },
@@ -1470,7 +1503,7 @@ const girls = {
    status: "",
    group: 15,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/_bXiZBQn-y8?si=LMfmqbNHw3eQiGpA"
 },
@@ -1485,7 +1518,7 @@ const girls = {
    status: "",
    group: 15,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/_ULIaLbQLHY?si=9BiDmnPUOpGF8V5W"
 },
@@ -1500,7 +1533,7 @@ const girls = {
    status: "",
    group: 15,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/5pw5k3DAkPI?si=m90mIihYCRk1WbKi"
 },
@@ -1515,7 +1548,7 @@ const girls = {
    status: "",
    group: 16,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/d8fJvtMpt7s?si=iNERAMhQIDlJn72Z"
 },
@@ -1530,7 +1563,7 @@ const girls = {
    status: "",
    group: 16,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/dOMPI-yb9ZY?si=ag5Y4HWAdAifIAg3"
 },
@@ -1545,7 +1578,7 @@ const girls = {
    status: "",
    group: 16,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/svXjC2qRVr8?si=VLNxxWUQqYpR06PE"
 },
@@ -1560,7 +1593,7 @@ const girls = {
    status: "",
    group: 16,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/XkHzyS9KwPI?si=sSn1ObVsFLpEj8f_"
 },
@@ -1575,7 +1608,7 @@ const girls = {
    status: "",
    group: 16,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/QCT4jYLUrxc?si=RIYfTeZIM1LLVnLq"
 },
@@ -1590,7 +1623,7 @@ const girls = {
    status: "",
    group: 16,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/N0WwTJN_W74?si=kdlodNsFjaqOjr9E"
 },
@@ -1605,7 +1638,7 @@ const girls = {
    status: "",
    group: 17,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/MOwMFO3DJm4?si=e9e5W7PBIqwGdxKF"
 },
@@ -1620,7 +1653,7 @@ const girls = {
    status: "",
    group: 17,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/iI0wljMCbNw?si=a6Tf2-PGzaDzHEUT"
 },
@@ -1635,7 +1668,7 @@ const girls = {
    status: "",
    group: 17,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/dDM92npmT0U?si=Urpylq_q8SoU2eoX"
 },
@@ -1650,7 +1683,7 @@ const girls = {
    status: "",
    group: 17,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/VOa0ZHetmhE?si=7XjtM7HDcTpkgt-O"
 },
@@ -1665,7 +1698,7 @@ const girls = {
    status: "",
    group: 17,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/k3aHkzaKw8k?si=jZW_UGA1ouswbRaj"
 },
@@ -1680,7 +1713,7 @@ const girls = {
    status: "",
    group: 17,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/eeFYnOtWfSQ?si=vg9J1rB6ZrloAZKN"
 },
@@ -1695,7 +1728,7 @@ const girls = {
    status: "",
    group: 18,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/juStrYPaTqg?si=I3lIs-Wp0V2kYO9U"
 },
@@ -1710,7 +1743,7 @@ const girls = {
    status: "",
    group: 18,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/BZzrD4BIPRE?si=QZRESVUCHt2pUkIL"
 },
@@ -1725,7 +1758,7 @@ const girls = {
    status: "",
    group: 18,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/zUjx8Z8H-jI?si=1I42rLl0bUWLwc-d"
 },
@@ -1740,7 +1773,7 @@ const girls = {
    status: "",
    group: 18,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/POTIYqlqOc0?si=kp5cdN9a32MEVnMp"
 },
@@ -1755,7 +1788,7 @@ const girls = {
    status: "",
    group: 18,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/9DE14lhqFNs?si=thtIgn2Ow5AVFarF"
 },
@@ -1770,7 +1803,7 @@ const girls = {
    status: "",
    group: 18,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/I0xUH2SE2eA?si=whhxxVjvtvzUXsgR"
 },
@@ -1785,7 +1818,7 @@ const girls = {
    status: "",
    group: 19,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/ut23GTH8YdI?si=qjy5DzV3g-njCPp_"
 },
@@ -1800,7 +1833,7 @@ const girls = {
    status: "",
    group: 19,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/h2qSR5AvOhs?si=aL6-tvI1o9MFfKGC"
 },
@@ -1815,7 +1848,7 @@ const girls = {
    status: "",
    group: 19,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/LtWlN_SOUVg?si=OGZRPgoRlbpR5qql"
 },
@@ -1830,7 +1863,7 @@ const girls = {
    status: "",
    group: 19,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/0NU6iU7qoSo?si=zcVYFpLxKG-5233d"
 },
@@ -1845,7 +1878,7 @@ const girls = {
    status: "",
    group: 19,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/Y9Q-tQ4sKdk?si=bI0z7h8CTdSab2n2"
 },
@@ -1860,7 +1893,7 @@ const girls = {
    status: "",
    group: 19,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/XKahut5RyZI?si=oB94wUyb6N_2zwQy"
 },
@@ -1875,7 +1908,7 @@ const girls = {
    status: "",
    group: 20,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/UzK5yQ1V6fw?si=b39NsQewBOjxsYzg"
 },
@@ -1890,7 +1923,7 @@ const girls = {
    status: "",
    group: 20,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/x8WuyzKJk_w?si=ozcXkRSakYzH5rVi"
 },
@@ -1905,7 +1938,7 @@ const girls = {
    status: "",
    group: 20,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/zBCcM9TZSTo?si=CtTnuvK84KUz5ksH"
 },
@@ -1920,7 +1953,7 @@ const girls = {
    status: "",
    group: 20,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/pZtXbUJ9BGQ?si=rC3Iv5WKqUko8mEx"
 },
@@ -1935,7 +1968,7 @@ const girls = {
    status: "",
    group: 20,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/NvmRRAAaTmY?si=4E2eN3qaZpMzCDlk"
 },
@@ -1950,7 +1983,7 @@ const girls = {
    status: "",
    group: 20,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/bIbg1kY_ues?si=9g24yaurs7fPAGLy"
 },
@@ -1965,7 +1998,7 @@ const girls = {
    status: "",
    group: 21,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/rxH6MjFhPe4?si=piTEyGgUhojKEG2E"
 },
@@ -1980,7 +2013,7 @@ const girls = {
    status: "",
    group: 21,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/GO0twC1KDPs?si=dvgv1fZM5KBov2pE"
 },
@@ -1995,7 +2028,7 @@ const girls = {
    status: "",
    group: 21,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/UchqHyYqYV0?si=w0voFQE2-CJPr5LL"
 },
@@ -2010,7 +2043,7 @@ const girls = {
    status: "",
    group: 21,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/b_LXLREkmic?si=qGoP_MH7tAev1HJ1"
 },
@@ -2025,7 +2058,7 @@ const girls = {
    status: "",
    group: 21,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/2lfrZtVomlM?si=9_CtrO3Ot_BjUFbS"
 },
@@ -2040,7 +2073,7 @@ const girls = {
    status: "",
    group: 21,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/Q-kot1FmbD0?si=27wMxhAAcuLEgc9F"
 },
@@ -2055,7 +2088,7 @@ const girls = {
    status: "",
    group: 22,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/aAurFi5DlaA?si=TvSfdeOQX0HvrFs8"
 },
@@ -2070,7 +2103,7 @@ const girls = {
    status: "",
    group: 22,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/riseRL7USa0?si=DKfIzJR1JxtTEPsT"
 },
@@ -2085,7 +2118,7 @@ const girls = {
    status: "",
    group: 22,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/CysTJ9Ro2S4?si=rx9lROFHjsgam5VT"
 },
@@ -2100,7 +2133,7 @@ const girls = {
    status: "",
    group: 22,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/GyWgOcuqr4U?si=kQxnLlmNqrRPBQ5c"
 },
@@ -2115,7 +2148,7 @@ const girls = {
    status: "",
    group: 22,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/2jZGsp-lSKo?si=ytDwlb84kZKcYUvQ"
 },
@@ -2130,7 +2163,7 @@ const girls = {
    status: "",
    group: 22,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/nVnY6NCm-6Y?si=NZnS2-ZkZqDwhMVT"
 },
@@ -2145,7 +2178,7 @@ const girls = {
    status: "",
    group: 23,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/MPciEtPd_Ew?si=eD3wXNoZBSUQ5aUI"
 },
@@ -2160,7 +2193,7 @@ const girls = {
    status: "",
    group: 23,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/MStUXsZcB9k?si=jdQxQ5JIsdozCjgT"
 },
@@ -2175,7 +2208,7 @@ const girls = {
    status: "",
    group: 23,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/0zt1OJ5LoA4?si=5wvt2RUPgf5M-bot"
 },
@@ -2189,7 +2222,7 @@ const girls = {
    status: "",
    group: 23,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/ElIRhmW22yA?si=kyZGRknjjAHDLeAS"
 },
@@ -2204,7 +2237,7 @@ const girls = {
    status: "",
    group: 23,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/Kr6_7s5PwvA?si=Ry_gUMDnQZYNhqO2"
 },
@@ -2219,7 +2252,7 @@ const girls = {
    status: "",
    group: 23,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/Nq8Kc2vx9r8?si=jlAJyBNR65gG6URZ"
 },
@@ -2234,7 +2267,7 @@ const girls = {
    status: "",
    group: 24,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/b3WYJ59PXsI?si=BKWoSn_hWgIgldN0"
 },
@@ -2249,7 +2282,7 @@ const girls = {
    status: "",
    group: 24,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/sCw__LhXuUc?si=NMwthdmSdR8scMBx"
 },
@@ -2264,7 +2297,7 @@ const girls = {
    status: "",
    group: 24,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/eAmxuWoR2fo?si=wiPswat74PTJf8AN"
 },
@@ -2279,7 +2312,7 @@ const girls = {
    status: "",
    group: 24,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/WVvYsYsoQtY?si=mIRu6734vfD_Uh3J"
 },
@@ -2294,7 +2327,7 @@ const girls = {
    status: "",
    group: 24,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/016UkCP3u2Y?si=fd_C-ccrgcgN6DZI"
 },
@@ -2309,7 +2342,7 @@ const girls = {
    status: "",
    group: 24,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/6TpFIHIJa6k?si=o2HPTti2wKNL2hAD"
 },
@@ -2324,7 +2357,7 @@ const girls = {
    status: "",
    group: 25,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/SIGC9Am2kMo?si=5bkkFpF-vFwJJH9G"
 },
@@ -2339,7 +2372,7 @@ const girls = {
    status: "",
    group: 25,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/uxGbZBGrCQQ?si=xDHSfqGzDnXQ3jV6"
 },
@@ -2354,7 +2387,7 @@ const girls = {
    status: "",
    group: 25,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/hxwIiSqiUEs?si=YMTaLeasOkJmtaTK"
 },
@@ -2369,7 +2402,7 @@ const girls = {
    status: "",
    group: 25,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/WKxj1KCvRLM?si=bHEaNSmZJV_5_2eE"
 },
@@ -2384,7 +2417,7 @@ const girls = {
    status: "",
    group: 25,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/m2o7dQly-w4?si=0ngqqXZ-QPVs9MQQ"
 },
@@ -2399,7 +2432,7 @@ const girls = {
    status: "",
    group: 25,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/O2MjS_GqugY?si=9iqwiaN1DhMQl-U9"
 },
@@ -2414,7 +2447,7 @@ const girls = {
    status: "",
    group: 26,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/Dt--Neux1F4?si=kA_gOqZrSxrWKT2s"
 },
@@ -2429,7 +2462,7 @@ const girls = {
    status: "",
    group: 26,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/lxdpQRyFgzw?si=zi7JjbTBfanoD4Sp"
 },
@@ -2444,7 +2477,7 @@ const girls = {
    status: "",
    group: 26,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/G8swGvYHOLg?si=Ab609zWCwibBJoRi"
 },
@@ -2459,7 +2492,7 @@ const girls = {
    status: "",
    group: 26,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/mX2bktPC3ss?si=kCMGPfMCp4u2zeU7"
 },
@@ -2474,7 +2507,7 @@ const girls = {
    status: "",
    group: 26,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/cUL3wjMGsPA?si=NvSQrt2zH4Qd6MuH"
 },
@@ -2489,7 +2522,7 @@ const girls = {
    status: "",
    group: 26,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/k4Vjqgamth8?si=t2mSuso4W1qZi_xF"
 },
@@ -2504,7 +2537,7 @@ const girls = {
    status: "",
    group: 27,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/1w3jt6Ujr_w?si=ZLGbR7ZwKrLtTCdz"
 },
@@ -2519,7 +2552,7 @@ const girls = {
    status: "",
    group: 27,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/KcHTc49XQxQ?si=zc_ffZzwBqm36XO4"
 },
@@ -2534,7 +2567,7 @@ const girls = {
    status: "",
    group: 27,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/hIdZuEPoCI0?si=d6vewRz5i_mCYHl7"
 },
@@ -2549,7 +2582,7 @@ const girls = {
    status: "",
    group: 27,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/GdnWypDGox4?si=KiBK3rgzHeVA3yuj"
 },
@@ -2564,7 +2597,7 @@ const girls = {
    status: "",
    group: 27,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/L3VAWqNrkHc?si=yQ2eSCLiN-njGUMK"
 },
@@ -2579,7 +2612,7 @@ const girls = {
    status: "",
    group: 27,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/Ky2Hj-To1Pk?si=CyN2x1jIpCXLM_53"
 },
@@ -2594,7 +2627,7 @@ const girls = {
    status: "",
    group: 28,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/b4LkvQxna1c?si=gTwCH_P_qr257tdW"
 },
@@ -2609,7 +2642,7 @@ const girls = {
    status: "",
    group: 28,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/VRBGf76iN5I?si=vmtWV-GSfe09gwA_"
 },
@@ -2624,7 +2657,7 @@ const girls = {
    status: "",
    group: 28,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/yOtlZ0axp04?si=P5PMNGGbWtaxwmbr"
 },
@@ -2639,7 +2672,7 @@ const girls = {
    status: "",
    group: 28,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/IExP5jE5QiU?si=gGBpq81YCBqOucbq"
 },
@@ -2654,7 +2687,7 @@ const girls = {
    status: "",
    group: 28,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/iIsKLW7DkWs?si=47Tr8mTRagELoK0W"
 },
@@ -2669,7 +2702,7 @@ const girls = {
    status: "",
    group: 28,
    from: "Flushed",
-   mediaSourceType: "",
+   mediaSourceType: "Game Show",
    messType: "Gunge",
    youtube: "https://www.youtube.com/embed/B_sGyVZOAm8?si=2G3TPr1E8B2RR5Pm"
 },
@@ -3104,7 +3137,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 34,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3118,7 +3151,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 34,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3132,7 +3165,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 34,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3146,7 +3179,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 34,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3160,7 +3193,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 34,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3174,7 +3207,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 34,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3188,7 +3221,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 35,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3202,7 +3235,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 35,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3216,7 +3249,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 35,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3230,7 +3263,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 35,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3244,7 +3277,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 35,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3258,7 +3291,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 35,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3272,7 +3305,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 36,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3286,13 +3319,14 @@ const girls = {
   reaction: "",
   status: "",
   group: 36,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
 },
 "213": {
   id: "213",
+  imageExt: "jpeg",
   name: "TBC",
   age: "",
   bio: "",
@@ -3300,13 +3334,14 @@ const girls = {
   reaction: "",
   status: "",
   group: 36,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
 },
 "214": {
   id: "214",
+  imageExt: "jpeg",
   name: "TBC",
   age: "",
   bio: "",
@@ -3314,13 +3349,14 @@ const girls = {
   reaction: "",
   status: "",
   group: 36,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
 },
 "215": {
   id: "215",
+  imageExt: "jpeg",
   name: "TBC",
   age: "",
   bio: "",
@@ -3328,13 +3364,14 @@ const girls = {
   reaction: "",
   status: "",
   group: 36,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
 },
 "216": {
   id: "216",
+  imageExt: "jpeg",
   name: "TBC",
   age: "",
   bio: "",
@@ -3342,7 +3379,7 @@ const girls = {
   reaction: "",
   status: "",
   group: 36,
-  from: "4 Downs With Cam Jordan | 'NFL Slimetime'",
+  from: "4 Downs With Cam Jordan",
   mediaSourceType: "Game Show",
   messType: "Slime",
   youtube: ""
@@ -3465,37 +3502,65 @@ function getGroupURL(groupNumber) {
    IMAGE PATHS
 ========================================================= */
 
-function getGirlAssetPath(id, type) {
+/*
+    Folder for one girl:
 
-    const girlID = String(id).padStart(3, "0");
+    assets/images/girls/<Media Source Type>/<From>/<Name> (<ID>)/
 
-    const file = girlImageFileName(girlID);
+    Accepts a girl object OR a girl ID, so every existing call
+    (getGirlAssetPath(girl.id, "a"), getGirlThumbnail(girl.id)...)
+    keeps working.
+*/
 
-    switch (String(type).toLowerCase()) {
+function getGirlFolderPath(idOrGirl) {
 
-        case "a":
-        case "first":
-            return `${GIRL_ASSET_BASE}A/${file}`;
+    const girl = typeof idOrGirl === "object" && idOrGirl !== null
+        ? idOrGirl
+        : getGirl(idOrGirl);
 
-        case "b":
-        case "second":
-            return `${GIRL_ASSET_BASE}B/${file}`;
-
-        case "c":
-        case "third":
-            return `${GIRL_ASSET_BASE}C/${file}`;
-
-        case "t":
-        case "thumbnail":
-        case "thumb":
-            return `${GIRL_ASSET_BASE}T/${file}`;
-
-        default:
-            console.warn(
-                `Unknown asset type "${type}" for Girl ${girlID}`
-            );
-            return "";
+    if (!girl) {
+        return "";
     }
+
+    const segments = [
+        folderSafe(girl.mediaSourceType) || GIRL_FALLBACK_SOURCE_FOLDER,
+        folderSafe(girl.from) || GIRL_FALLBACK_FROM_FOLDER,
+        folderSafe(`${girl.name} (${girl.id})`)
+    ];
+
+    return siteURL(
+        GIRL_ASSET_ROOT + segments.map(encodeURIComponent).join("/") + "/"
+    );
+
+}
+
+function getGirlAssetPath(idOrGirl, type) {
+
+    const girl = typeof idOrGirl === "object" && idOrGirl !== null
+        ? idOrGirl
+        : getGirl(idOrGirl);
+
+    if (!girl) {
+        console.warn(`Unknown girl "${idOrGirl}"`);
+        return "";
+    }
+
+    const slot = {
+        a: "A", first: "A",
+        b: "B", second: "B",
+        c: "C", third: "C",
+        t: "T", thumbnail: "T", thumb: "T"
+    }[String(type).toLowerCase()];
+
+    if (!slot) {
+        console.warn(
+            `Unknown asset type "${type}" for Girl ${girl.id}`
+        );
+        return "";
+    }
+
+    return getGirlFolderPath(girl) +
+        encodeURIComponent(girlImageFileName(girl, slot));
 
 }
 
