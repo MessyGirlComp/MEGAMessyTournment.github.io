@@ -16,10 +16,10 @@
 
    index.html
    assets/images/girls/<Media Source Type>/<From>/<Name> (<ID>)/
-       001A.png   first image   (girl ID + A)
-       001B.png   second image
-       001C.png   third image
-       001T.png   thumbnail (cards on list pages)
+       001 A.png   first image   (girl ID + space + A)
+       001 B.png   second image
+       001 C.png   third image
+       001 T.png   thumbnail (cards on list pages)
        (png, jpg or jpeg - the site tries all three)
    scripts/girls-data.js
    scripts/site.js
@@ -60,7 +60,7 @@ function siteURL(path) {
 
    assets/images/girls/<Media Source Type>/<From>/<Name> (<ID>)/
 
-   e.g.  assets/images/girls/Game Show/Wait For It/Amy (001)/001A.png
+   e.g.  assets/images/girls/Game Show/Wait For It/Amy (001)/001 A.png
 
    Paths are built from the site root (see siteURL), so they
    work from every page, however deep the page is.
@@ -82,7 +82,7 @@ const GIRL_FALLBACK_FROM_FOLDER = "Other";
     File names inside a girl's folder.
     slot = "A", "B", "C" (profile carousel) or "T" (thumbnail).
 
-    Files are named <girl ID><slot>, e.g. 001A.png, 001B.jpg, 001T.jpeg.
+    Files are named <girl ID> <slot>, e.g. 001 A.png, 001 B.jpg, 001 T.jpeg.
 
     The extension can be png, jpg or jpeg. The site tries png first
     (or imageExt if a girl has one) and then the other extensions
@@ -93,7 +93,7 @@ const GIRL_IMAGE_EXTENSIONS = ["png", "jpg", "jpeg"];
 
 function girlImageFileName(girl, slot) {
 
-    return `${girl.id}${slot}.${girl.imageExt || "png"}`;
+    return `${girl.id} ${slot}.${girl.imageExt || "png"}`;
 
 }
 
