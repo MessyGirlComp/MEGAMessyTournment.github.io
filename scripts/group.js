@@ -15,11 +15,8 @@
 
    Voting is controlled in votes.js:
 
-   const VOTING_ENABLED = true;
-   // Voting ON
-
-   const VOTING_ENABLED = false;
-   // Voting OFF
+   const VOTING_ENABLED = true;   // Voting ON
+   const VOTING_ENABLED = false;  // Voting OFF
 ========================================================= */
 
 
@@ -59,7 +56,6 @@ function buildGroup() {
         groupNumber >= 1 &&
         groupNumber <= MAX_GROUPS;
 
-
     if (!validGroup || groupGirls.length === 0) {
 
         showGroupError(
@@ -71,48 +67,35 @@ function buildGroup() {
         return;
     }
 
-
     document.title =
         `Qualifying Group ${groupNumber} | MEGA Messy Tournament`;
-
 
     document.getElementById("groupTitle").textContent =
         `Qualifying Group ${groupNumber}`;
 
-
     document.getElementById("groupSubtitle").textContent =
         "Meet the contestants and vote for your favourite.";
-
 
     document.getElementById("contestantCount").textContent =
         groupGirls.length;
 
-
     document.getElementById("qualifyCount").textContent =
         QUALIFY_COUNT;
-
 
     document.getElementById("wildcardCount").textContent =
         WILDCARD_COUNT;
 
-
-    const grid =
-        document.getElementById("girlsGrid");
-
+    const grid = document.getElementById("girlsGrid");
 
     grid.innerHTML = "";
 
-
     groupGirls.forEach(girl => {
-
-        grid.appendChild(
-            createGirlCard(girl)
-        );
-
+        grid.appendChild(createGirlCard(girl));
     });
 
-
     setupVoting(groupNumber);
+
+    setupGroupNavigation(groupNumber);
 
 }
 
@@ -123,25 +106,17 @@ function buildGroup() {
 
 function createGirlCard(girl) {
 
-    const card =
-        document.createElement("div");
-
+    const card = document.createElement("div");
 
     /*
-        Group page uses its own card classes.
-
-        These are intentionally different from the
-        All Girls page classes so the two layouts can
-        be styled independently.
+        Group page uses its own card classes, intentionally
+        different from the All Girls page so the two layouts
+        can be styled independently.
     */
 
-    card.className =
-        "group-girl-card";
+    card.className = "group-girl-card";
 
-
-    const statusKey =
-        getStatusKey(girl);
-
+    const statusKey = getStatusKey(girl);
 
     card.innerHTML = `
 
@@ -155,26 +130,21 @@ function createGirlCard(girl) {
 
         </div>
 
-
         <div class="group-girl-info">
 
             <div class="group-girl-number">
                 Girl ${escapeHTML(girl.id)}
             </div>
 
-
             <div class="group-girl-name">
                 ${escapeHTML(girl.name)}
             </div>
-
 
             <div class="group-status-badge ${statusKey}">
                 ${escapeHTML(girl.status || "Competing")}
             </div>
 
-
             <br>
-
 
             <a
                 class="group-profile-button"
@@ -182,7 +152,6 @@ function createGirlCard(girl) {
             >
                 View Profile
             </a>
-
 
             <button
                 type="button"
@@ -196,36 +165,15 @@ function createGirlCard(girl) {
 
     `;
 
+    card.dataset.girlId = girl.id;
 
-    card.dataset.girlId =
-        girl.id;
+    /* Thumbnail first; if it fails, use the first profile image */
 
+    const image = card.querySelector(".group-girl-image");
 
-    /* =====================================================
-       IMAGE
-    ===================================================== */
-
-    /*
-        Thumbnail first.
-
-        If the thumbnail fails, use the first profile image.
-    */
-
-    const image =
-        card.querySelector(".group-girl-image");
-
-
-    setGirlImage(
-        image,
-        girl.id,
-        "t",
-        function () {
-
-            setGirlImage(image, girl.id, "a");
-
-        }
-    );
-
+    setGirlImage(image, girl.id, "t", function () {
+        setGirlImage(image, girl.id, "a");
+    });
 
     return card;
 
@@ -233,16 +181,79 @@ function createGirlCard(girl) {
 
 
 /* =========================================================
-   VOTING
+   PREVIOUS / NEXT GROUP BUTTONS
 ========================================================= */
 
-/*
-   Each voter picks VOTES_PER_GROUP girls.
+function setupGroupNavigation(group) {
 
-   They then press Submit.
+    const previous = document.getElementById("prevGroup");
+    const next = document.getElementById("nextGroup");
 
-   Each browser can only submit once per group.
+    if (!previous || !next) {
+        return;
+    }
 
+    /* Last group = highest group number that has girls in it,
+       capped by MAX_GROUPS */
+
+    const highestGroup = Math.max(
+        0,
+        ...getAllGirls().map(girl => Number(girl.group) || 0)
+    );
+
+    const lastGroup = Math.min(MAX_GROUPS, highestGroup || MAX_GROUPS);
+
+    if (group > 1) {
+
+        previous.textContent = `\u2190 Group ${group - 1}`;
+        previous.href = getGroupURL(group - 1);
+        previous.hidden = false;
+
+    }
+
+    if (group < lastGroup) {
+
+        next.textContent = `Group ${group + 1} \u2192`;
+        next.href = getGroupURL(group + 1);
+        next.hidden = false;
+
+    }
+
+    /* Keyboard: left / right arrow keys change group */
+
+    document.addEventListener("keydown", event => {
+
+        if (
+            event.altKey || event.ctrlKey ||
+            event.metaKey || event.shiftKey
+        ) {
+            return;
+        }
+
+        const tag = (document.activeElement || {}).tagName;
+
+        if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
+            return;
+        }
+
+        if (event.key === "ArrowLeft" && !previous.hidden) {
+            window.location.href = previous.href;
+        }
+
+        if (event.key === "ArrowRight" && !next.hidden) {
+            window.location.href = next.href;
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   VOTING
+
+   Each voter picks VOTES_PER_GROUP girls, then presses
+   Submit. Each browser can only submit once per group.
    Vote counts are never shown on the website.
 ========================================================= */
 
@@ -253,82 +264,46 @@ function createGirlCard(girl) {
 
 function setVoteMessage(text, isError) {
 
-    const message =
-        document.getElementById("voteMessage");
-
+    const message = document.getElementById("voteMessage");
 
     if (!message) {
         return;
     }
 
+    message.textContent = text || "";
 
-    message.textContent =
-        text || "";
-
-
-    message.classList.toggle(
-        "error",
-        Boolean(isError)
-    );
+    message.classList.toggle("error", Boolean(isError));
 
 }
 
 
 /* =========================================================
    DISABLE VOTING COMPLETELY
+   (used when VOTING_ENABLED = false in votes.js)
 ========================================================= */
-
-/*
-   Used when:
-
-   const VOTING_ENABLED = false;
-
-   is set in votes.js.
-*/
 
 function closeVotingUI() {
 
-    const buttons =
-        document.querySelectorAll(
-            ".group-vote-button"
-        );
+    document.querySelectorAll(".group-vote-button").forEach(button => {
 
+        button.disabled = true;
 
-    buttons.forEach(button => {
+        button.classList.remove("selected", "voted");
 
-        button.disabled =
-            true;
-
-        button.classList.remove(
-            "selected",
-            "voted"
-        );
-
-        button.textContent =
-            "Voting closed";
+        button.textContent = "Voting closed";
 
     });
 
-
-    const submit =
-        document.getElementById("submitVotes");
-
+    const submit = document.getElementById("submitVotes");
 
     if (submit) {
 
-        submit.disabled =
-            true;
-
-        submit.hidden =
-            true;
+        submit.disabled = true;
+        submit.hidden = true;
 
     }
 
-
-    setVoteMessage(
-        "Voting is currently closed.",
-        false
-    );
+    setVoteMessage("Voting is currently closed.", false);
 
 }
 
@@ -340,55 +315,29 @@ function closeVotingUI() {
 function lockVoting(group, pickedIDs) {
 
     document
-        .querySelectorAll(
-            ".group-girl-card[data-girl-id]"
-        )
+        .querySelectorAll(".group-girl-card[data-girl-id]")
         .forEach(card => {
 
-            const button =
-                card.querySelector(
-                    ".group-vote-button"
-                );
+            const button = card.querySelector(".group-vote-button");
 
+            const picked = pickedIDs.includes(card.dataset.girlId);
 
-            const picked =
-                pickedIDs.includes(
-                    card.dataset.girlId
-                );
+            button.disabled = true;
 
+            button.classList.remove("selected");
 
-            button.disabled =
-                true;
+            button.classList.toggle("voted", picked);
 
-
-            button.classList.remove(
-                "selected"
-            );
-
-
-            button.classList.toggle(
-                "voted",
-                picked
-            );
-
-
-            button.textContent =
-                picked
-                    ? "? Your vote"
-                    : "Voting closed";
+            button.textContent = picked
+                ? "\u2713 Your vote"
+                : "Voting closed";
 
         });
 
-
-    const submit =
-        document.getElementById("submitVotes");
-
+    const submit = document.getElementById("submitVotes");
 
     if (submit) {
-
-        submit.hidden =
-            true;
-
+        submit.hidden = true;
     }
 
 }
@@ -400,30 +349,22 @@ function lockVoting(group, pickedIDs) {
 
 function setupVoting(group) {
 
-    const buttons =
-        [
-            ...document.querySelectorAll(
-                ".group-vote-button"
-            )
-        ];
+    const buttons = [...document.querySelectorAll(".group-vote-button")];
 
-
-    const voteArea =
-        document.getElementById("voteArea");
-
+    const voteArea = document.getElementById("voteArea");
 
     if (!voteArea) {
         return;
     }
-
 
     voteArea.innerHTML = `
 
         <p
             class="vote-message"
             id="voteMessage"
+            role="status"
+            aria-live="polite"
         ></p>
-
 
         <button
             type="button"
@@ -434,20 +375,14 @@ function setupVoting(group) {
 
     `;
 
+    const submit = document.getElementById("submitVotes");
 
-    const submit =
-        document.getElementById(
-            "submitVotes"
-        );
-
-
-    submit.hidden =
-        true;
+    submit.hidden = true;
 
 
     /* =====================================================
        MANUAL VOTING SWITCH
-       Check this BEFORE the Supabase configuration.
+       Checked BEFORE the Supabase configuration.
     ===================================================== */
 
     if (
@@ -469,20 +404,16 @@ function setupVoting(group) {
 
         buttons.forEach(button => {
 
-            button.disabled =
-                true;
+            button.disabled = true;
 
-            button.textContent =
-                "Voting unavailable";
+            button.textContent = "Voting unavailable";
 
         });
-
 
         setVoteMessage(
             "Voting for this group has not opened yet.",
             false
         );
-
 
         return;
     }
@@ -492,23 +423,16 @@ function setupVoting(group) {
        CHECK IF THIS BROWSER HAS ALREADY VOTED
     ===================================================== */
 
-    const existing =
-        getMyVotes(group);
-
+    const existing = getMyVotes(group);
 
     if (existing) {
 
-        lockVoting(
-            group,
-            existing
-        );
-
+        lockVoting(group, existing);
 
         setVoteMessage(
             "Thanks, your votes for this group have been counted.",
             false
         );
-
 
         return;
     }
@@ -518,8 +442,7 @@ function setupVoting(group) {
        SELECTED GIRLS
     ===================================================== */
 
-    const selected =
-        new Set();
+    const selected = new Set();
 
 
     /* =====================================================
@@ -530,31 +453,18 @@ function setupVoting(group) {
 
         buttons.forEach(button => {
 
-            const isSelected =
-                selected.has(
-                    button.dataset.girlId
-                );
+            const isSelected = selected.has(button.dataset.girlId);
 
+            button.classList.toggle("selected", isSelected);
 
-            button.classList.toggle(
-                "selected",
-                isSelected
-            );
-
-
-            button.textContent =
-                isSelected
-                    ? "? Selected"
-                    : "Vote";
-
+            button.textContent = isSelected
+                ? "\u2713 Selected"
+                : "Vote";
 
             /*
-                Once the maximum number of girls
-                has been selected, disable all other
-                buttons.
-
-                Already selected girls remain clickable
-                so they can be unselected.
+                Once the maximum number of girls is selected,
+                disable all the others. Selected girls stay
+                clickable so they can be unselected.
             */
 
             button.disabled =
@@ -563,28 +473,15 @@ function setupVoting(group) {
 
         });
 
+        const remaining = VOTES_PER_GROUP - selected.size;
 
-        submit.hidden =
-            false;
+        submit.hidden = false;
 
+        submit.disabled = selected.size !== VOTES_PER_GROUP;
 
-        submit.disabled =
-            selected.size !== VOTES_PER_GROUP;
-
-
-        submit.textContent =
-            selected.size === VOTES_PER_GROUP
-
-                ? `?? SUBMIT MY ${VOTES_PER_GROUP} VOTES`
-
-                : `Pick ${
-                    VOTES_PER_GROUP - selected.size
-                } more ${
-                    VOTES_PER_GROUP - selected.size === 1
-                        ? "girl"
-                        : "girls"
-                }`;
-
+        submit.textContent = remaining === 0
+            ? `Submit my ${VOTES_PER_GROUP} votes`
+            : `Pick ${remaining} more ${remaining === 1 ? "girl" : "girls"}`;
 
         setVoteMessage(
             `Choose ${VOTES_PER_GROUP} girls to move on, then submit. You can only vote once per group.`,
@@ -600,45 +497,25 @@ function setupVoting(group) {
 
     buttons.forEach(button => {
 
-        button.addEventListener(
-            "click",
-            () => {
+        button.addEventListener("click", () => {
 
-                const id =
-                    button.dataset.girlId;
+            const id = button.dataset.girlId;
 
+            if (selected.has(id)) {
 
-                /*
-                    If already selected,
-                    remove the selection.
-                */
+                // Already selected: remove the selection
+                selected.delete(id);
 
-                if (selected.has(id)) {
+            } else if (selected.size < VOTES_PER_GROUP) {
 
-                    selected.delete(id);
-
-                }
-
-
-                /*
-                    Otherwise add the girl if
-                    there is still room.
-                */
-
-                else if (
-                    selected.size <
-                    VOTES_PER_GROUP
-                ) {
-
-                    selected.add(id);
-
-                }
-
-
-                refresh();
+                // Otherwise add her if there is still room
+                selected.add(id);
 
             }
-        );
+
+            refresh();
+
+        });
 
     });
 
@@ -647,157 +524,93 @@ function setupVoting(group) {
        SUBMIT VOTES
     ===================================================== */
 
-    submit.addEventListener(
-        "click",
-        async () => {
+    submit.addEventListener("click", async () => {
 
-            if (
-                selected.size !==
-                VOTES_PER_GROUP
-            ) {
-
-                return;
-
-            }
-
-
-            const picks =
-                [...selected];
-
-
-            const names =
-                picks
-                    .map(id => {
-
-                        const girl =
-                            getGirl(id);
-
-                        return girl
-                            ? girl.name
-                            : id;
-
-                    })
-                    .join(" and ");
-
-
-            if (
-                !confirm(
-                    `Submit your votes for ${names}? You can't change them afterwards.`
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            /* Disable everything while submitting */
-
-            submit.disabled =
-                true;
-
-
-            buttons.forEach(button => {
-
-                button.disabled =
-                    true;
-
-            });
-
-
-            setVoteMessage(
-                "Submitting your votes...",
-                false
-            );
-
-
-            /* =================================================
-               SEND TO SUPABASE
-            ================================================= */
-
-            const result =
-                await castVotes(
-                    group,
-                    picks
-                );
-
-
-            /* =================================================
-               SUCCESS
-            ================================================= */
-
-            if (result.ok) {
-
-                lockVoting(
-                    group,
-                    picks
-                );
-
-
-                setVoteMessage(
-                    "Thanks! Your votes have been counted.",
-                    false
-                );
-
-
-                return;
-            }
-
-
-            /* =================================================
-               ALREADY VOTED
-            ================================================= */
-
-            if (result.alreadyVoted) {
-
-                lockVoting(
-                    group,
-                    getMyVotes(group) || []
-                );
-
-
-                setVoteMessage(
-                    "You have already voted in this group.",
-                    false
-                );
-
-
-                return;
-            }
-
-
-            /* =================================================
-               VOTING WAS CLOSED
-            ================================================= */
-
-            if (result.votingClosed) {
-
-                closeVotingUI();
-
-                return;
-            }
-
-
-            /* =================================================
-               ERROR
-            ================================================= */
-
-            setVoteMessage(
-                result.error ||
-                "Your votes could not be saved. Please try again.",
-                true
-            );
-
-
-            /*
-                Re-enable the voting interface so the
-                voter can try again.
-            */
-
-            refresh();
-
+        if (selected.size !== VOTES_PER_GROUP) {
+            return;
         }
-    );
+
+        const picks = [...selected];
+
+        const names = picks
+            .map(id => {
+
+                const girl = getGirl(id);
+
+                return girl ? girl.name : id;
+
+            })
+            .join(" and ");
+
+        if (
+            !confirm(
+                `Submit your votes for ${names}? You can't change them afterwards.`
+            )
+        ) {
+            return;
+        }
+
+        /* Disable everything while submitting */
+
+        submit.disabled = true;
+
+        buttons.forEach(button => {
+            button.disabled = true;
+        });
+
+        setVoteMessage("Submitting your votes...", false);
+
+
+        /* ---------- send to Supabase ---------- */
+
+        const result = await castVotes(group, picks);
+
+
+        /* ---------- success ---------- */
+
+        if (result.ok) {
+
+            lockVoting(group, picks);
+
+            setVoteMessage("Thanks! Your votes have been counted.", false);
+
+            return;
+        }
+
+
+        /* ---------- already voted ---------- */
+
+        if (result.alreadyVoted) {
+
+            lockVoting(group, getMyVotes(group) || []);
+
+            setVoteMessage("You have already voted in this group.", false);
+
+            return;
+        }
+
+
+        /* ---------- voting was closed ---------- */
+
+        if (result.votingClosed) {
+
+            closeVotingUI();
+
+            return;
+        }
+
+
+        /* ---------- error: let the voter try again ---------- */
+
+        refresh();
+
+        setVoteMessage(
+            result.error ||
+            "Your votes could not be saved. Please try again.",
+            true
+        );
+
+    });
 
 
     /* =====================================================
@@ -815,36 +628,24 @@ function setupVoting(group) {
 
 function showGroupError(title) {
 
-    document.getElementById(
-        "groupTitle"
-    ).textContent =
-        title;
+    document.getElementById("groupTitle").textContent = title;
 
+    document.getElementById("groupStatus").hidden = true;
 
-    document.getElementById(
-        "groupStatus"
-    ).hidden =
-        true;
+    /* No vote area or group buttons on an error page */
 
+    const voteRow = document.getElementById("voteRow");
 
-    document.getElementById(
-        "errorTitle"
-    ).textContent =
-        title;
+    if (voteRow) {
+        voteRow.hidden = true;
+    }
 
+    document.getElementById("errorTitle").textContent = title;
 
-    document.getElementById(
-        "errorLink"
-    ).href =
-        siteURL(
-            "qualifying/groups/index.html"
-        );
+    document.getElementById("errorLink").href =
+        siteURL("qualifying/groups/index.html");
 
-
-    document.getElementById(
-        "errorMessage"
-    ).hidden =
-        false;
+    document.getElementById("errorMessage").hidden = false;
 
 }
 
