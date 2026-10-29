@@ -15,7 +15,7 @@
 /* ---------------------------------------------------------
    MASTER SWITCH  -  true = maintenance ON, false = site OFF
 --------------------------------------------------------- */
-const MAINTENANCE_ENABLED = true;
+const MAINTENANCE_ENABLED = false;
 
 
 /* ---------------------------------------------------------
@@ -25,18 +25,18 @@ const MAINTENANCE_ENABLED = true;
            be true for any redirect to happen)
 --------------------------------------------------------- */
 const MAINTENANCE_PAGES = {
-    "home.html":       true,   // home page
-    "all.html":        true,   // all girls
-    "profile.html":    true,   // girl profile
-    "index.html":      true,   // qualifying/groups list (root index.html is never redirected)
-    "group.html":      true,   // single qualifying group
-    "qualified.html":  true,   // qualified girls
-    "eliminated.html": true,   // eliminated girls
-    "wildcard.html":   true   // wildcard girls
+    "home.html":       false,   // home page
+    "all.html":        false,   // all girls
+    "profile.html":    false,   // girl profile
+    "index.html":      false,   // qualifying/groups list (root index.html is never redirected)
+    "group.html":      false,   // single qualifying group
+    "qualified.html":  false,   // qualified girls
+    "eliminated.html": false,   // eliminated girls
+    "wildcard.html":   false   // wildcard girls
 };
 
 // Any page that is not listed above
-const MAINTENANCE_OTHER_PAGES = true;
+const MAINTENANCE_OTHER_PAGES = false;
 
 
 /* ---------------------------------------------------------
